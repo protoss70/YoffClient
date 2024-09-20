@@ -1,5 +1,3 @@
-// authContext.tsx
-
 import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 import {
   signInWithEmailAndPasswordHandler,
@@ -7,7 +5,8 @@ import {
   signInWithGoogleHandler,
   signOutHandler,
   getCurrentUser,
-  isAuthenticated
+  isAuthenticated,
+  sendPasswordResetEmailHandler // Import this function
 } from '../auth/firebaseAuth';
 import { User } from 'firebase/auth';
 
@@ -18,6 +17,7 @@ interface AuthContextType {
   register: (email: string, password: string) => Promise<void>;
   loginWithGoogle: () => Promise<void>;
   logout: () => Promise<void>;
+  sendPasswordResetEmail: (email: string) => Promise<void>; // Updated to include this
   isAuthenticated: boolean;
 }
 
@@ -93,6 +93,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
+  // Function to send password reset email
+  const sendPasswordResetEmail = async (email: string): Promise<void> => {
+    try {
+      await sendPasswordResetEmailHandler(email); // Call the handler from firebaseAuth
+    } catch (error) {
+      console.error('Error sending password reset email:', error);
+      throw error;
+    }
+  };
+
   // Context value to provide
   const contextValue: AuthContextType = {
     currentUser,
@@ -100,6 +110,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     register,
     loginWithGoogle,
     logout,
+    sendPasswordResetEmail, // Provide this in the context
     isAuthenticated: isAuth,
   };
 

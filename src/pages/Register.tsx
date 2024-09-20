@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { useAuth } from '../context/authContext'; // Import the useAuth hook
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link } from 'react-router-dom';
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -93,11 +94,12 @@ const Register: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700"
+            className="w-full px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
           >
             Register
           </button>
         </form>
+        <div className='text-sm'>Already have an account? <Link className='text-blue-600 hover:underline' to="/login">Login</Link></div>
         <div className="flex items-center justify-between flex-basis-1/3">
           <hr className="flex-1 border-gray-300" />
           <div className="px-4 text-center">or</div>
@@ -107,7 +109,7 @@ const Register: React.FC = () => {
           <FcGoogle className='w-6 h-6 text-gray-500' />
           <button
             onClick={handleGoogleLogin}
-            className="flex items-center justify-center w-full px-4 py-2 text-gray-500 rounded-md"
+            className="flex items-center justify-center w-full px-4 py-2 font-medium text-gray-500 rounded-md"
           >
             Register with Google
           </button>

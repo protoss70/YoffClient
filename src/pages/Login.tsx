@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { useAuth } from '../context/authContext'; // Import the useAuth hook
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -69,13 +70,15 @@ const Login: React.FC = () => {
               className="w-full p-2 mt-1 border border-gray-300 rounded-md"
             />
           </div>
+          <div className=''><Link className='text-sm text-blue-600 hover:underline' to="/forgot-password">Forgot Password?</Link></div>
           <button
             type="submit"
-            className="w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700"
+            className="w-full px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
           >
             Login
           </button>
         </form>
+        <div className='text-sm'>Don't have an account? <Link className='text-blue-600 hover:underline' to="/register">Register</Link></div>
         <div className="flex items-center justify-between flex-basis-1/3">
           <hr className="flex-1 border-gray-300" />
           <div className="px-4 text-center">or</div>
@@ -85,7 +88,7 @@ const Login: React.FC = () => {
           <FcGoogle className="w-6 h-6 text-gray-500" />
           <button
             onClick={handleGoogleLogin}
-            className="flex items-center justify-center w-full px-4 py-2 text-gray-500 rounded-md"
+            className="flex items-center justify-center w-full px-4 py-2 font-medium text-gray-500 rounded-md"
           >
             Login with Google
           </button>
