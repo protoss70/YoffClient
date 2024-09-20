@@ -1,0 +1,10 @@
+{
+  "nav": {
+    "logo": "LOGO",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "languages": "Languages",
+    "teachers": "Teachers"
+  }
+}
