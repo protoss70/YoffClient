@@ -1,33 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { isAuthenticated, signOutHandler } from '../../auth/firebaseAuth';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/authContext'; // Import the useAuth hook
 
 const NavBar: React.FC = () => {
   const [language, setLanguage] = useState('English');
-  const [isAuth, setIsAuth] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
-
-  // Check authentication state when component mounts
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const result = await isAuthenticated();
-        console.log(result);
-        setIsAuth(result);
-      } catch (error) {
-        console.error('Error checking authentication state:', error);
-      }
-    };
-
-    checkAuth();
-  }, []); // Empty dependency array means this runs once on component mount
+  const { isAuthenticated, logout } = useAuth(); // Destructure values from the useAuth hook
+  const navigate = useNavigate();
 
   const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setLanguage(event.target.value);
   };
 
   const handleNavClick = (path: string) => {
-    navigate(path); // Navigate to the specified path
+    navigate(path);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/'); // Redirect to the home page after logout
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
   };
 
   return (
@@ -42,17 +36,17 @@ const NavBar: React.FC = () => {
         <div className="flex items-center space-x-4">
           <button className="text-gray-700 hover:text-gray-900">Languages</button>
           <button className="text-gray-700 hover:text-gray-900">Teachers</button>
-          {!isAuth ? (
+          {!isAuthenticated ? (
             <>
               <button 
                 className="text-gray-700 hover:text-gray-900"
-                onClick={() => handleNavClick("/login")} // Handle click event
+                onClick={() => handleNavClick("/login")}
               >
                 Login
               </button>
               <button 
                 className="text-gray-700 hover:text-gray-900"
-                onClick={() => handleNavClick("/register")} // Handle click event
+                onClick={() => handleNavClick("/register")}
               >
                 Register
               </button>
@@ -60,7 +54,7 @@ const NavBar: React.FC = () => {
           ) : (
             <button 
               className="text-gray-700 hover:text-gray-900"
-              onClick={() => signOutHandler()} // Handle click event
+              onClick={handleLogout} // Call handleLogout to sign out
             >
               Logout
             </button>

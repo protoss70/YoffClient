@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { FcGoogle } from 'react-icons/fc'; // Google logo from FontAwesome
-import { registerWithEmailAndPasswordHandler, signInWithGoogleHandler } from '../auth/firebaseAuth';
+import { FcGoogle } from 'react-icons/fc';
+import { useAuth } from '../context/authContext'; // Import the useAuth hook
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
-  
+  const { register, loginWithGoogle } = useAuth(); // Destructure context functions
+  const navigate = useNavigate();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -19,7 +20,7 @@ const Register: React.FC = () => {
 
   const handleConfirmPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setConfirmPassword(event.target.value);
-  }; 
+  };
 
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -28,8 +29,9 @@ const Register: React.FC = () => {
       return;
     }
     try {
-      await registerWithEmailAndPasswordHandler(email, password);
+      await register(email, password);
       console.log('User registered successfully');
+      navigate('/'); // Redirect after successful registration
     } catch (error) {
       console.error('Error registering user:', error);
     }
@@ -37,8 +39,9 @@ const Register: React.FC = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      await signInWithGoogleHandler();
+      await loginWithGoogle();
       console.log('Google register successful');
+      navigate('/'); // Redirect after successful Google login
     } catch (error) {
       console.error('Error with Google register:', error);
     }
@@ -81,7 +84,7 @@ const Register: React.FC = () => {
             </label>
             <input
               type="password"
-              id="password"
+              id="confirmPassword" // Update the id to match the value variable
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
               required
@@ -101,7 +104,7 @@ const Register: React.FC = () => {
           <hr className="flex-1 border-gray-300" />
         </div>
         <div className='flex items-center justify-between w-full px-2 py-1 border border-gray-300 rounded-md hover:bg-gray-100'>
-          <FcGoogle className='w-6 h-6 text-gray-500' /> {/* Adjust size here */}
+          <FcGoogle className='w-6 h-6 text-gray-500' />
           <button
             onClick={handleGoogleLogin}
             className="flex items-center justify-center w-full px-4 py-2 text-gray-500 rounded-md"

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { FcGoogle } from 'react-icons/fc'; // Google logo from FontAwesome
-import { signInWithEmailAndPasswordHandler, signInWithGoogleHandler } from '../auth/firebaseAuth'; // Adjust the import path as needed
+import { FcGoogle } from 'react-icons/fc';
+import { useAuth } from '../context/authContext'; // Import the useAuth hook
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { login, loginWithGoogle } = useAuth(); // Destructure context functions
+  const navigate = useNavigate();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -17,9 +20,9 @@ const Login: React.FC = () => {
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      await signInWithEmailAndPasswordHandler(email, password);
+      await login(email, password);
       console.log('Login successful');
-      // Redirect or update state as needed after successful login
+      navigate('/'); // Redirect after successful login
     } catch (error) {
       console.error('Error during login:', error);
     }
@@ -27,9 +30,9 @@ const Login: React.FC = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      await signInWithGoogleHandler();
+      await loginWithGoogle();
       console.log('Google login successful');
-      // Redirect or update state as needed after successful login
+      navigate('/'); // Redirect after successful Google login
     } catch (error) {
       console.error('Error during Google login:', error);
     }
@@ -79,7 +82,7 @@ const Login: React.FC = () => {
           <hr className="flex-1 border-gray-300" />
         </div>
         <div className="flex items-center justify-between w-full px-2 py-1 border border-gray-300 rounded-md hover:bg-gray-100">
-          <FcGoogle className="w-6 h-6 text-gray-500" /> {/* Adjust size here */}
+          <FcGoogle className="w-6 h-6 text-gray-500" />
           <button
             onClick={handleGoogleLogin}
             className="flex items-center justify-center w-full px-4 py-2 text-gray-500 rounded-md"

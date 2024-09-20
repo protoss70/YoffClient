@@ -4,17 +4,20 @@ import Landing_Page from './pages/Landing_Page';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NavBar from './components/Navbar/Navbar';
-function App() {
+import { AuthProvider } from './context/authContext'; // Import the AuthProvider
 
+function App() {
   return (
-    <Router>
+    <AuthProvider>
+      <Router>
         <NavBar />
         <Routes>
           <Route path="/" element={<Landing_Page />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-    </Router>
+      </Router>
+    </AuthProvider>
   );
 }
 
