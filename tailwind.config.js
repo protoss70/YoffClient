@@ -4,7 +4,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"], // Add your desired font
+        gilroy: ["Gilroy", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+      },
+      colors: {
+        main: "#B671FF",
+        secondary: "#DB51C2",
+        dark: "#222222",
       },
     },
   },
