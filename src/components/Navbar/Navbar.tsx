@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import yoffLogo from "../../assets/logo.jpeg";
+import yoffLogo from "../../assets/logo.png";
 import globeIcon from "../../assets/globe.svg";
 
 const NavBar: React.FC = () => {
@@ -53,17 +53,18 @@ const NavBar: React.FC = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full px-20 bg-white shadow h-28">
+    <nav className="fixed top-0 left-0 w-full h-24 px-24 bg-white shadow">
       <div className="container flex items-center justify-between mx-auto">
         
         {/* LOGO */}
-        <div className='flex items-center h-28'>
-          <img className='h-24' src={yoffLogo} alt="Yoff Logo" />
+        <div onClick={() => handleNavClick("/")} className='flex items-center h-24 mr-28xx hover:cursor-pointer'>
+          <img className='h-20' src={yoffLogo} alt="Yoff Logo" />
         </div>
 
         {/* Mid Nav Buttons */}
         <div className='flex justify-between font-poppins gap-9'>
           <button onClick={() => {handleNavClick("/")}} className='px-5 py-1 font-semibold text-white bg-main rounded-2xl hover:underline'>Home</button>
+          <button onClick={() => {handleNavClick("/languages")}}className='hover:underline'>How It Works</button>
           <button onClick={() => {handleNavClick("/languages")}}className='hover:underline'>Languages</button>
           <button onClick={() => {handleNavClick("/#pricing")}}className='hover:underline'>Pricing</button>
           <button onClick={() => {handleNavClick("/teachers")}}className='hover:underline'>Teachers</button>
@@ -71,15 +72,19 @@ const NavBar: React.FC = () => {
 
         {/* End Nav Buttons */}
         <div className='flex gap-6 font-poppins'>
-          <button className='text-lg font-semibold underline text-main'>Login</button>
-          <button className='px-3 py-2 text-lg font-medium text-center text-white transition-all duration-1000 shadow-inner bg-gradient-to-r from-main to-secondary rounded-xl'>Schedule Class</button>
+          <button onClick={() => {handleNavClick("/login")}} className='font-semibold underline text-main'>
+            Login
+          </button>
+          <button className='px-3 py-1 text-lg font-medium text-center text-white transition-all duration-1000 shadow-inner bg-gradient-to-r from-main to-secondary rounded-xl'>
+            Schedule Class
+          </button>
           <div className='relative font-poppins'>
-            <button onClick={toggleLanguageSelect} className='flex items-center gap-2 px-2 py-2 bg-white border border-black rounded-xl'>
+            <button onClick={toggleLanguageSelect} className='flex items-center gap-2 px-2 py-1 bg-white border border-black rounded-xl'>
               <img className='h-10' src={globeIcon} alt="globe icon" />
               <span className='font-medium'>{language}</span>
             </button>
             {/* Language select field */}
-            <div ref={languageSelectRef} className='absolute left-0 w-full p-4 bg-white border border-black top-16 rounded-xl hover:cursor-default'>
+            <div ref={languageSelectRef} className='absolute left-0 hidden w-full p-4 bg-white border border-black top-16 rounded-xl hover:cursor-default'>
                 <div className="flex flex-col items-start">
                   <label className="flex items-center hover:cursor-pointer">
                     <input onClick={() => {setLanguage("English")}} type="radio" defaultChecked name="language" value="english" className="mr-2" />
