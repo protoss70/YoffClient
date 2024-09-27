@@ -61,5 +61,40 @@
   body {
     font-family: 'Poppins', sans-serif;
     /* To avoid navbar height */
-    margin-top: 112px; 
+    margin-top: 96px; 
+  }
+
+  @layer utilities {
+    .hero-bg {
+      background-image: url('./assets/hero_page/Hero_Background_Full.png');
+      background-size: contain; /* or contain, depending on your needs */
+      background-position: center; /* adjust as needed */
+      background-repeat: repeat-x;
+    }
+  }
+
+
+  .underline--double {
+    position: relative;
+  }
+  
+  .underline--double:before,
+  .underline--double:after {
+    content: '';
+    position: absolute;
+    left: 5%; /* Align the first line to the left */
+    height: 4px; /* Height of the underline */
+    width: 90%; /* Full width of the text */
+    background: linear-gradient(to right, #B671FF, #FF8DA6); /* Gradient from left to right */
+    border-radius: 10px; /* Rounded edges */
+  }
+  
+  .underline--double:before {
+    top: calc(100% - 10px); /* Position for the first underline */
+    box-shadow: inset 0 0 0 0 white; /* White space to create the double effect */
+  }
+  
+  .underline--double:after {
+    top: calc(100% - 4px); /* Position for the second underline */
+    left: 15%; /* Offset the second line to the right */
   }

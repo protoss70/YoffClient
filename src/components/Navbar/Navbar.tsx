@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import yoffLogo from "../../assets/logo.png";
+import yoffLogo from "../../assets/logo.svg";
 import globeIcon from "../../assets/globe.svg";
 
 const NavBar: React.FC = () => {
@@ -53,7 +53,7 @@ const NavBar: React.FC = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full h-24 px-24 bg-white shadow">
+    <nav className="fixed top-0 left-0 z-50 w-full h-24 px-24 bg-white shadow">
       <div className="container flex items-center justify-between mx-auto">
         
         {/* LOGO */}
