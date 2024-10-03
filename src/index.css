@@ -85,7 +85,7 @@
     left: 5%; /* Align the first line to the left */
     height: 4px; /* Height of the underline */
     width: 90%; /* Full width of the text */
-    background: linear-gradient(to right, #B671FF, #FF8DA6); /* Gradient from left to right */
+    background: linear-gradient(102.239deg, #B671FF 0%, #FF8DA6 100%); /* Gradient from left to right */
     border-radius: 10px; /* Rounded edges */
   }
   
@@ -98,3 +98,33 @@
     top: calc(100% - 4px); /* Position for the second underline */
     left: 15%; /* Offset the second line to the right */
   }
+
+
+/* styles.css */
+.shadow {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35); /* Default shadow - reduced spread */
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Small shadow */
+}
+
+.shadow-md {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Medium shadow */
+}
+
+.shadow-lg {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Large shadow - reduced spread */
+}
+
+.shadow-xl {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Extra large shadow - reduced spread */
+}
+
+.shadow-2xl {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.6); /* 2XL shadow - reduced spread */
+}
+
+.shadow-inner {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); /* Inner shadow */
+}
