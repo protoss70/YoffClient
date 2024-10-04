@@ -58,7 +58,7 @@ const NavBar: React.FC = () => {
         
         {/* LOGO */}
         <div onClick={() => handleNavClick("/")} className='flex items-center h-24 mr-28xx hover:cursor-pointer'>
-          <img className='h-20' src={yoffLogo} alt="Yoff Logo" />
+          <img className='h-20 ml-[-5px]' src={yoffLogo} alt="Yoff Logo" />
         </div>
 
         {/* Mid Nav Buttons */}
