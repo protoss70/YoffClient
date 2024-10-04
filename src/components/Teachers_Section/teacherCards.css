@@ -1,0 +1,107 @@
+:root{
+    --card-width-difference: 50px;
+    --card-width: 350px;
+
+    --card-height-difference: 50px;
+    --card-height: 500px;
+
+    --card-image-size: 250px;
+    --card-image-size-difference: 40px;
+
+    --card-language-size: 55px;
+    --card-language-size-difference: 10px;
+
+    --left-difference: 18%;
+}
+
+.card{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    background-color: white;
+}
+
+
+.card1{
+    width: calc(var(--card-width) - (2 * var(--card-width-difference)));
+    height: calc(var(--card-height) - (2 * var(--card-height-difference)));
+    z-index: -2;
+    left: calc(50% - (2 * var(--left-difference)));
+    
+    & > div >.cardImage {
+        width: calc(var(--card-image-size) - (2 * var(--card-image-size-difference)));
+        height: calc(var(--card-image-size) - (2 * var(--card-image-size-difference)));
+    }
+
+    & > div > div >.cardFlag {
+        width: calc(var(--card-language-size) - (2 * var(--card-language-size-difference)));
+        height: calc(var(--card-language-size) - (2 * var(--card-language-size-difference)));
+    }
+}
+
+.card2{
+    width: calc(var(--card-width) - (1 * var(--card-width-difference)));
+    height: calc(var(--card-height) - (1 * var(--card-height-difference)));
+    z-index: -1;
+    left: calc(50% - (1 * var(--left-difference)));
+    
+    & > div > img {
+        width: calc(var(--card-image-size) - (1 * var(--card-image-size-difference)));
+        height: calc(var(--card-image-size) - (1 * var(--card-image-size-difference)));
+    }
+
+    & > div > div >.cardFlag {
+        width: calc(var(--card-language-size) - (1 * var(--card-language-size-difference)));
+        height: calc(var(--card-language-size) - (1 * var(--card-language-size-difference)));
+    }
+}
+
+.card3{
+    width: calc(var(--card-width));
+    height: calc(var(--card-height));
+    
+    & > div > img {
+        width: calc(var(--card-image-size));
+        height: calc(var(--card-image-size));
+    }
+
+    & > div > div >.cardFlag {
+        width: calc(var(--card-language-size));
+        height: calc(var(--card-language-size));
+    }
+}
+
+.card4{
+    width: calc(var(--card-width) - (1 * var(--card-width-difference)));
+    height: calc(var(--card-height) - (1 * var(--card-height-difference)));
+    z-index: -1;
+    left: calc(50% + (1 * var(--left-difference)));
+    
+    & > div > img {
+        width: calc(var(--card-image-size) - (1 * var(--card-image-size-difference)));
+        height: calc(var(--card-image-size) - (1 * var(--card-image-size-difference)));
+    }
+
+    & > div > div >.cardFlag {
+        width: calc(var(--card-language-size) - (1 * var(--card-language-size-difference)));
+        height: calc(var(--card-language-size) - (1 * var(--card-language-size-difference)));
+    }
+}
+
+.card5{
+    width: calc(var(--card-width) - (2 * var(--card-width-difference)));
+    height: calc(var(--card-height) - (2 * var(--card-height-difference)));
+    z-index: -2;
+    left: calc(50% + (2 * var(--left-difference)));
+    
+    & > div > img {
+        width: calc(var(--card-image-size) - (2 * var(--card-image-size-difference)));
+        height: calc(var(--card-image-size) - (2 * var(--card-image-size-difference)));
+    }
+
+    & > div > div >.cardFlag {
+        width: calc(var(--card-language-size) - (2 * var(--card-language-size-difference)));
+        height: calc(var(--card-language-size) - (2 * var(--card-language-size-difference)));
+    }
+}
