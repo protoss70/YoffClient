@@ -78,11 +78,28 @@
       background-position: center; /* adjust as needed */
       background-repeat: repeat-x;
     }
+
+    .pricing-bg{
+      background-image: url('./assets/hero_page/Pricing_Premium_bg.png');
+      background-size: cover; /* or contain, depending on your needs */
+      background-position: center; /* adjust as needed */
+      background-repeat: repeat-x;
+    }
   }
 
 
   .underline--double {
     position: relative;
+  }
+
+  .underline--margined{
+    &::before{
+      top: calc(100% - 3px) !important;
+    }
+
+    &::after{
+      top: calc(100% + 3px) !important;
+    }
   }
   
   .underline--double {
