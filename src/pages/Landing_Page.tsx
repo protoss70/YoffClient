@@ -4,6 +4,7 @@ import HowSection from '../components/How_Section/HowSection';
 import TeachersSection from '../components/Teachers_Section/TeachersSection';
 import LanguageSection from '../components/Languages_Section/LanguageSection';
 import PricingSection from '../components/Pricing_Seciton/PricingSection';
+import ContactSection from '../components/Contact_Section/ContactSection';
 
 const Landing_Page: React.FC = () => {
 
@@ -14,6 +15,7 @@ const Landing_Page: React.FC = () => {
         <TeachersSection />
         <LanguageSection />
         <PricingSection />
+        <ContactSection />
       </div>
   );
 };
