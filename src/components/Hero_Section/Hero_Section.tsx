@@ -27,12 +27,12 @@ function HeroSeciton() {
         </div>
         
         <div className="p-10 basis-1/2">
-          <img src={heroImage} className="h-[90%]" alt="Hero seciton image" />
+          <img src={heroImage} className="h-[600px]" alt="Hero seciton image" />
         </div>
       </div>
       
       {/* BG Image */}
-      <div className="z-[-1] absolute top-0 left-0 w-full h-full min-h-screen hero-bg"></div>
+      <div className="z-[-1] absolute top-0 left-0 w-full h-full min-h-[110vh] hero-bg"></div>
       <div className="z-[-2] absolute top-0 left-0 w-full bg-[#F4EFF6] h-[50%]"></div>
      </section>
   );

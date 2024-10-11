@@ -27,8 +27,8 @@ function LanguageSection() {
                 <img src={spanishFlag} alt="Spanish flag" className="w-16" />
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-1 font-gilroy">
-              <div className="font-semibold text-dark">Spanish Tutors</div>
+            <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
+              <div className="text-2xl font-semibold text-dark">Spanish Tutors</div>
               <div className="font-medium text-custom_gray">7 Teachers</div>
             </div>
           </div>
@@ -47,8 +47,8 @@ function LanguageSection() {
                 <img src={czechFlag} alt="Czech flag" className="w-16" />
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-1 font-gilroy">
-              <div className="font-semibold text-dark">Czech Tutors</div>
+            <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
+              <div className="text-2xl font-semibold text-dark">Czech Tutors</div>
               <div className="font-medium text-custom_gray">1 Teacher</div>
             </div>
           </div>
@@ -67,8 +67,8 @@ function LanguageSection() {
                 <img src={arabicFlag} alt="Arabic flag" className="w-16" />
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-1 font-gilroy">
-              <div className="font-semibold text-dark">Arabic Tutors</div>
+            <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
+              <div className="text-2xl font-semibold text-dark">Arabic Tutors</div>
               <div className="font-medium text-custom_gray">12 Teachers</div>
             </div>
           </div>
@@ -87,8 +87,8 @@ function LanguageSection() {
                 <img src={italianFlag} alt="Italian flag" className="w-16" />
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-1 font-gilroy">
-              <div className="font-semibold text-dark">Italian Tutors</div>
+            <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
+              <div className="text-2xl font-semibold text-dark">Italian Tutors</div>
               <div className="font-medium text-custom_gray">3 Teachers</div>
             </div>
           </div>
@@ -107,8 +107,8 @@ function LanguageSection() {
                 <img src={frenchFlag} alt="French flag" className="w-16" />
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-1 font-gilroy">
-              <div className="font-semibold text-dark">French Tutors</div>
+            <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
+              <div className="text-2xl font-semibold text-dark">French Tutors</div>
               <div className="font-medium text-custom_gray">26 Teachers</div>
             </div>
           </div>
@@ -127,8 +127,8 @@ function LanguageSection() {
                 <img src={germanFlag} alt="German flag" className="w-16" />
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-1 font-gilroy">
-              <div className="font-semibold text-dark">German Tutors</div>
+            <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
+              <div className="text-2xl font-semibold text-dark">German Tutors</div>
               <div className="font-medium text-custom_gray">2 Teachers</div>
             </div>
           </div>
@@ -147,8 +147,8 @@ function LanguageSection() {
                 <img src={chineseFlag} alt="Chinese flag" className="w-16" />
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-1 font-gilroy">
-              <div className="font-semibold text-dark">Chinese Tutors</div>
+            <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
+              <div className="text-2xl font-semibold text-dark">Chinese Tutors</div>
               <div className="font-medium text-custom_gray">17 Teachers</div>
             </div>
           </div>
@@ -167,8 +167,8 @@ function LanguageSection() {
                 <img src={dutchFlag} alt="Dutch flag" className="w-16" />
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-1 font-gilroy">
-              <div className="font-semibold text-dark">Dutch Tutors</div>
+            <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
+              <div className="text-2xl font-semibold text-dark">Dutch Tutors</div>
               <div className="font-medium text-custom_gray">4 Teachers</div>
             </div>
           </div>
