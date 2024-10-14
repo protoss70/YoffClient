@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         gilroy: ["Gilroy", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
       colors: {
         main: "#B671FF",

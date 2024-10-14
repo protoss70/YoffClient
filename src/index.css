@@ -57,11 +57,17 @@
     src: url('/src/assets/fonts/Gilroy-Black.ttf') format('truetype');
     font-weight: 900;
   }
+
+  :root{
+    --main: #B671FF;
+    --secondary: #DB51C2;
+  }
   
   body {
     font-family: 'Poppins', sans-serif;
     /* To avoid navbar height */
     margin-top: 96px; 
+    min-height: calc(100vh);
   }
 
   @layer utilities {
@@ -165,4 +171,23 @@
 
 .arrow-main{
   filter: invert(62%) sepia(36%) saturate(7054%) hue-rotate(231deg) brightness(101%) contrast(101%);
+}
+
+.button-container {
+  position: relative;
+  display: inline-block;
+  border-radius: 16px; /* Match this to your desired border-radius */
+  padding: 2px; /* Controls the border thickness */
+  background: linear-gradient(to right, var(--main), var(--secondary));
+}
+
+.button-content {
+  display: inline-block;
+  background: white;
+  padding: 10px 20px;
+  font-size: 1.125rem; /* Equivalent to text-lg */
+  font-weight: 500; /* Equivalent to font-medium */
+  text-align: center;
+  border-radius: inherit;
+  transition: all 1s ease;
 }
