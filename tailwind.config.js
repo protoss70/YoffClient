@@ -13,6 +13,7 @@ module.exports = {
         dark: "#222222",
         custom_blue: "#024AB0",
         custom_gray: "#6F6B6B",
+        footer: "#353535",
       },
     },
   },
