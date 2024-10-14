@@ -5,6 +5,7 @@ import netherlandsFlag from "../assets/flags/Netherlands.png"
 import germanFlag from "../assets/flags/German.png"
 import czechFlag from "../assets/flags/Czech.png"
 import spanishFlag from "../assets/flags/Spanish.png"
+import Tooltip from '@mui/material/Tooltip';
 
 const TeacherProfile: React.FC = () => {
 
@@ -68,10 +69,20 @@ const TeacherProfile: React.FC = () => {
 				<div className="basis-1/3">
 					<h3 className="w-full text-2xl font-semibold text-start font-gilroy text-main">Languages</h3>
 					<div className="flex justify-start gap-5">
-							<img src={germanFlag} alt="german flag" title="German" className="w-10"/>
-							<img src={spanishFlag} alt="spanish flag" title="Spanish" className="w-10"/>
-							<img src={netherlandsFlag} alt="netherlands flag" title="Dutch" className="w-10"/>
-							<img src={czechFlag} alt="czech flag" title="Czech" className="w-10"/>
+						<div className="flex gap-5 pt-1">
+							<Tooltip title="German">
+								<img src={germanFlag} alt="german flag" className="w-10" />
+							</Tooltip>
+							<Tooltip title="Spanish">
+								<img src={spanishFlag} alt="spanish flag" className="w-10" />
+							</Tooltip>
+							<Tooltip title="Dutch">
+								<img src={netherlandsFlag} alt="netherlands flag" className="w-10" />
+							</Tooltip>
+							<Tooltip title="Czech">
+								<img src={czechFlag} alt="czech flag" className="w-10" />
+							</Tooltip>
+						</div>
 					</div>
 				</div>
 			
