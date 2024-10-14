@@ -1,6 +1,10 @@
 import React from "react";
 import teacherProfileBg from "../assets/teacherprofile/teacher_Profile_Bg.png";
 import teacher1 from "../assets/hero_page/teacherImage1.png";
+import netherlandsFlag from "../assets/flags/Netherlands.png"
+import germanFlag from "../assets/flags/German.png"
+import czechFlag from "../assets/flags/Czech.png"
+import spanishFlag from "../assets/flags/Spanish.png"
 
 const TeacherProfile: React.FC = () => {
 
@@ -46,7 +50,7 @@ const TeacherProfile: React.FC = () => {
 			</div>
 
 			{/* Bottom Info */}
-			<div className="flex justify-between gap-7">
+			<div className="flex justify-between w-full ml-6 gap-7">
 				<div className="basis-1/3">
 					<h3 className="w-full text-2xl font-semibold text-start font-gilroy text-main">Education</h3>
 					<div className="font-gilroy font-semibold text-[#222222] text-lg">
@@ -63,8 +67,11 @@ const TeacherProfile: React.FC = () => {
 
 				<div className="basis-1/3">
 					<h3 className="w-full text-2xl font-semibold text-start font-gilroy text-main">Languages</h3>
-					<div className="font-gilroy font-semibold text-[#222222] text-lg">
-						Cooking, Hiking,  Dancing, Painting
+					<div className="flex justify-start gap-5">
+							<img src={germanFlag} alt="german flag" title="German" className="w-10"/>
+							<img src={spanishFlag} alt="spanish flag" title="Spanish" className="w-10"/>
+							<img src={netherlandsFlag} alt="netherlands flag" title="Dutch" className="w-10"/>
+							<img src={czechFlag} alt="czech flag" title="Czech" className="w-10"/>
 					</div>
 				</div>
 			
