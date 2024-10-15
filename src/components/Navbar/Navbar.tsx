@@ -71,11 +71,11 @@ const NavBar: React.FC = () => {
         </div>
 
         {/* End Nav Buttons */}
-        <div className='flex gap-6 font-poppins'>
+        <div className='flex gap-6 p-1 font-poppins'>
           <button onClick={() => {handleNavClick("/login")}} className='font-semibold underline text-main'>
             Login
           </button>
-          <button className='px-3 py-1 text-lg font-medium text-center text-white transition-all duration-1000 shadow-inner bg-gradient-to-r from-main to-secondary rounded-xl'>
+          <button className='px-3 py-1 text-lg font-medium text-center text-white transition-all duration-100 shadow-inner bg-gradient-to-r from-main to-secondary rounded-xl hover:to-main hover:from-secondary'>
             Schedule Class
           </button>
           <div className='relative font-poppins'>

@@ -21,9 +21,9 @@ function HeroSeciton() {
             Unlock your language potential with expert teachers from around the globe. Whether you're a beginner or advanced learner.
           </span>
           <br />
-          <button className="py-3 mt-4 text-lg font-medium text-center text-white transition-all duration-1000 shadow-inner px-7 font-poppins bg-gradient-to-r from-main to-secondary rounded-xl">
+          <button className="py-3 mt-4 text-lg font-medium text-center text-white transition-colors duration-1000 shadow-inner px-7 font-poppins bg-gradient-to-r from-main to-secondary rounded-xl hover:to-main hover:from-secondary">
             Get Started
-          </button>
+        </button>
         </div>
         
         <div className="p-10 basis-1/2">
