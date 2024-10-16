@@ -53,8 +53,8 @@ const NavBar: React.FC = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full h-24 px-24 bg-white shadow">
-      <div className="container flex items-center justify-between mx-auto">
+    <nav className="fixed top-0 left-0 z-50 w-full h-24 px-24 bg-white shadow max-1300:px-12 max-900:px-6">
+      <div className="flex items-center justify-between w-full">
         
         {/* LOGO */}
         <div onClick={() => handleNavClick("/")} className='flex items-center h-24 mr-28xx hover:cursor-pointer'>
@@ -64,7 +64,7 @@ const NavBar: React.FC = () => {
         {/* Mid Nav Buttons */}
         <div className='flex justify-between font-poppins gap-9'>
           <button onClick={() => {handleNavClick("/")}} className='px-5 py-1 font-semibold text-white bg-main rounded-2xl hover:underline'>Home</button>
-          <button onClick={() => {handleNavClick("/languages")}}className='hover:underline'>How It Works</button>
+          <button onClick={() => {handleNavClick("/languages")}}className='hover:underline max-1100:hidden'>How It Works</button>
           <button onClick={() => {handleNavClick("/languages")}}className='hover:underline'>Languages</button>
           <button onClick={() => {handleNavClick("/#pricing")}}className='hover:underline'>Pricing</button>
           <button onClick={() => {handleNavClick("/teachers")}}className='hover:underline'>Teachers</button>
@@ -75,16 +75,16 @@ const NavBar: React.FC = () => {
           <button onClick={() => {handleNavClick("/login")}} className='font-semibold underline text-main'>
             Login
           </button>
-          <button className='px-3 py-1 text-lg font-medium text-center text-white transition-all duration-100 shadow-inner bg-gradient-to-r from-main to-secondary rounded-xl hover:to-main hover:from-secondary'>
+          <button className='px-3 py-1 text-lg font-medium text-center text-white transition-all duration-100 shadow-inner max-1100:text-base max-1100:px-2 bg-gradient-to-r from-main to-secondary rounded-xl hover:to-main hover:from-secondary'>
             Schedule Class
           </button>
           <div className='relative font-poppins'>
             <button onClick={toggleLanguageSelect} className='flex items-center gap-2 px-2 py-1 bg-white border border-black rounded-xl'>
               <img className='h-10' src={globeIcon} alt="globe icon" />
-              <span className='font-medium'>{language}</span>
+              <span className='font-medium max-1100:hidden'>{language}</span>
             </button>
             {/* Language select field */}
-            <div ref={languageSelectRef} className='absolute left-0 hidden w-full p-4 bg-white border border-black top-16 rounded-xl hover:cursor-default'>
+            <div ref={languageSelectRef} className='absolute left-0 hidden w-full p-4 bg-white border border-black max-1100:left-auto max-1100:right-0 max-1100:w-28 top-16 rounded-xl hover:cursor-default'>
                 <div className="flex flex-col items-start">
                   <label className="flex items-center hover:cursor-pointer">
                     <input onClick={() => {setLanguage("English")}} type="radio" defaultChecked name="language" value="english" className="mr-2" />

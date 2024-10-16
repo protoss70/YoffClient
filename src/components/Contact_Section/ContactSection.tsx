@@ -11,7 +11,7 @@ function ContactSection() {
   };
 
   return (
-    <section className="px-24 my-40 min-w-96">
+    <section className="px-24 my-40 max-1300:px-12 max-900:px-6 min-w-96">
       <div className="flex justify-between gap-10 p-6 pl-12 border rounded-3xl">
         
         {/* Form */}

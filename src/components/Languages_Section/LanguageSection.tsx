@@ -10,7 +10,7 @@ import arrowLeft from "../../assets/hero_page/arrowMain.png";
 
 function LanguageSection() {
   return (
-    <section className="px-24 mt-40 min-w-96 languages-bg py-14">
+    <section className="px-24 mt-40 max-1300:px-12 max-900:px-6 min-w-96 languages-bg py-14">
       {/* Title */}
       <h1 className="text-6xl font-bold text-center text-white my-14 font-gilroy">
         Languages <span className="underline--double underline--white">We Offer</span>
@@ -28,7 +28,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark">Spanish Tutors</div>
+              <div className="text-2xl font-semibold text-dark max-1300:text-xl">Spanish Tutors</div>
               <div className="font-medium text-custom_gray">7 Teachers</div>
             </div>
           </div>
@@ -48,7 +48,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark">Czech Tutors</div>
+              <div className="text-2xl font-semibold text-dark max-1300:text-xl">Czech Tutors</div>
               <div className="font-medium text-custom_gray">1 Teacher</div>
             </div>
           </div>
@@ -68,7 +68,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark">Arabic Tutors</div>
+              <div className="text-2xl font-semibold text-dark max-1300:text-xl">Arabic Tutors</div>
               <div className="font-medium text-custom_gray">12 Teachers</div>
             </div>
           </div>
@@ -88,7 +88,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark">Italian Tutors</div>
+              <div className="text-2xl font-semibold text-dark max-1300:text-xl">Italian Tutors</div>
               <div className="font-medium text-custom_gray">3 Teachers</div>
             </div>
           </div>
@@ -108,7 +108,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark">French Tutors</div>
+              <div className="text-2xl font-semibold text-dark max-1300:text-xl">French Tutors</div>
               <div className="font-medium text-custom_gray">26 Teachers</div>
             </div>
           </div>
@@ -128,7 +128,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark">German Tutors</div>
+              <div className="text-2xl font-semibold text-dark max-1300:text-xl">German Tutors</div>
               <div className="font-medium text-custom_gray">2 Teachers</div>
             </div>
           </div>
@@ -148,7 +148,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark">Chinese Tutors</div>
+              <div className="text-2xl font-semibold text-dark max-1300:text-xl">Chinese Tutors</div>
               <div className="font-medium text-custom_gray">17 Teachers</div>
             </div>
           </div>
@@ -168,7 +168,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark">Dutch Tutors</div>
+              <div className="text-2xl font-semibold text-dark max-1300:text-xl">Dutch Tutors</div>
               <div className="font-medium text-custom_gray">4 Teachers</div>
             </div>
           </div>

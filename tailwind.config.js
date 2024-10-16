@@ -16,6 +16,13 @@ module.exports = {
         custom_gray: "#6F6B6B",
         footer: "#353535",
       },
+      screens: {
+        "max-1300": { max: "1300px" },
+        "max-1380": { max: "1380px" },
+        "max-1100": { max: "1100px" },
+        "max-900": { max: "900px" },
+        "max-800": { max: "800px" },
+      },
     },
   },
   plugins: [],

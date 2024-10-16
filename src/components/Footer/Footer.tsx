@@ -11,7 +11,7 @@ import twitter from "../../assets/twitterLink.svg";
 const Footer: React.FC = () => {
 
   return (
-    <footer className='relative flex flex-col justify-between w-full pb-16 text-white bg-footer px-28 pt-9'>
+    <footer className='relative flex flex-col justify-between w-full pb-16 text-white max-1300:px-14 max-900:px-8 bg-footer px-28 pt-9'>
         {/* Footer Links section */}
         <div className='flex justify-between'>
 
@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Footer Bottom section */}
-        <div className='absolute z-50 flex justify-end gap-5 bottom-3 right-28'>
+        <div className='absolute z-50 flex justify-end gap-5 bottom-3 right-28 max-1300:right-14'>
             <div>
                 <img className='w-12 hover:cursor-pointer' src={instagram} alt="Instagram icon" />
             </div>
