@@ -17,7 +17,7 @@ function LanguageSection() {
       </h1>
 
       {/* Language Cards Wrapper */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-1000:grid-cols-2 max-600:grid-cols-1">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-1000:grid-cols-2 max-600:grid-cols-1 max-1380:grid-cols-3">
         {/* Language Card 1 */}
         <div className="flex items-center justify-between w-full gap-2 p-3 bg-white rounded-lg">
           {/* Flag Image and Text */}
@@ -28,7 +28,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark max-1300:text-xl">Spanish Tutors</div>
+              <div className="text-xl font-semibold text-dark max-1300:text-lg">Spanish Tutors</div>
               <div className="font-medium text-custom_gray">7 Teachers</div>
             </div>
           </div>
@@ -48,7 +48,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark max-1300:text-xl">Czech Tutors</div>
+              <div className="text-xl font-semibold text-dark max-1300:text-lg">Czech Tutors</div>
               <div className="font-medium text-custom_gray">1 Teacher</div>
             </div>
           </div>
@@ -68,7 +68,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark max-1300:text-xl">Arabic Tutors</div>
+              <div className="text-xl font-semibold text-dark max-1300:text-lg">Arabic Tutors</div>
               <div className="font-medium text-custom_gray">12 Teachers</div>
             </div>
           </div>
@@ -88,7 +88,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark max-1300:text-xl">Italian Tutors</div>
+              <div className="text-xl font-semibold text-dark max-1300:text-lg">Italian Tutors</div>
               <div className="font-medium text-custom_gray">3 Teachers</div>
             </div>
           </div>
@@ -108,7 +108,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark max-1300:text-xl">French Tutors</div>
+              <div className="text-xl font-semibold text-dark max-1300:text-lg">French Tutors</div>
               <div className="font-medium text-custom_gray">26 Teachers</div>
             </div>
           </div>
@@ -128,7 +128,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark max-1300:text-xl">German Tutors</div>
+              <div className="text-xl font-semibold text-dark max-1300:text-lg">German Tutors</div>
               <div className="font-medium text-custom_gray">2 Teachers</div>
             </div>
           </div>
@@ -148,7 +148,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark max-1300:text-xl">Chinese Tutors</div>
+              <div className="text-xl font-semibold text-dark max-1300:text-lg">Chinese Tutors</div>
               <div className="font-medium text-custom_gray">17 Teachers</div>
             </div>
           </div>
@@ -168,7 +168,7 @@ function LanguageSection() {
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
-              <div className="text-2xl font-semibold text-dark max-1300:text-xl">Dutch Tutors</div>
+              <div className="text-xl font-semibold text-dark max-1300:text-lg">Dutch Tutors</div>
               <div className="font-medium text-custom_gray">4 Teachers</div>
             </div>
           </div>
