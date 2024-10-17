@@ -8,8 +8,8 @@
     --card-image-size: 250px;
     --card-image-size-difference: 40px;
 
-    --card-language-size: 55px;
-    --card-language-size-difference: 10px;
+    --card-language-size: 45px;
+    --card-language-size-difference: 7px;
 
     --left-difference: 18%;
 }
@@ -103,5 +103,15 @@
     & > div > div >.cardFlag {
         width: calc(var(--card-language-size) - (2 * var(--card-language-size-difference)));
         height: calc(var(--card-language-size) - (2 * var(--card-language-size-difference)));
+    }
+}
+
+@media (max-width: 1100px) {
+    .card2 {
+        left: calc(50% - (1.5 * var(--left-difference)));
+    }
+
+    .card4 {
+        left: calc(50% + (1.5 * var(--left-difference)));
     }
 }

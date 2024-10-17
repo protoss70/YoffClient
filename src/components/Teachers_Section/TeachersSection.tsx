@@ -16,7 +16,7 @@ function TeachersSection() {
   return (
     <section className="px-24 mt-40 min-w-96 max-1300:px-12 max-900:px-6">
         {/* Title */}
-        <div className="flex items-center justify-between text-6xl font-bold font-gilroy">
+        <div className="flex items-center justify-center text-6xl font-bold font-gilroy">
             <h1>
                 <span className="text-main">
                     Expert&nbsp;
@@ -26,23 +26,13 @@ function TeachersSection() {
                 </span>
                 from <br />Around the World
             </h1>
-
-            {/* Left and Right Arrows */}
-            <div className="flex justify-between gap-3">
-                <div className="p-4 flex justify-center items-center hover:cursor-pointer w-[45px] h-[45px] rounded-full bg-gradient-to-r from-main to-secondary">
-                    <img src={arrowLeft} alt="left arrow" className="mr-1"/>
-                </div>
-                <div className="p-4 rotate-180 flex justify-center items-center hover:cursor-pointer w-[45px] h-[45px] rounded-full bg-gradient-to-r from-main to-secondary">
-                    <img src={arrowLeft} alt="right arrow" className="mr-1"/>
-                </div>
-            </div>
         </div>
 
         {/* Teachers Slider */}
-        <div className="flex relative justify-center my-16 h-[500px] items-center">
+        <div className="flex relative justify-center mt-16 mb-10 h-[500px] items-center">
             
             {/* Card 1 */}
-            <div className="flex flex-col p-5 rounded-lg shadow-lg card card1">
+            <div className="flex flex-col p-5 pb-0 rounded-lg shadow-lg card card1 max-1100:hidden">
                 {/* Image */}
                 <div className="relative flex items-center justify-center w-full mb-5">
                     <img src={teacher1} alt="teacher profile image" className="rounded-full cardImage" />
@@ -62,7 +52,7 @@ function TeachersSection() {
                 {/* Languages */}
                 <div className="flex flex-col mt-4 text-center font-gilroy">
                     <div className="font-semibold text-custom_blue">Languages</div>
-                    <div className="flex justify-between px-[10%]">
+                    <div className="flex justify-center gap-3 px-[10%]">
                         <img src={germanFlag} alt="german flag" className="cardFlag"/>
                         <img src={spanishFlag} alt="spanish flag" className="cardFlag"/>
                         <img src={netherlandsFlag} alt="netherlands flag" className="cardFlag"/>
@@ -72,7 +62,7 @@ function TeachersSection() {
             </div>
 
             {/* Card 2 */}
-            <div className="flex flex-col p-5 rounded-lg shadow-lg card2 card">
+            <div className="flex flex-col p-5 rounded-lg shadow-lg card2 card max-800:hidden">
                 {/* Image */}
                 <div className="relative flex items-center justify-center w-full mb-5">
                     <img src={teacher2} alt="teacher profile image" className="rounded-full cardImage" />
@@ -92,7 +82,7 @@ function TeachersSection() {
                 {/* Languages */}
                 <div className="flex flex-col mt-4 text-center font-gilroy">
                     <div className="font-semibold text-custom_blue">Languages</div>
-                    <div className="flex justify-between px-[10%]">
+                    <div className="flex justify-center gap-3 px-[10%]">
                         <img src={germanFlag} alt="german flag" className="cardFlag"/>
                         <img src={spanishFlag} alt="spanish flag" className="cardFlag"/>
                         <img src={netherlandsFlag} alt="netherlands flag" className="cardFlag"/>
@@ -122,7 +112,7 @@ function TeachersSection() {
                 {/* Languages */}
                 <div className="flex flex-col mt-4 text-center font-gilroy">
                     <div className="font-semibold text-custom_blue">Languages</div>
-                    <div className="flex justify-between px-[10%]">
+                    <div className="flex justify-center gap-3 px-[10%]">
                         <img src={germanFlag} alt="german flag" className="cardFlag"/>
                         <img src={spanishFlag} alt="spanish flag" className="cardFlag"/>
                         <img src={netherlandsFlag} alt="netherlands flag" className="cardFlag"/>
@@ -132,7 +122,7 @@ function TeachersSection() {
             </div>
 
             {/* Card 4 */}
-            <div className="flex flex-col p-5 rounded-lg shadow-lg card4 card">
+            <div className="flex flex-col p-5 rounded-lg shadow-lg card4 card max-800:hidden">
                 {/* Image */}
                 <div className="relative flex items-center justify-center w-full mb-5">
                     <img src={teacher4} alt="teacher profile image" className="rounded-full cardImage" />
@@ -152,7 +142,7 @@ function TeachersSection() {
                 {/* Languages */}
                 <div className="flex flex-col mt-4 text-center font-gilroy">
                     <div className="font-semibold text-custom_blue">Languages</div>
-                    <div className="flex justify-between px-[10%]">
+                    <div className="flex justify-center gap-3 px-[10%]">
                         <img src={germanFlag} alt="german flag" className="cardFlag"/>
                         <img src={spanishFlag} alt="spanish flag" className="cardFlag"/>
                         <img src={netherlandsFlag} alt="netherlands flag" className="cardFlag"/>
@@ -162,7 +152,7 @@ function TeachersSection() {
             </div>
 
             {/* Card 5 */}
-            <div className="flex flex-col p-5 rounded-lg shadow-lg card5 card">
+            <div className="flex flex-col p-5 rounded-lg shadow-lg card5 card max-1100:hidden">
                 {/* Image */}
                 <div className="relative flex items-center justify-center w-full mb-5">
                     <img src={teacher5} alt="teacher profile image" className="rounded-full cardImage" />
@@ -182,7 +172,7 @@ function TeachersSection() {
                 {/* Languages */}
                 <div className="flex flex-col mt-4 text-center font-gilroy">
                     <div className="font-semibold text-custom_blue">Languages</div>
-                    <div className="flex justify-between px-[10%]">
+                    <div className="flex justify-center gap-3 px-[10%]">
                         <img src={germanFlag} alt="german flag" className="cardFlag"/>
                         <img src={spanishFlag} alt="spanish flag" className="cardFlag"/>
                         <img src={netherlandsFlag} alt="netherlands flag" className="cardFlag"/>
@@ -190,8 +180,15 @@ function TeachersSection() {
                     </div>
                 </div>
             </div>
-
-
+        </div>
+        {/* Left and Right Arrows */}
+        <div className="flex justify-center gap-6 max-1100:gap-10 max-800:gap-16">
+            <div className="p-4 flex justify-center items-center hover:cursor-pointer w-[45px] h-[45px] rounded-full bg-gradient-to-r from-main to-secondary">
+                <img src={arrowLeft} alt="left arrow" className="mr-1"/>
+            </div>
+            <div className="p-4 rotate-180 flex justify-center items-center hover:cursor-pointer w-[45px] h-[45px] rounded-full bg-gradient-to-r from-main to-secondary">
+                <img src={arrowLeft} alt="right arrow" className="mr-1"/>
+            </div>
         </div>
      </section>
   );
