@@ -12,12 +12,12 @@ function LanguageSection() {
   return (
     <section className="px-24 mt-40 max-1300:px-12 max-900:px-6 min-w-96 languages-bg py-14">
       {/* Title */}
-      <h1 className="text-6xl font-bold text-center text-white my-14 font-gilroy">
+      <h1 className="text-6xl font-bold text-center text-white my-14 font-gilroy max-800:text-5xl max-600:text-4xl">
         Languages <span className="underline--double underline--white">We Offer</span>
       </h1>
 
       {/* Language Cards Wrapper */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-1000:grid-cols-2 max-600:grid-cols-1">
         {/* Language Card 1 */}
         <div className="flex items-center justify-between w-full gap-2 p-3 bg-white rounded-lg">
           {/* Flag Image and Text */}
