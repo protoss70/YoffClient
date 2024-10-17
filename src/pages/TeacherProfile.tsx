@@ -10,7 +10,7 @@ import Tooltip from '@mui/material/Tooltip';
 const TeacherProfile: React.FC = () => {
 
   return (
-    <main className="relative flex flex-col items-center justify-center gap-5 px-24 pt-32 pb-24">
+    <main className="relative flex flex-col items-center justify-center gap-5 px-24 pt-32 pb-24 max-1300:px-12 max-900:px-6">
       {/* Teacher Image */}
 			<div className="flex justify-start w-full">
 				<div className="p-2 border rounded-full border-main">
@@ -19,7 +19,7 @@ const TeacherProfile: React.FC = () => {
 			</div>
 
 				{/* Teacher Top Bio */}
-			<div className="flex justify-between w-full ml-4">
+			<div className="flex justify-between w-full ml-4 max-800:flex-col max-800:justify-center">
 				<div>
 					<div className="text-5xl font-bold font-gilroy">
 						Sara grey
@@ -30,15 +30,13 @@ const TeacherProfile: React.FC = () => {
 				</div>
 
 				{/* CTA */}
-				<div className="flex items-center">
-					<div>
-						<button className='px-5 py-3 text-lg font-medium text-center text-white transition-all duration-1000 shadow-inner bg-gradient-to-r from-main to-secondary rounded-xl'>
-							Schedule Class
-						</button>
-						<button className='px-5 py-3 ml-3 text-lg font-medium text-center transition-all duration-1000 bg-white border border-main text-main rounded-xl'>
-							Send Message
-						</button>
-					</div>
+				<div className="flex items-center max-800:mt-5">
+					<button className='px-5 py-3 text-lg font-medium text-center text-white transition-all duration-1000 shadow-inner max-800:basis-1/2 bg-gradient-to-r from-main to-secondary rounded-xl'>
+						Schedule Class
+					</button>
+					<button className='px-5 py-3 ml-3 text-lg font-medium text-center transition-all duration-1000 bg-white border max-800:basis-1/2 border-main text-main rounded-xl'>
+						Send Message
+					</button>
 				</div>
 			</div>
 
@@ -51,8 +49,8 @@ const TeacherProfile: React.FC = () => {
 			</div>
 
 			{/* Bottom Info */}
-			<div className="flex justify-between w-full ml-6 gap-7">
-				<div className="basis-1/3">
+			<div className="flex justify-between w-full ml-6 gap-7 max-1000:flex-wrap max-1000:flex-row max-800:flex-col-reverse">
+				<div className="basis-1/3 max-1000:basis-1/2">
 					<h3 className="w-full text-2xl font-semibold text-start font-gilroy text-main">Education</h3>
 					<div className="font-gilroy font-semibold text-[#222222] text-lg">
 					Master's Degree in Linguistics from the University of Milan teaching certifications
@@ -85,7 +83,6 @@ const TeacherProfile: React.FC = () => {
 						</div>
 					</div>
 				</div>
-			
 			</div>
 
       {/* Teacher profile top bg image */}
