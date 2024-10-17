@@ -11,11 +11,11 @@ function ContactSection() {
   };
 
   return (
-    <section className="px-24 my-40 max-1300:px-12 max-900:px-6 min-w-96">
-      <div className="flex justify-between gap-10 p-6 pl-12 border rounded-3xl">
+    <section className="px-24 my-40 max-1300:px-12 max-1000:px-6 min-w-96">
+      <div className="flex justify-between gap-10 p-6 pl-12 border rounded-3xl max-1000:justify-center max-1000:items-center max-1000:mx-[10%] max-600:mx-auto">
         
         {/* Form */}
-        <div className="mt-3 basis-1/2">
+        <div className="mt-3 basis-1/2 max-1000:basis-auto">
           <h2 className="text-5xl font-bold font-gilroy">Contact Us</h2>
           <div className="font-poppins text-[#434343] mt-2">
             Have questions or ready to start your project? We're here to help! Contact us using the form.
@@ -102,7 +102,7 @@ function ContactSection() {
         </div>  
         
         {/* Image */}
-        <div className="flex justify-end basis-1/2">
+        <div className="flex justify-end basis-1/2 max-1000:hidden">
           <img className="h-[550px]" src={contactImage} alt="person studying" />
         </div>
       </div>    
