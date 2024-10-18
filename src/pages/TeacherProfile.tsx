@@ -11,7 +11,7 @@ const TeacherProfile: React.FC = () => {
 
   return (
     <main className="relative flex flex-col items-center justify-center gap-5 px-24 pt-32 pb-24 max-1300:px-12 max-900:px-6">
-      {/* Teacher Image */}
+      		{/* Teacher Image */}
 			<div className="flex justify-start w-full">
 				<div className="p-2 border rounded-full border-main">
 					<img className="w-72" src={teacher1} alt="Teacher profile picture" />

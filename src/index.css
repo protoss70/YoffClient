@@ -68,7 +68,6 @@
     /* To avoid navbar height */
     margin-top: 96px; 
     min-height: calc(100vh);
-    overflow-x: hidden;
   }
 
   @layer utilities {
