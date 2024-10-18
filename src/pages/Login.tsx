@@ -40,8 +40,8 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="w-full max-w-md p-8 space-y-6 rounded-md shadow-[0px_0px_2px_0px_rgba(0,0,0,0.75)]">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-md shadow-md">
         <h2 className="text-2xl font-bold">Login</h2>
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
@@ -73,7 +73,7 @@ const Login: React.FC = () => {
           <div className=''><Link className='text-sm text-blue-600 hover:underline' to="/forgot-password">Forgot Password?</Link></div>
           <button
             type="submit"
-            className="w-full px-4 py-2 font-medium text-white bg-main"
+            className="w-full px-4 py-2 font-medium text-white rounded-lg bg-main"
           >
             Login
           </button>
@@ -88,7 +88,7 @@ const Login: React.FC = () => {
           <FcGoogle className="w-6 h-6 text-gray-500" />
           <button
             onClick={handleGoogleLogin}
-            className="flex items-center justify-center w-full px-4 py-2 font-medium text-gray-500 rounded-md"
+            className="flex items-center justify-center w-full px-4 py-2 font-medium text-gray-500 rounded-lg"
           >
             Login with Google
           </button>

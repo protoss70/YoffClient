@@ -5,7 +5,6 @@ import globeIcon from "../../assets/globe.svg";
 import Hamburger from "./sub-components/hamburger";
 
 const NavBar: React.FC = () => {
-  
   const navigate = useNavigate();
   const [language, setLanguage] = useState("English");
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
@@ -15,7 +14,25 @@ const NavBar: React.FC = () => {
 
   const handleNavClick = (path: string) => {
     toggleMenu();
-    navigate(path);
+
+    // Check if the path has a hash
+    if (path.includes("#")) {
+      // Navigate to the root and then scroll to the section
+      const [basePath, sectionId] = path.split("#");
+      navigate(basePath); // Navigate to the root URL
+      setTimeout(() => {
+        handleScrollToSection(sectionId); // Scroll to the section after a brief delay
+      }, 100); // Adjust the timeout duration if necessary
+    } else {
+      navigate(path); // Normal navigation
+    }
+  };
+
+  const handleScrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const toggleLanguageSelect = () => {
@@ -65,22 +82,22 @@ const NavBar: React.FC = () => {
       <div className='relative w-full h-24 px-24 bg-white shadow max-1300:px-12 max-900:px-6'>
         <div className="flex items-center justify-between w-full">
           {/* LOGO */}
-          <div onClick={() => handleNavClick("/")} className='flex items-center h-24 mr-28xx hover:cursor-pointer'>
+          <div onClick={() => handleNavClick("/")} className='flex items-center h-24 mr-28 hover:cursor-pointer'>
             <img className='h-20 ml-[-5px]' src={yoffLogo} alt="Yoff Logo" />
           </div>
 
           {/* Mid Nav Buttons */}
           <div className='flex justify-between font-poppins gap-9 max-900:hidden'>
-            <button onClick={() => {handleNavClick("/")}} className='px-5 py-1 font-semibold text-white bg-main rounded-2xl hover:underline'>Home</button>
-            <button onClick={() => {handleNavClick("/languages")}} className='hover:underline max-1100:hidden'>How It Works</button>
-            <button onClick={() => {handleNavClick("/languages")}} className='hover:underline'>Languages</button>
-            <button onClick={() => {handleNavClick("/#pricing")}} className='hover:underline'>Pricing</button>
-            <button onClick={() => {handleNavClick("/teachers")}} className='hover:underline'>Teachers</button>
+            <button onClick={() => handleNavClick("/")} className='px-5 py-1 font-semibold text-white bg-main rounded-2xl hover:underline'>Home</button>
+            <button onClick={() => handleNavClick("/#HowItWorks")} className='hover:underline max-1100:hidden'>How It Works</button>
+            <button onClick={() => handleNavClick("/#LanguageSelection")} className='hover:underline'>Languages</button>
+            <button onClick={() => handleNavClick("/#PricingSection")} className='hover:underline'>Pricing</button>
+            <button onClick={() => handleNavClick("/teachers")} className='hover:underline'>Teachers</button>
           </div>
 
           {/* End Nav Buttons */}
           <div className='flex gap-6 p-1 font-poppins max-900:hidden'>
-            <button onClick={() => {handleNavClick("/login")}} className='font-semibold underline text-main'>
+            <button onClick={() => handleNavClick("/login")} className='font-semibold underline text-main'>
               Login
             </button>
             <button className='px-3 py-1 text-lg font-medium text-center text-white transition-all duration-100 shadow-inner max-1100:text-base max-1100:px-2 bg-gradient-to-r from-main to-secondary rounded-xl hover:to-main hover:from-secondary'>
@@ -94,17 +111,17 @@ const NavBar: React.FC = () => {
               {/* Language select field */}
               <div
                 ref={languageSelectRef}
-                className='absolute left-0 w-full bg-white border border-slate-400 max-1100:left-auto max-1100:right-0 max-1100:w-28 top-16 rounded-xl hover:cursor-default'
+                className='absolute left-0 hidden w-full bg-white border border-slate-400 max-1100:left-auto max-1100:right-0 max-1100:w-28 top-16 rounded-xl hover:cursor-default'
               >
                 <div className="flex flex-col items-start w-full">
                   <button
-                    onClick={() => {languageSelect('English')}}
+                    onClick={() => { languageSelect('English') }}
                     className="w-full p-2 text-left rounded-b-none rounded-xl hover:bg-gray-200 focus:outline-none"
                   >
                     English
                   </button>
                   <button
-                    onClick={() => {languageSelect('Russian')}}
+                    onClick={() => { languageSelect('Russian') }}
                     className="w-full p-2 text-left rounded-t-none rounded-xl hover:bg-gray-200 focus:outline-none"
                   >
                     Russian
@@ -115,19 +132,19 @@ const NavBar: React.FC = () => {
           </div>
 
           {/* Hamburger Menu */}
-          <Hamburger toggleMenu={toggleMenu} isOpen={hamburgerOpen}/>
+          <Hamburger toggleMenu={toggleMenu} isOpen={hamburgerOpen} />
           <div ref={hamburgerMenuRef} className='absolute left-0 flex flex-col hidden w-full bg-white shadow-md min-900:hidden font-poppins top-24'>
             <h3 className='px-6 text-lg font-semibold'>Links</h3>
-            <hr className='mx-6 border-t-2 border-t-main'/>
-            <button onClick={() => {handleNavClick("/")}} className='w-full px-6 py-2 font-semibold text-start text-main hover:underline'>Home</button>
-            <button onClick={() => {handleNavClick("/languages")}} className='px-6 py-2 text-start hover:underline'>How It Works</button>
-            <button onClick={() => {handleNavClick("/languages")}} className='px-6 py-2 text-start hover:underline'>Languages</button>
-            <button onClick={() => {handleNavClick("/#pricing")}} className='px-6 py-2 text-start hover:underline'>Pricing</button>
-            <button onClick={() => {handleNavClick("/teachers")}} className='px-6 py-2 text-start hover:underline'>Teachers</button>
+            <hr className='mx-6 border-t-2 border-t-main' />
+            <button onClick={() => handleNavClick("/")} className='w-full px-6 py-2 font-semibold text-start text-main hover:underline'>Home</button>
+            <button onClick={() => handleNavClick("/#HowItWorks")} className='px-6 py-2 text-start hover:underline'>How It Works</button>
+            <button onClick={() => handleNavClick("/#LanguageSelection")} className='px-6 py-2 text-start hover:underline'>Languages</button>
+            <button onClick={() => handleNavClick("/#PricingSection")} className='px-6 py-2 text-start hover:underline'>Pricing</button>
+            <button onClick={() => handleNavClick("/teachers")} className='px-6 py-2 text-start hover:underline'>Teachers</button>
             <br />
             <h3 className='px-6 text-lg font-semibold'>Actions</h3>
-            <hr className='mx-6 border-t-2 border-t-main'/>
-            <button onClick={() => {handleNavClick("/login")}} className='px-6 py-2 font-medium hover:underline text-start'>
+            <hr className='mx-6 border-t-2 border-t-main' />
+            <button onClick={() => handleNavClick("/login")} className='px-6 py-2 font-medium hover:underline text-start'>
               Login
             </button>
             <button className='px-6 py-2 font-semibold text-main text-start hover:underline'>
@@ -144,13 +161,13 @@ const NavBar: React.FC = () => {
             >
               <div className="flex flex-col items-start w-full">
                 <button
-                  onClick={() => {languageSelect('English', true)}}
+                  onClick={() => { languageSelect('English', true) }}
                   className="w-full p-2 text-left rounded rounded-b-none hover:bg-gray-200 focus:outline-none"
                 >
                   English
                 </button>
                 <button
-                  onClick={() => {languageSelect('Russian', true)}}
+                  onClick={() => { languageSelect('Russian', true) }}
                   className="w-full p-2 text-left rounded rounded-t-none hover:bg-gray-200 focus:outline-none"
                 >
                   Russian
@@ -158,7 +175,6 @@ const NavBar: React.FC = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </nav>
