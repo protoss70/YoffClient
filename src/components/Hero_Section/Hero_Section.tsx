@@ -7,8 +7,8 @@ function HeroSeciton() {
   return (
     <section className="relative opacity-100">
       {/* Hero Content */}
-      <div className="z-10 flex items-center justify-between px-24 max-1300:px-12 max-900:px-6 max-800:flex-col max-800:justify-center max-800:py-[10%]">
-        <div className="pb-32 basis-1/2 max-1100:pb-20 max-900:pb-10 max-800:pb-0 max-800:pt-12">
+      <div className="z-10 flex items-center justify-between px-24 max-1300:px-12 max-900:px-6 max-800:flex-col-reverse max-800:justify-center max-800:pt-3 max-800:pb-24">
+        <div className="pb-32 basis-1/2 max-1100:pb-20 max-900:pb-10 max-800:pb-0 max-800:pt-0">
           <h1 className="relative mb-2 font-bold leading-[80px] text-black text-6xl font-gilroy max-1380:text-5xl max-1100:text-4xl max-800:text-center">
             Anytime, Anywhere <br /> 
             with Expert 
@@ -28,13 +28,13 @@ function HeroSeciton() {
           </div>
         </div>
         
-        <div className="p-10 basis-1/2 max-800:justify-between max-800:flex">
-          <img src={heroImage} className="h-[600px] max-1300:h-[550px] max-1100:h-[475px] max-900:h-[400px] max-800:h-[300px]" alt="Hero seciton image" />
+        <div className="p-10 basis-1/2 max-800:justify-between max-800:flex max-800:p-0">
+          <img src={heroImage} className="h-[600px] max-1300:h-[550px] max-1100:h-[475px] max-900:h-[400px] max-800:h-[400px]" alt="Hero seciton image" />
         </div>
       </div>
       
       {/* BG Image */}
-      <div className="z-[-1] absolute top-0 left-0 w-full h-full min-h-[110vh] max-1300:min-h-[100vh] hero-bg max-800:min-h-[100vh]"></div>
+      <div className="z-[-1] absolute top-0 left-0 w-full h-full min-h-[110vh] max-1300:min-h-[100vh] hero-bg max-800:min-h-[160vh]"></div>
       <div className="z-[-2] absolute top-0 left-0 w-full bg-[#F4EFF6] h-[50%]"></div>
      </section>
   );

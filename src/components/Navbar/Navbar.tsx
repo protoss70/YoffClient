@@ -110,7 +110,7 @@ const NavBar: React.FC = () => {
 
           {/* Hamburger Menu */}
           <Hamburger hamburgerMenuRef={hamburgerMenuRef}/>
-          <div ref={hamburgerMenuRef} className='absolute left-0 flex flex-col hidden w-full bg-white font-poppins top-24'>
+          <div ref={hamburgerMenuRef} className='absolute left-0 flex flex-col hidden w-full bg-white shadow-md font-poppins top-24'>
             <h3 className='px-6 text-lg font-semibold'>Links</h3>
             <hr  className='mx-6 border-t-2 border-t-main'/>
             <button onClick={() => {handleNavClick("/")}} className='w-full px-6 py-2 font-semibold text-start text-main hover:underline'>Home</button>
@@ -134,18 +134,18 @@ const NavBar: React.FC = () => {
               {/* Language select field */}
               <div
                 ref={languageSelectRef}
-                className='absolute bottom-0 left-0 hidden w-full bg-white border border-slate-400 rounded-xl hover:cursor-default'
+                className='absolute bottom-0 left-0 hidden w-full bg-white border rounded border-slate-400 hover:cursor-default'
               >
                 <div className="flex flex-col items-start w-full">
                   <button
                     onClick={() => {setLanguage("English"); toggleLanguageSelect();}}
-                    className="w-full p-2 text-left rounded-b-none rounded-xl hover:bg-gray-200 focus:outline-none"
+                    className="w-full p-2 text-left rounded rounded-b-none hover:bg-gray-200 focus:outline-none"
                   >
                     English
                   </button>
                   <button
                     onClick={() => {setLanguage("Russian"); toggleLanguageSelect();}}
-                    className="w-full p-2 text-left rounded-t-none rounded-xl hover:bg-gray-200 focus:outline-none"
+                    className="w-full p-2 text-left rounded rounded-t-none hover:bg-gray-200 focus:outline-none"
                   >
                     Russian
                   </button>
