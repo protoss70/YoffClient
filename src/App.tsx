@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Landing_Page from './pages/Landing_Page';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -20,13 +20,18 @@ function ScrollToTop() {
 }
 
 function App() {
+  const [currentSection, setCurrentSection] = useState<string>(''); // Moved state to App
+
   return (
     <AuthProvider>
       <Router>
         <ScrollToTop />
-        <NavBar />
+        <NavBar currentSection={currentSection} /> {/* Pass currentSection to NavBar */}
         <Routes>
-          <Route path="/" element={<Landing_Page />} />
+          <Route
+            path="/"
+            element={<Landing_Page setCurrentSection={setCurrentSection} />} // Pass setCurrentSection to Landing_Page
+          />
           <Route path="/teachers" element={<TeacherProfile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

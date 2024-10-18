@@ -1,20 +1,43 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import yoffLogo from "../../assets/logo.svg";
 import globeIcon from "../../assets/globe.svg";
 import Hamburger from "./sub-components/hamburger";
 
-const NavBar: React.FC = () => {
+interface NavbarProps {
+  currentSection: string | "hero" | "how" | "language" | "pricing";
+}
+
+const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
   const navigate = useNavigate();
   const [language, setLanguage] = useState("English");
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const location = useLocation();
   const languageSelectRef = useRef<HTMLDivElement | null>(null);
   const hamburgerMenuRef = useRef<HTMLDivElement | null>(null);
   const hamburgerLanguageSelectRef = useRef<HTMLDivElement | null>(null); // Separate ref for hamburger menu
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  useEffect(() => {
+    switch (currentSection) {
+      case "hero":
+        setActiveIndex(0);
+        break;
+      case "how":
+        setActiveIndex(1);
+        break;
+      case "language":
+        setActiveIndex(2);
+        break;
+      case "pricing":
+        setActiveIndex(3);
+        break;
+      default:
+        break;
+    }
+  }, [currentSection])
 
   const handleNavClick = (path: string) => {
     toggleMenu();
-
     // Check if the path has a hash
     if (path.includes("#")) {
       // Navigate to the root and then scroll to the section
@@ -27,6 +50,14 @@ const NavBar: React.FC = () => {
       navigate(path); // Normal navigation
     }
   };
+
+  useEffect(() => {
+    if (location.pathname.match("/teachers")) {
+      setActiveIndex(4);
+    } else {
+      setActiveIndex(0);
+    }
+  }, [location.pathname]);
 
   const handleScrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -88,11 +119,11 @@ const NavBar: React.FC = () => {
 
           {/* Mid Nav Buttons */}
           <div className='flex justify-between font-poppins gap-9 max-900:hidden'>
-            <button onClick={() => handleNavClick("/")} className='px-5 py-1 font-semibold text-white bg-main rounded-2xl hover:underline'>Home</button>
-            <button onClick={() => handleNavClick("/#HowItWorks")} className='hover:underline max-1100:hidden'>How It Works</button>
-            <button onClick={() => handleNavClick("/#LanguageSelection")} className='hover:underline'>Languages</button>
-            <button onClick={() => handleNavClick("/#PricingSection")} className='hover:underline'>Pricing</button>
-            <button onClick={() => handleNavClick("/teachers")} className='hover:underline'>Teachers</button>
+            <button onClick={() => handleNavClick("/#HeroSection")} className={`${activeIndex === 0 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>Home</button>
+            <button onClick={() => handleNavClick("/#HowItWorks")} className={`${activeIndex === 1 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline max-1100:hidden`}>How It Works</button>
+            <button onClick={() => handleNavClick("/#LanguageSelection")} className={`${activeIndex === 2 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>Languages</button>
+            <button onClick={() => handleNavClick("/#PricingSection")} className={`${activeIndex === 3 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>Pricing</button>
+            <button onClick={() => handleNavClick("/teachers")} className={`${activeIndex === 4 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>Teachers</button>
           </div>
 
           {/* End Nav Buttons */}

@@ -24,11 +24,11 @@ const Footer: React.FC = () => {
             {/* Quick links */} 
             <div className='flex flex-col gap-5 max-900:basis-1/3'>
                 <h3 className='text-xl font-semibold max-900:font-bold font-gilroy'>Quick Links</h3>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/">Home</a>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/">How It Works</a>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/">Languages</a>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/">Teachers</a>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/">Pricing</a>
+                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#HeroSection">Home</a>
+                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#HowItWorks">How It Works</a>
+                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#LanguageSelection">Languages</a>
+                <a className='font-poppins hover:underline hover:cursor-pointer' href="/teachers">Teachers</a>
+                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#PricingSection">Pricing</a>
             </div>
 
             {/* Contact Info */}
