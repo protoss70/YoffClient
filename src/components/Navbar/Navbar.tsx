@@ -116,7 +116,7 @@ const NavBar: React.FC = () => {
 
           {/* Hamburger Menu */}
           <Hamburger toggleMenu={toggleMenu} isOpen={hamburgerOpen}/>
-          <div ref={hamburgerMenuRef} className='absolute left-0 flex flex-col hidden w-full bg-white shadow-md min-800:hidden font-poppins top-24'>
+          <div ref={hamburgerMenuRef} className='absolute left-0 flex flex-col hidden w-full bg-white shadow-md min-900:hidden font-poppins top-24'>
             <h3 className='px-6 text-lg font-semibold'>Links</h3>
             <hr className='mx-6 border-t-2 border-t-main'/>
             <button onClick={() => {handleNavClick("/")}} className='w-full px-6 py-2 font-semibold text-start text-main hover:underline'>Home</button>
