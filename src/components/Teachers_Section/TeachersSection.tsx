@@ -1,11 +1,11 @@
 import "./teacherCards.css"
 
 import arrowLeft from "../../assets/hero_page/arrowLeft.png"
-import teacher1 from "../../assets/hero_page/teacherImage1.png"
-import teacher2 from "../../assets/hero_page/teacherImage2.png"
-import teacher3 from "../../assets/hero_page/teacherImage3.png"
-import teacher4 from "../../assets/hero_page/teacherImage4.png"
-import teacher5 from "../../assets/hero_page/teacherImage5.png"
+import teacher1 from "../../assets/hero_page/teacherImage1.webp"
+import teacher2 from "../../assets/hero_page/teacherImage2.webp"
+import teacher3 from "../../assets/hero_page/teacherImage3.webp"
+import teacher4 from "../../assets/hero_page/teacherImage4.webp"
+import teacher5 from "../../assets/hero_page/teacherImage5.webp"
 
 import netherlandsFlag from "../../assets/flags/Netherlands.png"
 import germanFlag from "../../assets/flags/German.png"

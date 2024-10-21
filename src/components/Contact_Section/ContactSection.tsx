@@ -1,5 +1,5 @@
 import React, { useState, FocusEvent } from 'react';
-import contactImage from '../../assets/hero_page/ContactImage.png';
+import contactImage from '../../assets/hero_page/ContactImage.webp';
 
 function ContactSection() {
   const [nameFocused, setNameFocused] = useState<boolean>(false);

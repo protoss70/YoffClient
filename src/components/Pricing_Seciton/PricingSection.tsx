@@ -1,4 +1,4 @@
-import pricingImage from "../../assets/hero_page/Pricing_Image.png";
+import pricingImage from "../../assets/hero_page/Pricing_Image.webp";
 import pricingTick from "../../assets/hero_page/Pricing_Tick.png";
 import premiumTick from "../../assets/hero_page/Premium_tick.png"
 

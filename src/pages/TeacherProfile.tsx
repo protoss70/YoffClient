@@ -1,6 +1,6 @@
 import React from "react";
 import teacherProfileBg from "../assets/teacherprofile/teacher_Profile_Bg.png";
-import teacher1 from "../assets/hero_page/teacherImage1.png";
+import teacher1 from "../assets/hero_page/teacherImage1.webp";
 import netherlandsFlag from "../assets/flags/Netherlands.png"
 import germanFlag from "../assets/flags/German.png"
 import czechFlag from "../assets/flags/Czech.png"

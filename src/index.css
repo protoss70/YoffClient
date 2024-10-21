@@ -72,21 +72,21 @@
 
   @layer utilities {
     .hero-bg {
-      background-image: url('./assets/hero_page/Hero_Background_Full.png');
+      background-image: url('./assets/hero_page/Hero_Background_Full.webp');
       background-size: contain; /* or contain, depending on your needs */
       background-position: center; /* adjust as needed */
       background-repeat: repeat-x;
     }
 
     .languages-bg{
-      background-image: url('./assets/hero_page/languagesBg.png');
+      background-image: url('./assets/hero_page/languagesBg.webp');
       background-size: cover; /* or contain, depending on your needs */
       background-position: center; /* adjust as needed */
       background-repeat: repeat-x;
     }
 
     .pricing-bg{
-      background-image: url('./assets/hero_page/Pricing_Premium_bg.png');
+      background-image: url('./assets/hero_page/Pricing_Premium_bg.webp');
       background-size: cover; /* or contain, depending on your needs */
       background-position: center; /* adjust as needed */
       background-repeat: repeat-x;

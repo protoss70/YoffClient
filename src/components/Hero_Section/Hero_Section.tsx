@@ -1,5 +1,5 @@
-import heroImage from "../../assets/hero_page/Hero Image.png";
-import heroArrow from "../../assets/hero_page/Hero_Arrow.png";
+import heroImage from "../../assets/hero_page/Hero Image.webp";
+import heroArrow from "../../assets/hero_page/Hero_Arrow.webp";
 // import heroBgFull from "../../assets/hero_page/Hero_Background_Full.png";
 
 
