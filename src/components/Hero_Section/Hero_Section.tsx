@@ -7,7 +7,7 @@ function HeroSeciton() {
   return (
     <section className="relative opacity-100">
       {/* Hero Content */}
-      <div className="z-10 flex items-center justify-between px-24 max-1300:px-12 max-900:px-6 max-800:flex-col-reverse max-800:justify-center max-800:pt-3 max-800:pb-24">
+      <div className="z-10 flex items-center justify-between px-24 max-1300:px-12 max-900:px-6 max-800:flex-col-reverse max-800:justify-center max-800:pt-3 max-600:px-1 max-800:pb-24">
         <div className="pb-32 basis-1/2 max-1100:pb-20 max-900:pb-10 max-800:pb-0 max-800:pt-0">
           <h1 className="relative mb-2 font-bold leading-[80px] text-black text-6xl font-gilroy max-1380:text-5xl max-1100:text-4xl max-800:text-center">
             Anytime, Anywhere <br /> 
@@ -34,8 +34,8 @@ function HeroSeciton() {
       </div>
       
       {/* BG Image */}
-      <div className="z-[-1] absolute top-0 left-0 w-full h-full min-h-[110vh] max-1300:min-h-[100vh] hero-bg max-800:min-h-[160vh]"></div>
-      <div className="z-[-2] absolute top-0 left-0 w-full bg-[#F4EFF6] h-[50%]"></div>
+      <div className="z-[-1] absolute top-0 left-0 w-full h-full min-h-[110vh] max-1300:min-h-[100vh] hero-bg max-800:min-h-[180vh] max-800:hero-bg-shapes-only"></div>
+      <div className="z-[-2] absolute top-0 left-0 w-full bg-[#F4EFF6] hero-bg-shapes-only h-[80%]"></div>
      </section>
   );
 }

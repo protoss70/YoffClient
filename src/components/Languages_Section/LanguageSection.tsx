@@ -10,7 +10,7 @@ import arrowLeft from "../../assets/hero_page/arrowMain.png";
 
 function LanguageSection() {
   return (
-    <section id="LanguageSelection" className="px-24 mt-40 max-1300:px-12 max-900:px-6 min-w-96 languages-bg py-14">
+    <section id="LanguageSelection" className="px-24 mt-40 max-1300:px-12 max-900:px-6 max-600:px-1 min-w-96 languages-bg py-14">
       {/* Title */}
       <h1 className="text-6xl font-bold text-center text-white my-14 font-gilroy max-800:text-5xl max-600:text-4xl">
         Languages <span className="underline--double underline--white">We Offer</span>

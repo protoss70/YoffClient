@@ -4,7 +4,7 @@ import premiumTick from "../../assets/hero_page/Premium_tick.png"
 
 function PricingSection() {
   return (
-    <section id="PricingSection" className="mt-24 mb-28 px-36 max-1300:px-24 max-900:px-18 min-w-96-bg max-1200:px-14">
+    <section id="PricingSection" className="mt-24 mb-28 px-36 max-1300:px-24 max-900:px-18 max-600:px-14 min-w-96-bg max-1200:px-14">
       {/* Title */}
       <h1 className="text-6xl font-bold text-center my-14 font-gilroy">
         Our <span className="mb-2 underline--double underline--margined text-main">Pricing</span>

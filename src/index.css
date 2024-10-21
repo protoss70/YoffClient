@@ -78,6 +78,13 @@
       background-repeat: repeat-x;
     }
 
+    .hero-bg-shapes-only{
+      background-image: url('./assets/hero_page/Hero_Bg_Shapes_Only.webp');
+      background-size: contain; /* or contain, depending on your needs */
+      background-position: center; /* adjust as needed */
+      background-repeat: repeat-x;
+    }
+
     .languages-bg{
       background-image: url('./assets/hero_page/languagesBg.webp');
       background-size: cover; /* or contain, depending on your needs */
