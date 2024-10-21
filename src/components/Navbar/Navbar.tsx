@@ -109,7 +109,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
   }, []);
 
   return (
-    <nav className="absolute top-0 left-0 z-50 w-full">
+    <nav className="fixed top-0 left-0 z-50 w-full">
       <div className='relative w-full h-24 px-24 bg-white shadow max-1300:px-12 max-900:px-6'>
         <div className="flex items-center justify-between w-full">
           {/* LOGO */}

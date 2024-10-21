@@ -102,8 +102,8 @@ function ContactSection() {
         </div>  
         
         {/* Image */}
-        <div className="flex justify-end basis-1/2 max-1000:hidden">
-          <img className="h-[550px]" src={contactImage} alt="person studying" />
+        <div className="flex justify-end rounded-2xl basis-1/2 max-1000:hidden">
+          <img className="h-[550px] rounded-3xl" src={contactImage} alt="person studying" />
         </div>
       </div>    
     </section>
