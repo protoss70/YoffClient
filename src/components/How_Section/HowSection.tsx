@@ -16,7 +16,7 @@ function HowSection() {
 
         {/* How it works cards */}
         <div className="flex justify-between my-40 max-800:my-10 max-1100:flex-wrap max-1100:gap-4 max-1100:justify-center max-800:justify-between">
-            <div className="flex justify-around h-72 basis-1/2 max-1100:w-full max-800:h-auto max-1100:basis-auto max-1100:justify-center max-1100:gap-5 max-800:flex-col max-800:items-center max-600:w-2/3">
+            <div className="flex justify-around h-72 basis-1/2 max-1100:w-full max-800:h-auto max-1100:basis-auto max-1100:justify-center max-1100:gap-5 max-800:flex-col max-800:items-center">
               {/* Card 1 */}
               <div className="relative flex flex-col justify-start p-6 bg-white rounded-lg shadow-lg max-900:w-80 max-1300:w-64 max-1100:basis-1/3 w-72 max-600:w-2/3">
                 {/* Image */}

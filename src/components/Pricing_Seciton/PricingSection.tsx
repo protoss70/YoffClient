@@ -11,7 +11,7 @@ function PricingSection() {
       </h1>
 
       {/* Pricing Cards */}
-      <div className="flex justify-around gap-3 max-1200:justify-between max-900:flex-col max-900:gap-10 max-900:items-center">
+      <div className="flex justify-around gap-3 max-1200:justify-between max-900:flex-col max-900:gap-10 max-900:items-center max-600:px-3">
 
         {/* Card 1 */}
         <div className="flex flex-col justify-between shadow-md font-gilroy w-[350px] h-[540px] p-9 max-1200:px-5 rounded-3xl">  
