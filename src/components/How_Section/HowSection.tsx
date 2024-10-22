@@ -8,17 +8,17 @@ import lines3 from "../../assets/hero_page/lines3.png";
 
 function HowSection() {
   return (
-    <section id="HowItWorks" className="px-24 mt-40 min-w-96 max-1300:px-12 max-900:px-6 max-900:mt-10 max-600:px-1">
+    <section id="HowItWorks" className="px-24 mt-40 min-w-96 max-1300:px-12 max-900:px-6 max-900:mt-10 max-600:px-1 max-600:min-w-0">
         {/* Title */}
         <div className="flex justify-center w-full">
-            <h1 className="text-6xl">How It&nbsp;<span className="text-6xl underline--double text-main">Works</span></h1>
+            <h1 className="text-6xl max-600:text-4xl">How It&nbsp;<span className="text-6xl max-600:text-4xl underline--double text-main">Works</span></h1>
         </div>
 
         {/* How it works cards */}
         <div className="flex justify-between my-40 max-800:my-10 max-1100:flex-wrap max-1100:gap-4 max-1100:justify-center max-800:justify-between">
-            <div className="flex justify-around h-72 basis-1/2 max-1100:w-full max-800:h-auto max-1100:basis-auto max-1100:justify-center max-1100:gap-5 max-800:flex-col max-800:items-center">
+            <div className="flex justify-around h-72 basis-1/2 max-1100:w-full max-800:h-auto max-1100:basis-auto max-1100:justify-center max-1100:gap-5 max-800:flex-col max-800:items-center max-600:w-2/3">
               {/* Card 1 */}
-              <div className="relative flex flex-col justify-start p-6 bg-white rounded-lg shadow-lg max-900:w-80 max-1300:w-64 max-1100:basis-1/3 w-72">
+              <div className="relative flex flex-col justify-start p-6 bg-white rounded-lg shadow-lg max-900:w-80 max-1300:w-64 max-1100:basis-1/3 w-72 max-600:w-2/3">
                 {/* Image */}
                 <div className="bg-[#b671ff33] p-1 w-[72px] h-[72px] rounded-full">
                   <div className="bg-gradient-to-r from-main to-[#CC5FB8] w-16 p-4 rounded-full">
@@ -39,13 +39,13 @@ function HowSection() {
                   <img src={lines1} alt="dotted lines" />
                 </div>
                 {/* Lines */}
-                <div className="absolute bottom-[-50px] right-[-110px] rotate-90 z-[-1] hidden max-800:block">
+                <div className="absolute bottom-[-50px] right-[-110px] rotate-90 z-[-1] hidden max-800:block max-600:right-[-90px]">
                   <img src={lines1} alt="dotted lines" />
                 </div>
               </div>
 
               {/* Card 2 */}
-              <div className="flex relative text-white flex-col justify-start p-6 rounded-lg shadow-lg max-900:w-80 bg-gradient-to-r max-1100:basis-1/3 max-1300:w-64 from-main to-[#CC5FB8] w-72">
+              <div className="flex relative text-white flex-col justify-start p-6 rounded-lg shadow-lg max-900:w-80 bg-gradient-to-r max-1100:basis-1/3 max-1300:w-64 from-main to-[#CC5FB8] w-72 max-600:w-2/3">
                 {/* Image */}
                 <div className="bg-[#ffffff33] p-1 w-[72px] h-[72px] rounded-full">
                   <div className="w-16 p-4 bg-white rounded-full">
@@ -67,7 +67,7 @@ function HowSection() {
                 </div>
 
                 {/* Lines */}
-                <div className="absolute bottom-[-50px] left-[-110px] rotate-[-90deg] z-[-1] hidden max-800:block">
+                <div className="absolute bottom-[-50px] left-[-90px] rotate-[-90deg] z-[-1] hidden max-800:block">
                   <img src={lines1} alt="dotted lines" />
                 </div>
               </div>
@@ -75,7 +75,7 @@ function HowSection() {
 
             <div className="flex justify-around h-72 basis-1/2 max-800:h-auto max-800:flex-col max-800:items-center max-1100:w-full max-1100:basis-auto max-1100:justify-center max-1100:gap-5 max-1100:flex-row-reverse">
               {/* Card 3 */}
-              <div className="relative flex flex-col justify-start p-6 bg-white rounded-lg shadow-lg max-1300:w-64 max-900:w-80 max-1100:basis-1/3 w-72">
+              <div className="relative flex flex-col justify-start p-6 bg-white rounded-lg shadow-lg max-1300:w-64 max-900:w-80 max-1100:basis-1/3 w-72 max-600:w-2/3">
                 {/* Image */}
                 <div className="bg-[#b671ff33] p-1 w-[72px] h-[72px] rounded-full">
                   <div className="bg-gradient-to-r from-main to-[#CC5FB8] w-16 p-4 rounded-full ">
@@ -101,13 +101,13 @@ function HowSection() {
                 </div>
 
                 {/* Lines */}
-                <div className="absolute bottom-[-50px] right-[-120px] rotate-90 z-[-1] hidden max-800:block">
+                <div className="absolute bottom-[-50px] right-[-100px] rotate-90 z-[-1] hidden max-800:block">
                   <img src={lines3} alt="dotted lines" />
                 </div>
               </div>
 
               {/* Card 4 */}
-              <div className="flex flex-col justify-start p-6 bg-white rounded-lg shadow-lg max-1300:w-64 max-900:w-80 max-1100:basis-1/3 w-72">
+              <div className="flex flex-col justify-start p-6 bg-white rounded-lg shadow-lg max-1300:w-64 max-900:w-80 max-1100:basis-1/3 w-72 max-600:w-2/3">
                 {/* Image */}
                 <div className="bg-[#b671ff33] p-1 w-[72px] h-[72px] rounded-full">
                   <div className="bg-gradient-to-r from-main to-[#CC5FB8] w-16 p-4 rounded-full">

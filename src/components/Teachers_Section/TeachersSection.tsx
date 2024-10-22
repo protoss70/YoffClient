@@ -14,7 +14,7 @@ import spanishFlag from "../../assets/flags/Spanish.png"
 
 function TeachersSection() {
   return (
-    <section className="px-24 mt-40 min-w-96 max-1300:px-12 max-900:px-6 max-600:px-1">
+    <section className="px-24 mt-40 min-w-96 max-1300:px-12 max-900:px-6 max-600:px-1 max-600:min-w-0">
         {/* Title */}
         <div className="flex items-center justify-center text-6xl font-bold font-gilroy">
             <h1>
