@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
 
         {/* Footer bottom image */}
         <div className='absolute bottom-0 right-0 w-full max-800:right-[83%]'>
-            <img className='w-full h-20 max-800:w-[180vw] max-w-none' src={footerBottomBg} alt="Footer image" />
+            <img className='w-full h-20 max-800:w-[175vw] max-w-none' src={footerBottomBg} alt="Footer image" />
         </div>
     </footer>
   );

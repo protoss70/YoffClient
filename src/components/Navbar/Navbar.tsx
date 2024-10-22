@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import yoffLogo from "../../assets/logo.svg";
 import globeIcon from "../../assets/globe.svg";
 import Hamburger from "./sub-components/hamburger";
+import userIcon from "../../assets/user-profile.svg";
+import { useAuth } from '../../context/authContext';
 
 interface NavbarProps {
   currentSection: string | "hero" | "how" | "language" | "pricing";
@@ -10,13 +12,17 @@ interface NavbarProps {
 
 const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
   const navigate = useNavigate();
+  const { isAuthenticated, logout, currentUser } = useAuth();
   const [language, setLanguage] = useState("English");
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const location = useLocation();
   const languageSelectRef = useRef<HTMLDivElement | null>(null);
+  const profileSelectRef = useRef<HTMLDivElement | null>(null);
   const hamburgerMenuRef = useRef<HTMLDivElement | null>(null);
   const hamburgerLanguageSelectRef = useRef<HTMLDivElement | null>(null); // Separate ref for hamburger menu
+  const hamburgerProfileRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  
   useEffect(() => {
     switch (currentSection) {
       case "hero":
@@ -71,9 +77,19 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
     languageSelectRef.current.classList.toggle("hidden");
   };
 
+  const toggleProfilePopup = () => {
+    if (!profileSelectRef.current) return;
+    profileSelectRef.current.classList.toggle("hidden");
+  };
+
   const toggleHamburgerLanguageSelect = () => {
     if (!hamburgerLanguageSelectRef.current) return;
     hamburgerLanguageSelectRef.current.classList.toggle("hidden");
+  };
+
+  const toggleHamburgerProfileSelect = () => {
+    if (!hamburgerProfileRef.current) return;
+    hamburgerProfileRef.current.classList.toggle("hidden");
   };
 
   const languageSelect = (language: "Russian" | "English", hamburgerButton: boolean = false) => {
@@ -94,19 +110,38 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      // Check for language select
       if (languageSelectRef.current && !languageSelectRef.current.contains(event.target as Node)) {
         languageSelectRef.current.classList.add("hidden");
       }
+  
+      // Check for hamburger language select
       if (hamburgerLanguageSelectRef.current && !hamburgerLanguageSelectRef.current.contains(event.target as Node)) {
         hamburgerLanguageSelectRef.current.classList.add("hidden");
       }
-    };
 
+      // Check for hamburger profile select
+      if (hamburgerProfileRef.current && !hamburgerProfileRef.current.contains(event.target as Node)) {
+        hamburgerProfileRef.current.classList.add("hidden");
+      }
+      
+      // Check for hamburger menu
+      if (hamburgerMenuRef.current && !hamburgerMenuRef.current.contains(event.target as Node) && !hamburgerMenuRef.current.classList.contains("hidden")) {
+        toggleMenu();
+      }
+  
+      // Check for profile select
+      if (profileSelectRef.current && !profileSelectRef.current.contains(event.target as Node)) {
+        profileSelectRef.current.classList.add("hidden");
+      }
+    };
+  
     document.addEventListener('mousedown', handleClickOutside);
+    
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [languageSelectRef, hamburgerLanguageSelectRef, hamburgerMenuRef, profileSelectRef]);
 
   return (
     <nav className="fixed top-0 left-0 z-50 w-full">
@@ -128,12 +163,55 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
 
           {/* End Nav Buttons */}
           <div className='flex gap-6 p-1 font-poppins max-900:hidden'>
-            <button onClick={() => handleNavClick("/login")} className='font-semibold underline text-main'>
-              Login
-            </button>
+
+            {/* LOGIN BUTTON */}
+            {!isAuthenticated ? 
+              <button onClick={() => handleNavClick("/login")} className='font-semibold underline text-main'>
+                Login
+              </button>
+              :
+              null
+            }
             <button className='px-3 py-1 text-lg font-medium text-center text-white transition-all duration-100 shadow-inner max-1100:text-base max-1100:px-2 bg-gradient-to-r from-main to-secondary rounded-xl hover:to-main hover:from-secondary'>
               Schedule Class
             </button>
+
+            {/* USER PROFILE */}
+            {isAuthenticated ? 
+              <div className='relative font-poppins'>
+                <button onClick={toggleProfilePopup} className='flex items-center gap-2 px-2 py-3 bg-white border border-black font-poppins rounded-xl'>
+                    <img className='h-6' src={userIcon} alt="globe icon" />
+                    <span className='font-medium'>Profile</span>
+                </button>
+                {/* USER PROFILE POPUP */}
+                <div
+                  ref={profileSelectRef}
+                  className='absolute left-0 hidden w-auto bg-white border border-slate-300 max-1100:left-auto max-1100:right-0 max-1100:w-28 top-16 rounded-xl hover:cursor-default'
+                >
+                  <div className="flex flex-col items-start w-full">
+                    <div
+                      className="w-full p-2 text-left rounded-b-none rounded-xl"
+                    >
+                      {currentUser?.email}
+                    </div>
+                    <button
+                      onClick={() => {}}
+                      className="w-full p-2 text-left hover:bg-gray-200 focus:outline-none"
+                    >
+                      My Classes
+                    </button>
+                    <button
+                      onClick={logout}
+                      className="w-full p-2 text-left rounded-t-none rounded-xl hover:bg-red-100 focus:outline-none"
+                    >
+                      Logout
+                    </button>
+                    </div>
+                  </div>
+                </div>
+                :
+                null
+            }
             <div className='relative font-poppins'>
               <button onClick={toggleLanguageSelect} className='flex items-center gap-2 px-2 py-1 bg-white border border-black rounded-xl'>
                 <img className='h-10' src={globeIcon} alt="globe icon" />
@@ -175,12 +253,50 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
             <br />
             <h3 className='px-6 text-lg font-semibold'>Actions</h3>
             <hr className='mx-6 border-t-2 border-t-main' />
-            <button onClick={() => handleNavClick("/login")} className='px-6 py-2 font-medium hover:underline text-start'>
-              Login
-            </button>
+            {!isAuthenticated?
+              <button onClick={() => handleNavClick("/login")} className='px-6 py-2 font-medium hover:underline text-start'>
+                Login
+              </button>
+              : null
+            }
+            
             <button className='px-6 py-2 font-semibold text-main text-start hover:underline'>
               Schedule Class
             </button>
+            {isAuthenticated ? 
+            <>
+              <button onClick={toggleHamburgerProfileSelect} className='flex items-center gap-2 px-5 py-2 pl-6'>
+                <img className='h-6' src={userIcon} alt="user icon" />
+                <span className='font-medium text-start hover:underline'>Profile</span>
+              </button>
+              <div
+              ref={hamburgerProfileRef}
+              className='absolute bottom-0 left-0 hidden w-full bg-white border rounded border-slate-400 hover:cursor-default'
+                >
+                <div className="flex flex-col items-start w-full">
+                  <div
+                    className="w-full p-2 px-6 text-left rounded-b-none rounded-xl"
+                  >
+                    {currentUser?.email}
+                  </div>
+                  <button
+                    onClick={() => {}}
+                    className="w-full p-2 px-6 text-left hover:bg-gray-200 focus:outline-none"
+                  >
+                    My Classes
+                  </button>
+                  <button
+                    onClick={logout}
+                    className="w-full p-2 px-6 text-left rounded-lg rounded-t-none hover:bg-red-100 focus:outline-none"
+                  >
+                    Logout
+                  </button>
+                  </div>
+                  
+              </div>
+            </>
+            : null
+            }
             <button onClick={toggleHamburgerLanguageSelect} className='flex items-center gap-2 px-5 py-2'>
               <img className='h-8' src={globeIcon} alt="globe icon" />
               <span className='font-medium text-start hover:underline'>{language}</span>
@@ -193,13 +309,13 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
               <div className="flex flex-col items-start w-full">
                 <button
                   onClick={() => { languageSelect('English', true) }}
-                  className="w-full p-2 text-left rounded rounded-b-none hover:bg-gray-200 focus:outline-none"
+                  className="w-full p-2 px-6 text-left rounded rounded-b-none hover:bg-gray-200 focus:outline-none"
                 >
                   English
                 </button>
                 <button
                   onClick={() => { languageSelect('Russian', true) }}
-                  className="w-full p-2 text-left rounded rounded-t-none hover:bg-gray-200 focus:outline-none"
+                  className="w-full p-2 px-6 text-left rounded rounded-t-none hover:bg-gray-200 focus:outline-none"
                 >
                   Russian
                 </button>
