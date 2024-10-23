@@ -1,11 +1,11 @@
-import dutchFlag from "../../assets/flags/wavy flags/dutch.png";
-import germanFlag from "../../assets/flags/wavy flags/german.png";
-import spanishFlag from "../../assets/flags/wavy flags/spanish.png";
-import czechFlag from "../../assets/flags/wavy flags/czech.png";
-import arabicFlag from "../../assets/flags/wavy flags/arabic.png";
-import chineseFlag from "../../assets/flags/wavy flags/chinese.png";
-import frenchFlag from "../../assets/flags/wavy flags/french.png";
-import italianFlag from "../../assets/flags/wavy flags/italian.png";
+import dutchFlag from "../../assets/flags/dutch.png";
+import germanFlag from "../../assets/flags/german.png";
+import spanishFlag from "../../assets/flags/spanish.png";
+import czechFlag from "../../assets/flags/czech.png";
+import arabicFlag from "../../assets/flags/arabic.png";
+import chineseFlag from "../../assets/flags/chinese.png";
+import frenchFlag from "../../assets/flags/french.png";
+import italianFlag from "../../assets/flags/italian.png";
 import arrowLeft from "../../assets/hero_page/arrowMain.png";
 
 function LanguageSection() {
