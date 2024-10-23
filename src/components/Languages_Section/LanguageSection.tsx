@@ -24,7 +24,7 @@ function LanguageSection() {
           <div className="flex gap-3">
             <div className="bg-[#b671ff33] p-1 rounded-full">
               <div className="bg-gradient-to-r from-main to-[#CC5FB8] w-16 p-4 rounded-full">
-                <img src={spanishFlag} alt="Spanish flag" className="w-16" />
+                <img loading="lazy" src={spanishFlag} alt="Spanish flag" className="w-16" />
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
@@ -44,7 +44,7 @@ function LanguageSection() {
           <div className="flex gap-3">
             <div className="bg-[#b671ff33] p-1 rounded-full">
               <div className="bg-gradient-to-r from-main to-[#CC5FB8] w-16 p-4 rounded-full">
-                <img src={czechFlag} alt="Czech flag" className="w-16" />
+                <img loading="lazy" src={czechFlag} alt="Czech flag" className="w-16" />
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
@@ -64,7 +64,7 @@ function LanguageSection() {
           <div className="flex gap-3">
             <div className="bg-[#b671ff33] p-1 rounded-full">
               <div className="bg-gradient-to-r from-main to-[#CC5FB8] w-16 p-4 rounded-full">
-                <img src={arabicFlag} alt="Arabic flag" className="w-16" />
+                <img loading="lazy" src={arabicFlag} alt="Arabic flag" className="w-16" />
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
@@ -84,7 +84,7 @@ function LanguageSection() {
           <div className="flex gap-3">
             <div className="bg-[#b671ff33] p-1 rounded-full">
               <div className="bg-gradient-to-r from-main to-[#CC5FB8] w-16 p-4 rounded-full">
-                <img src={italianFlag} alt="Italian flag" className="w-16" />
+                <img loading="lazy" src={italianFlag} alt="Italian flag" className="w-16" />
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
@@ -104,7 +104,7 @@ function LanguageSection() {
           <div className="flex gap-3">
             <div className="bg-[#b671ff33] p-1 rounded-full">
               <div className="bg-gradient-to-r from-main to-[#CC5FB8] w-16 p-4 rounded-full">
-                <img src={frenchFlag} alt="French flag" className="w-16" />
+                <img loading="lazy" src={frenchFlag} alt="French flag" className="w-16" />
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
@@ -124,7 +124,7 @@ function LanguageSection() {
           <div className="flex gap-3">
             <div className="bg-[#b671ff33] p-1 rounded-full">
               <div className="bg-gradient-to-r from-main to-[#CC5FB8] w-16 p-4 rounded-full">
-                <img src={germanFlag} alt="German flag" className="w-16" />
+                <img loading="lazy" src={germanFlag} alt="German flag" className="w-16" />
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
@@ -144,7 +144,7 @@ function LanguageSection() {
           <div className="flex gap-3">
             <div className="bg-[#b671ff33] p-1 rounded-full">
               <div className="bg-gradient-to-r from-main to-[#CC5FB8] w-16 p-4 rounded-full">
-                <img src={chineseFlag} alt="Chinese flag" className="w-16" />
+                <img loading="lazy" src={chineseFlag} alt="Chinese flag" className="w-16" />
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
@@ -164,7 +164,7 @@ function LanguageSection() {
           <div className="flex gap-3">
             <div className="bg-[#b671ff33] p-1 rounded-full">
               <div className="bg-gradient-to-r from-main to-[#CC5FB8] w-16 p-4 rounded-full">
-                <img src={dutchFlag} alt="Dutch flag" className="w-16" />
+                <img loading="lazy" src={dutchFlag} alt="Dutch flag" className="w-16" />
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">

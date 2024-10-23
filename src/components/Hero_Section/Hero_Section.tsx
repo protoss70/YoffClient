@@ -29,7 +29,7 @@ function HeroSeciton() {
         </div>
         
         <div className="p-10 basis-1/2 max-800:justify-between max-800:flex max-800:p-0">
-          <img src={heroImage} className="h-[600px] max-1300:h-[550px] max-1100:h-[475px] max-900:h-[400px] max-800:h-[400px]" alt="Hero seciton image" />
+          <img loading="eager" src={heroImage} className="h-[600px] max-1300:h-[550px] max-1100:h-[475px] max-900:h-[400px] max-800:h-[400px]" alt="Hero seciton image" />
         </div>
       </div>
       
