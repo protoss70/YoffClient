@@ -34,6 +34,13 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
   languages,
   className = '', // Default to an empty string
 }) => {
+  // Determine flag size based on className
+  const flagSizeClass = className.includes('card1') || className.includes('card5') 
+    ? 'h-6 w-6' 
+    : className.includes('card2') || className.includes('card4') 
+    ? 'h-8 w-8' 
+    : 'h-12 w-12'; // Default size
+
   return (
     <div className={`flex flex-col p-5 pb-0 rounded-lg card shadow-lg ${className}`}>
       {/* Image */}
@@ -54,16 +61,15 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
       {/* Languages */}
       <div className="flex flex-col mt-4 text-center font-gilroy">
         <div className="font-semibold text-custom_blue">Languages</div>
-        <div className="flex justify-center gap-5 px-[10%]">
+        <div className="flex justify-center gap-3 px-[10%]">
           {languages.map((language, index) => {
             const countryCode = languageToCountryCode[language]; // Get country code for the language
             return countryCode ? (
-              <div className='flex flex-col items-center justify-center'>
+              <div key={index} className='flex flex-col items-center justify-center'>
                 <Flag
-                  key={index}
                   code={countryCode} // Use country code
                   alt={`${language} flag`}
-                  className="w-8 h-8 transition-transform duration-200 rounded-2xl hover:scale-125"
+                  className={`transition-transform duration-200 rounded-3xl hover:scale-125 ${flagSizeClass}`}
                 />
                 <span className="mt-1 font-semibold text-md text-custom_blue">{language}</span>
               </div>

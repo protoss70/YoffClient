@@ -76,7 +76,7 @@ const TeacherProfile: React.FC = () => {
                                     <Flag
                                         code={countryCode}
                                         alt={`${language} flag`}
-                                        className="w-10 h-10 transition-transform duration-200 rounded-2xl hover:scale-125"
+                                        className="w-12 h-12 transition-transform duration-200 rounded-2xl hover:scale-125"
                                     />
                                     <span className="mt-1 font-semibold font-gilroy text-md">{language}</span>
                                 </div>
