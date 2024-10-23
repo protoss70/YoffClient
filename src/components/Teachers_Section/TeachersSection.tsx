@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import "./teacherCards.css";
-
 import arrowLeft from "../../assets/hero_page/arrowLeft.png";
 import teacher1 from "../../assets/hero_page/teacherImage1.webp";
 import teacher2 from "../../assets/hero_page/teacherImage2.webp";
 import teacher3 from "../../assets/hero_page/teacherImage3.webp";
 import teacher4 from "../../assets/hero_page/teacherImage4.webp";
 import teacher5 from "../../assets/hero_page/teacherImage5.webp";
-
-import netherlandsFlag from "../../assets/flags/Netherlands.png";
-import germanFlag from "../../assets/flags/German.png";
-import czechFlag from "../../assets/flags/Czech.png";
-import spanishFlag from "../../assets/flags/Spanish.png";
 import TeacherCard from '../Teacher_Card/TeacherCard'; // Ensure the path is correct
 
 function TeachersSection() {
@@ -22,7 +16,6 @@ function TeachersSection() {
             country: "Germany",
             hobbies: ["Cooking", "Hiking", "Dancing", "Painting"],
             languages: ["German", "Spanish", "Dutch", "Czech"],
-            flags: [germanFlag, spanishFlag, netherlandsFlag, czechFlag],
         },
         {
             image: teacher2,
@@ -30,7 +23,6 @@ function TeachersSection() {
             country: "USA",
             hobbies: ["Reading", "Cycling", "Traveling"],
             languages: ["English", "French"],
-            flags: [germanFlag, spanishFlag],
         },
         {
             image: teacher3,
@@ -38,7 +30,6 @@ function TeachersSection() {
             country: "Brazil",
             hobbies: ["Dancing", "Singing", "Surfing"],
             languages: ["Portuguese", "Spanish"],
-            flags: [spanishFlag, germanFlag],
         },
         {
             image: teacher4,
@@ -46,7 +37,6 @@ function TeachersSection() {
             country: "Japan",
             hobbies: ["Calligraphy", "Martial Arts"],
             languages: ["Japanese", "English"],
-            flags: [germanFlag, spanishFlag],
         },
         {
             image: teacher5,
@@ -54,7 +44,6 @@ function TeachersSection() {
             country: "Russia",
             hobbies: ["Chess", "Ballet"],
             languages: ["Russian", "English"],
-            flags: [germanFlag, spanishFlag],
         },
         {
             image: teacher1,
@@ -62,7 +51,6 @@ function TeachersSection() {
             country: "Ireland",
             hobbies: ["Football", "Cooking"],
             languages: ["English", "Irish"],
-            flags: [germanFlag, spanishFlag],
         },
         {
             image: teacher2,
@@ -70,27 +58,23 @@ function TeachersSection() {
             country: "Italy",
             hobbies: ["Photography", "Cooking"],
             languages: ["Italian", "English"],
-            flags: [germanFlag, spanishFlag],
         },
         {
             image: teacher4,
             name: "Ahmed Khan",
             country: "Pakistan",
             hobbies: ["Cricket", "Writing"],
-            languages: ["Urdu", "English"],
-            flags: [germanFlag, spanishFlag],
+            languages: ["English", "French"],
         }
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleNext = () => {
-        // Increment index, wrapping around if necessary
         setCurrentIndex((prevIndex) => (prevIndex + 1) % teachers.length);
     };
 
     const handlePrev = () => {
-        // Decrement index, wrapping around if necessary
         setCurrentIndex((prevIndex) => (prevIndex - 1 + teachers.length) % teachers.length);
     };
 
@@ -109,33 +93,32 @@ function TeachersSection() {
 
             {/* Teachers Slider */}
             <div className="flex relative justify-center mt-16 mb-10 h-[500px] items-center">
-            {Array.from({ length: 5 }).map((_, index) => {
-                const indexToDisplay = (currentIndex + index) % teachers.length;
-                const teacher = teachers[indexToDisplay];
+                {Array.from({ length: 5 }).map((_, index) => {
+                    const indexToDisplay = (currentIndex + index) % teachers.length;
+                    const teacher = teachers[indexToDisplay];
 
-                // Determine the card class based on index
-                let cardClass = `card${index + 1}`;
+                    // Determine the card class based on index
+                    let cardClass = `card${index + 1}`;
 
-                // Add conditional classes based on card position
-                if (index + 1 === 1 || index + 1 === 5) {
-                    cardClass += " max-1100:hidden"; // Hide card1 and card5 on screens <= 1100px
-                } else if (index + 1 === 2 || index + 1 === 4) {
-                    cardClass += " max-800:hidden"; // Hide card2 and card4 on screens <= 800px
-                }
+                    // Add conditional classes based on card position
+                    if (index + 1 === 1 || index + 1 === 5) {
+                        cardClass += " max-1100:hidden"; // Hide card1 and card5 on screens <= 1100px
+                    } else if (index + 1 === 2 || index + 1 === 4) {
+                        cardClass += " max-800:hidden"; // Hide card2 and card4 on screens <= 800px
+                    }
 
-                return (
-                    <TeacherCard
-                        key={index}
-                        image={teacher.image}
-                        name={teacher.name}
-                        country={teacher.country}
-                        hobbies={teacher.hobbies}
-                        languages={teacher.languages}
-                        flags={teacher.flags}
-                        className={cardClass} // Pass the dynamically assigned class name
-                    />
-                );
-            })}
+                    return (
+                        <TeacherCard
+                            key={index}
+                            image={teacher.image}
+                            name={teacher.name}
+                            country={teacher.country}
+                            hobbies={teacher.hobbies}
+                            languages={teacher.languages}
+                            className={cardClass} // Pass the dynamically assigned class name
+                        />
+                    );
+                })}
             </div>
 
             {/* Left and Right Arrows */}
