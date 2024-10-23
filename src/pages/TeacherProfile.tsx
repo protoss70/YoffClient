@@ -2,6 +2,7 @@ import React from "react";
 import teacherProfileBg from "../assets/teacherprofile/teacher_Profile_Bg.png";
 import teacher1 from "../assets/hero_page/teacherImage1.webp";
 import Flag from 'react-world-flags';
+import Button from "../components/Button/Button";
 
 
 const TeacherProfile: React.FC = () => {
@@ -32,13 +33,9 @@ const TeacherProfile: React.FC = () => {
                 </div>
 
                 {/* CTA */}
-                <div className="flex items-center max-800:mt-5">
-                    <button className='px-5 py-3 text-lg font-medium text-center text-white transition-all duration-1000 shadow-inner max-800:basis-1/2 bg-gradient-to-r from-main to-secondary rounded-xl'>
-                        Schedule Class
-                    </button>
-                    <button className='px-5 py-3 ml-3 text-lg font-medium text-center transition-all duration-1000 bg-white border max-800:basis-1/2 border-main text-main rounded-xl'>
-                        Send Message
-                    </button>
+                <div className="flex items-center gap-3 max-800:mt-5">
+                    <Button text="Schedule Class" variant="inline" />
+                    <Button text="Send Message" variant="border" />
                 </div>
             </div>
 
