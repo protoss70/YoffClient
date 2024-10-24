@@ -22,9 +22,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Set environment variables
-        run: echo "VITE_FIREBASE_CONFIG_BASE64=${{ secrets.VITE_FIREBASE_CONFIG_BASE64 }}" >> $GITHUB_ENV
-
       - name: Build the project
         run: npm run build
 
@@ -33,5 +30,6 @@ jobs:
 
       - name: Deploy to Firebase
         env:
+          VITE_FIREBASE_CONFIG_BASE64: ${{ secrets.VITE_FIREBASE_CONFIG_BASE64 }}
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: firebase deploy
