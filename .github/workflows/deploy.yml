@@ -9,6 +9,7 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    environment: yoffEnv # Specify the environment to use its secrets
 
     steps:
       - name: Checkout code
@@ -30,5 +31,5 @@ jobs:
 
       - name: Deploy to Firebase
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }} # Ensure to add your Firebase token in GitHub Secrets
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }} # This will use the secret from the yoffEnv environment
         run: firebase deploy
