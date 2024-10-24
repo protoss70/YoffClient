@@ -22,10 +22,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
       - name: Build the project
         run: npm run build
 
       - name: Deploy to Firebase
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }} # Make sure to add your Firebase token to GitHub secrets
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }} # Ensure to add your Firebase token in GitHub Secrets
         run: firebase deploy
