@@ -30,6 +30,6 @@ jobs:
 
       - name: Deploy to Firebase
         env:
-          VITE_FIREBASE_CONFIG_BASE64: ${{ secrets.VITE_FIREBASE_CONFIG_BASE64 }}
+          VITE_FIREBASE_CONFIG_BASE64: ${{ vars.VITE_FIREBASE_CONFIG_BASE64 }}
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: firebase deploy
