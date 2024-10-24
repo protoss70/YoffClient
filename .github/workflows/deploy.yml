@@ -1,15 +1,14 @@
-# .github/workflows/deploy.yml
 name: Build and Deploy
 
 on:
   push:
     branches:
-      - main # Trigger the workflow when code is pushed to the main branch
+      - main
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    environment: YoffEnv # Specify the environment to use its secrets
+    environment: yoffEnv
 
     steps:
       - name: Checkout code
@@ -18,18 +17,21 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20" # Upgraded to Node.js version 20
+          node-version: "20"
 
       - name: Install dependencies
         run: npm install
 
-      - name: Install Firebase CLI
-        run: npm install -g firebase-tools
+      - name: Set environment variables
+        run: echo "VITE_FIREBASE_CONFIG_BASE64=${{ secrets.VITE_FIREBASE_CONFIG_BASE64 }}" >> $GITHUB_ENV
 
       - name: Build the project
         run: npm run build
 
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
       - name: Deploy to Firebase
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }} # This will use the secret from the yoffEnv environment
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: firebase deploy
