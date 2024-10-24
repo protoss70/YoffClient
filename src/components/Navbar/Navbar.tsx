@@ -6,6 +6,7 @@ import Hamburger from "./sub-components/hamburger";
 import userIcon from "../../assets/user-profile.svg";
 import { useAuth } from '../../context/authContext';
 import Button from '../Button/Button';
+import WorldFlag from 'react-world-flags';
 
 interface NavbarProps {
   currentSection: string | "hero" | "how" | "language" | "pricing";
@@ -224,14 +225,16 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
                 <div className="flex flex-col items-start w-full">
                   <button
                     onClick={() => { languageSelect('English') }}
-                    className="w-full p-2 text-left rounded-b-none rounded-xl hover:bg-gray-200 focus:outline-none"
+                    className="flex items-center w-full p-2 text-left rounded-b-none rounded-xl hover:bg-gray-200 focus:outline-none"
                   >
+                    <WorldFlag code="GB" style={{ width: '20px', height: '20px', marginRight: '8px' }} /> {/* Flag for England */}
                     English
                   </button>
                   <button
                     onClick={() => { languageSelect('Russian') }}
-                    className="w-full p-2 text-left rounded-t-none rounded-xl hover:bg-gray-200 focus:outline-none"
+                    className="flex items-center w-full p-2 text-left rounded-t-none rounded-xl hover:bg-gray-200 focus:outline-none"
                   >
+                    <WorldFlag code="RU" style={{ width: '20px', height: '20px', marginRight: '8px' }} /> {/* Flag for Russia */}
                     Russian
                   </button>
                 </div>
@@ -307,15 +310,17 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
             >
               <div className="flex flex-col items-start w-full">
                 <button
-                  onClick={() => { languageSelect('English', true) }}
-                  className="w-full p-2 px-6 text-left rounded rounded-b-none hover:bg-gray-200 focus:outline-none"
+                  onClick={() => { languageSelect('English') }}
+                  className="flex items-center w-full p-2 text-left rounded-b-none rounded-xl hover:bg-gray-200 focus:outline-none"
                 >
+                  <WorldFlag code="GB" style={{ width: '20px', height: '20px', marginRight: '8px' }} /> {/* Flag for England */}
                   English
                 </button>
                 <button
-                  onClick={() => { languageSelect('Russian', true) }}
-                  className="w-full p-2 px-6 text-left rounded rounded-t-none hover:bg-gray-200 focus:outline-none"
+                  onClick={() => { languageSelect('Russian') }}
+                  className="flex items-center w-full p-2 text-left rounded-t-none rounded-xl hover:bg-gray-200 focus:outline-none"
                 >
+                  <WorldFlag code="RU" style={{ width: '20px', height: '20px', marginRight: '8px' }} /> {/* Flag for Russia */}
                   Russian
                 </button>
               </div>
