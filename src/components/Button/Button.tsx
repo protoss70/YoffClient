@@ -7,13 +7,14 @@ interface ButtonProps {
   bgColor?: string;                     // Optional: Background color (for border variant)
   textColor?: string;                   // Optional: Text color (for border variant)
   rippleColor?: string;                 // Optional: Ripple color
-  borderColor?: string;
+  borderColor?: string;                 // Optional: Border color
   gradient?: {                          // Optional: Gradient color object
     from: string;
     to: string;
   };
-  buttonClasses?: string;
-  wrapperClasses?: string;
+  buttonClasses?: string;               // Optional: Additional classes for button
+  wrapperClasses?: string;              // Optional: Additional classes for wrapper
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void; // Click handler accepting event
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -24,8 +25,9 @@ const Button: React.FC<ButtonProps> = ({
   rippleColor = '#00000022',           // Default ripple color
   buttonClasses = "",
   wrapperClasses = "",
-  borderColor="border-main",
+  borderColor = "border-main",
   gradient,                            // Optional gradient object
+  onClick,                             // Click handler
 }) => {
   const baseClasses = 'px-5 py-3 text-lg font-medium text-center transition-all duration-300 ease-in-out rounded-xl';
   
@@ -48,14 +50,15 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <>
-        {/* @ts-expect-error The component is working*/}
-        <Ripples color={rippleColor} className={`ripple-wrapper rounded-xl ${wrapperClasses}`}>
+      {/* @ts-expect-error The component is working */}
+      <Ripples color={rippleColor} className={`ripple-wrapper rounded-xl ${wrapperClasses}`}>
         <button
-            className={`${baseClasses} ${variant === 'inline' ? inlineClasses : borderClasses} ${buttonClasses}`}
+          className={`${baseClasses} ${variant === 'inline' ? inlineClasses : borderClasses} ${buttonClasses}`}
+          onClick={onClick} // Pass the onClick handler here
         >
-            {text}
+          {text}
         </button>
-        </Ripples>
+      </Ripples>
     </>
   );
 };
