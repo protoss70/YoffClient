@@ -22,11 +22,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Echo VITE_FIREBASE_CONFIG_BASE64
-        env:
-          VITE_FIREBASE_CONFIG_BASE64: ${{ vars.VITE_FIREBASE_CONFIG_BASE64 }}
-        run: echo "$VITE_FIREBASE_CONFIG_BASE64"
-
       - name: Build the project
         env:
           VITE_FIREBASE_CONFIG_BASE64: ${{ vars.VITE_FIREBASE_CONFIG_BASE64 }}
