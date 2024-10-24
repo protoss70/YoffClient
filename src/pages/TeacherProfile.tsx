@@ -33,9 +33,9 @@ const TeacherProfile: React.FC = () => {
                 </div>
 
                 {/* CTA */}
-                <div className="flex items-center gap-3 max-800:mt-5">
-                    <Button text="Schedule Class" variant="inline" />
-                    <Button text="Send Message" variant="border" />
+                <div className="flex items-center gap-3 max-800:mt-5 max-600:flex-col">
+                    <Button text="Schedule Class" variant="inline" buttonClasses="max-800:w-full" wrapperClasses="max-800:w-full"/>
+                    <Button text="Send Message" variant="border" wrapperClasses="max-800:w-full" buttonClasses="max-800:w-full"/>
                 </div>
             </div>
 

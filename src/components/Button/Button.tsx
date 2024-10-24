@@ -12,7 +12,8 @@ interface ButtonProps {
     from: string;
     to: string;
   };
-  classNames?: string;
+  buttonClasses?: string;
+  wrapperClasses?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -21,7 +22,8 @@ const Button: React.FC<ButtonProps> = ({
   bgColor = 'white',                   // Default background color for border variant
   textColor = 'text-main',             // Default text color for border variant
   rippleColor = '#00000022',           // Default ripple color
-  classNames = "",
+  buttonClasses = "",
+  wrapperClasses = "",
   borderColor="border-main",
   gradient,                            // Optional gradient object
 }) => {
@@ -32,8 +34,8 @@ const Button: React.FC<ButtonProps> = ({
     ${gradient ? `bg-gradient-to-r from-${gradient.from} to-${gradient.to}` : 'bg-gradient-to-r from-main to-secondary'}
     text-white shadow-inner hover:brightness-110 hover:shadow-lg
     transition-all duration-300 ease-in-out
-    hover:scale-105
-    max-800:basis-1/2 rounded-xl
+    hover:scale-110
+    rounded-xl ${bgColor}
   `;
 
   // Styles for border variant
@@ -41,15 +43,15 @@ const Button: React.FC<ButtonProps> = ({
     ${bgColor} border ${textColor}
     transform hover:scale-105
     hover:outline hover:underline hover:outline-2 hover:outline-main
-    max-800:basis-1/2 rounded-xl ${borderColor}
+    rounded-xl ${borderColor}
   `;
 
   return (
     <>
         {/* @ts-expect-error The component is working*/}
-        <Ripples color={rippleColor} className="ripple-wrapper rounded-xl">
+        <Ripples color={rippleColor} className={`ripple-wrapper rounded-xl ${wrapperClasses}`}>
         <button
-            className={`${baseClasses} ${variant === 'inline' ? inlineClasses : borderClasses} ${classNames}`}
+            className={`${baseClasses} ${variant === 'inline' ? inlineClasses : borderClasses} ${buttonClasses}`}
         >
             {text}
         </button>

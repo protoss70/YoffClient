@@ -1,6 +1,7 @@
 import pricingImage from "../../assets/hero_page/Pricing_Image.webp";
 import pricingTick from "../../assets/hero_page/Pricing_Tick.png";
 import premiumTick from "../../assets/hero_page/Premium_tick.png"
+import Button from "../Button/Button";
 
 function PricingSection() {
   return (
@@ -47,10 +48,9 @@ function PricingSection() {
           </div>
           {/* Get Started Button */}
           <div className="w-full font-poppins">
-            <button className="w-full px-8 py-3 font-medium text-center text-white rounded-md bg-gradient-to-r from-main to-secondary">Get Started!</button>
-          </div>
+            <Button text="Get Started!" variant="inline" buttonClasses="!w-full !px-8 font-medium !rounded-md !text-base" wrapperClasses="!rounded-md !w-full"/>          </div>
         </div>
-
+        
         {/* Card 2 */}
         <div className="flex flex-col relative text-white justify-between shadow-md font-gilroy w-[350px] h-[540px] bg-[#B772FF] pricing-bg p-9 rounded-3xl">  
           <div className="flex flex-col justify-start gap-6">
@@ -88,7 +88,7 @@ function PricingSection() {
           </div>
           {/* Get Started Button */}
           <div className="w-full font-poppins">
-            <button className="w-full px-8 py-3 font-semibold text-center bg-white rounded-md shadow-inner text-main">Get Started!</button>
+            <Button text="Get Started!" variant="border" buttonClasses="!w-full !bg-white !px-8 font-semibold !rounded-md !text-base" wrapperClasses="!bg-white !rounded-md !w-full"/>
           </div>
 
           {/* Most Popular tag */}
@@ -135,7 +135,7 @@ function PricingSection() {
           </div>
           {/* Get Started Button */}
           <div className="w-full font-poppins">
-            <button className="w-full px-8 py-3 font-medium text-center text-white rounded-md bg-gradient-to-r from-main to-secondary">Get Started!</button>
+            <Button text="Get Started!" variant="inline" buttonClasses="!w-full !px-8 font-medium !rounded-md !text-base" wrapperClasses="!rounded-md !w-full" />
           </div>
         </div>
       

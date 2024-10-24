@@ -1,5 +1,6 @@
 import React, { useState, FocusEvent } from 'react';
 import contactImage from '../../assets/hero_page/ContactImage.webp';
+import Button from "../Button/Button";
 
 function ContactSection() {
   const [nameFocused, setNameFocused] = useState<boolean>(false);
@@ -95,9 +96,8 @@ function ContactSection() {
           </div>
 
           <div className="w-full font-poppins">
-            <button className="px-8 py-3 font-medium text-center text-white rounded-md bg-gradient-to-r from-main to-secondary">
-              Submit
-            </button>
+            <Button text='Submit' wrapperClasses='!rounded-md max-1000:w-full' buttonClasses='!px-8 !text-base !font-medium !rounded-md max-1000:!w-full
+            ' variant='inline'/>
           </div>
         </div>  
         

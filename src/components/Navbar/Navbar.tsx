@@ -5,6 +5,7 @@ import globeIcon from "../../assets/globe.svg";
 import Hamburger from "./sub-components/hamburger";
 import userIcon from "../../assets/user-profile.svg";
 import { useAuth } from '../../context/authContext';
+import Button from '../Button/Button';
 
 interface NavbarProps {
   currentSection: string | "hero" | "how" | "language" | "pricing";
@@ -172,9 +173,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
               :
               null
             }
-            <button className='px-3 py-1 text-lg font-medium text-center text-white transition-all duration-100 shadow-inner max-1100:text-base max-1100:px-2 bg-gradient-to-r from-main to-secondary rounded-xl hover:to-main hover:from-secondary'>
-              Schedule Class
-            </button>
+            <Button text='Schedule Class' variant='inline' buttonClasses='!px-3 !py-1'/>
 
             {/* USER PROFILE */}
             {isAuthenticated ? 

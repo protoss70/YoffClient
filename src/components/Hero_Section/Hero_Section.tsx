@@ -1,6 +1,6 @@
 import heroImage from "../../assets/hero_page/Hero Image.webp";
 import heroArrow from "../../assets/hero_page/Hero_Arrow.webp";
-// import heroBgFull from "../../assets/hero_page/Hero_Background_Full.png";
+import Button from "../Button/Button";
 
 
 function HeroSeciton() {
@@ -22,9 +22,7 @@ function HeroSeciton() {
           </div>
           <br />
           <div className="max-800:mx-24 max-600:mx-0">
-            <button className="py-3 mt-4 text-lg font-medium text-center text-white transition-colors duration-1000 shadow-inner max-800:w-full max-1100:py-3 max-1100:px-6 max-1100:text-base px-7 font-poppins bg-gradient-to-r from-main to-secondary rounded-xl hover:to-main hover:from-secondary">
-              Get Started
-          </button>
+            <Button text='Get Started' variant='inline' wrapperClasses="max-800:!w-full" buttonClasses='!px-7 max-800:!w-full max-800:!text-lg !py-3 font-poppins !shadow-inner  max-1100:!py-3 max-1100:!px-6 max-1100:!text-base'/>
           </div>
         </div>
         
