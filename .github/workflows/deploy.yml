@@ -9,7 +9,7 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    environment: yoffEnv # Specify the environment to use its secrets
+    environment: YoffEnv # Specify the environment to use its secrets
 
     steps:
       - name: Checkout code
