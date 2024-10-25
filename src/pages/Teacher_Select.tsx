@@ -109,7 +109,7 @@ const Teacher_Select: React.FC = () => {
           />
           <h2 className="text-4xl font-bold font-gilroy">{language}</h2>
         </div>
-        <div className="flex flex-wrap justify-start gap-10">
+        <div className="flex flex-wrap justify-start gap-10 max-1000:justify-center">
           {teachers.map((teacher, index) => {
             return (
               <TeacherCard

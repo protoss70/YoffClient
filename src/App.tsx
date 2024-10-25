@@ -8,6 +8,7 @@ import { AuthProvider } from './context/authContext';
 import ForgotPassword from './pages/Forgot_Password';
 import Footer from './components/Footer/Footer';
 import Teacher_Select from './pages/Teacher_Select';
+import TeacherProfile from './pages/TeacherProfile';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -36,6 +37,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/teacher/:teacherId" element={<TeacherProfile />} />
         </Routes>
       </Router>
       <Footer />

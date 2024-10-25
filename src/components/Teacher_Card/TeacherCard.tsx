@@ -3,6 +3,7 @@ import "./TeacherCard.css";
 import Flag from 'react-world-flags';
 import { languageToCountryCode } from '../../utility/languages';
 import Button from '../Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 interface TeacherCardProps {
   image: string;
@@ -25,6 +26,7 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
   isAbsolute=true,
   showCTA=false,
 }) => {
+  const navigate = useNavigate();
   // Determine flag size based on className
   const flagSizeClass = className.includes('card1') || className.includes('card5') 
     ? 'h-6 w-6' 
@@ -32,12 +34,16 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
     ? 'h-8 w-8' 
     : 'h-12 w-12'; // Default size
 
+  const handleTeacherClick = () => {
+    navigate(`/teacher/${name}`)
+  }
+
   return (
-    <div className={`flex flex-col p-5 pb-0 rounded-lg ${isAbsolute ? "card" : ""} transition-all duration-300 hover:scale-105 teacherCard shadow-lg ${className}`}>
+    <div className={`flex flex-col p-5 pb-0 rounded-lg ${isAbsolute ? "card" : "hover:scale-105"} transition-all duration-300 teacherCard shadow-lg ${className}`}>
       {/* Image */}
       <div className="relative flex items-center justify-center w-full mb-5">
-        <img loading="lazy" src={image} alt={`${name} profile image`} className="rounded-full hover:cursor-pointer cardImage" />
-        <div className="absolute bottom-[-20px]  flex flex-col items-center justify-center px-3 py-1 text-white rounded-md bg-gradient-to-r from-main to-secondary font-gilroy">
+        <img loading="lazy" onClick={handleTeacherClick} src={image} alt={`${name} profile image`} className="rounded-full hover:cursor-pointer cardImage" />
+        <div onClick={handleTeacherClick} className="absolute bottom-[-20px]  flex flex-col items-center justify-center px-3 py-1 text-white rounded-md bg-gradient-to-r from-main to-secondary font-gilroy">
           <div className="font-semibold hover:cursor-pointer hover:underline">{name}</div>
           <div className="font-medium">{country}</div>
         </div>
