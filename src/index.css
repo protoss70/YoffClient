@@ -183,7 +183,7 @@
 }
 
 .shadow-xl {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Extra large shadow - reduced spread */
+  box-shadow: 0 6px 12px rgba(  0, 0, 0, 0.5); /* Extra large shadow - reduced spread */
 }
 
 .shadow-2xl {

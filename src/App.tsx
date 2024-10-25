@@ -7,7 +7,7 @@ import NavBar from './components/Navbar/Navbar';
 import { AuthProvider } from './context/authContext';
 import ForgotPassword from './pages/Forgot_Password';
 import Footer from './components/Footer/Footer';
-import TeacherProfile from './pages/TeacherProfile';
+import Teacher_Select from './pages/Teacher_Select';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -32,7 +32,7 @@ function App() {
             path="/"
             element={<Landing_Page setCurrentSection={setCurrentSection} />} // Pass setCurrentSection to Landing_Page
           />
-          <Route path="/teachers" element={<TeacherProfile />} />
+          <Route path="/teachers" element={<Teacher_Select />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />

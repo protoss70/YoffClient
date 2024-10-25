@@ -1,21 +1,8 @@
 import React from 'react';
+import "./TeacherCard.css";
 import Flag from 'react-world-flags';
-
-const languageToCountryCode: Record<string, string> = {
-    English: 'GB', // Using the UK flag for English
-    German: 'DE',
-    Dutch: 'NL',
-    Czech: 'CZ',
-    Spanish: 'ES',
-    Portuguese: 'PT',
-    French: 'FR',
-    Japanese: 'JP',
-    Russian: 'RU',
-    Italian: 'IT',
-    Urdu: 'PK',
-    Irish: 'IE',
-    // Add more mappings as needed
-};
+import { languageToCountryCode } from '../../utility/languages';
+import Button from '../Button/Button';
 
 interface TeacherCardProps {
   image: string;
@@ -24,6 +11,8 @@ interface TeacherCardProps {
   hobbies: string[];
   languages: string[];
   className?: string; // Add className prop, defaulting to ""
+  isAbsolute?: boolean;
+  showCTA?:boolean;
 }
 
 const TeacherCard: React.FC<TeacherCardProps> = ({
@@ -33,6 +22,8 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
   hobbies,
   languages,
   className = '', // Default to an empty string
+  isAbsolute=true,
+  showCTA=false,
 }) => {
   // Determine flag size based on className
   const flagSizeClass = className.includes('card1') || className.includes('card5') 
@@ -42,12 +33,12 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
     : 'h-12 w-12'; // Default size
 
   return (
-    <div className={`flex flex-col p-5 pb-0 rounded-lg card shadow-lg ${className}`}>
+    <div className={`flex flex-col p-5 pb-0 rounded-lg ${isAbsolute ? "card" : ""} transition-all duration-300 hover:scale-105 teacherCard shadow-lg ${className}`}>
       {/* Image */}
       <div className="relative flex items-center justify-center w-full mb-5">
-        <img loading="lazy" src={image} alt={`${name} profile image`} className="rounded-full cardImage" />
-        <div className="absolute bottom-[-20px] flex flex-col items-center justify-center px-3 py-1 text-white rounded-md bg-gradient-to-r from-main to-secondary font-gilroy">
-          <div className="font-semibold">{name}</div>
+        <img loading="lazy" src={image} alt={`${name} profile image`} className="rounded-full hover:cursor-pointer cardImage" />
+        <div className="absolute bottom-[-20px]  flex flex-col items-center justify-center px-3 py-1 text-white rounded-md bg-gradient-to-r from-main to-secondary font-gilroy">
+          <div className="font-semibold hover:cursor-pointer hover:underline">{name}</div>
           <div className="font-medium">{country}</div>
         </div>
       </div>
@@ -59,7 +50,7 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
       </div>
 
       {/* Languages */}
-      <div className="flex flex-col mt-4 text-center font-gilroy">
+      {!showCTA ? <div className="flex flex-col mt-4 text-center font-gilroy">
         <div className="font-semibold text-custom_blue">Languages</div>
         <div className="flex justify-center gap-3 px-[10%]">
           {languages.map((language, index) => {
@@ -76,7 +67,13 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
             ) : null; // If no mapping, return null
           })}
         </div>
-      </div>
+      </div>: null}
+      {showCTA ?
+            <div className="flex flex-col items-center gap-3 mt-2 max-800:mt-5">
+              <Button text="Schedule Class" variant="inline" buttonClasses="!w-full !text-base" wrapperClasses="!text-base !w-full"/>
+              <Button text="Send Message" variant="border" wrapperClasses="!w-full" buttonClasses="!text-base !w-full"/>
+            </div>
+          : null}
     </div>
   );
 };

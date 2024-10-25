@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./teacherCards.css";
 import arrowLeft from "../../assets/hero_page/arrowLeft.png";
 import teacher1 from "../../assets/hero_page/teacherImage1.webp";
 import teacher2 from "../../assets/hero_page/teacherImage2.webp";
