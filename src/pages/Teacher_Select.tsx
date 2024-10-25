@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom"; // Import useLocation
 import teacher1 from "../assets/hero_page/teacherImage1.webp";
 import teacher2 from "../assets/hero_page/teacherImage2.webp";
 import teacher3 from "../assets/hero_page/teacherImage3.webp";
@@ -12,6 +13,18 @@ import { Teacher } from "../utility/types";
 import TeacherCard from "../components/Teacher_Card/TeacherCard";
 
 const Teacher_Select: React.FC = () => {
+  const location = useLocation(); // Get the location object to access the search params
+  const queryParams = new URLSearchParams(location.search); // Parse the query parameters
+  const langFilter = queryParams.get("langFilter"); // Get langFilter from query parameters
+  const [selectedLanguage, setSelectedLanguage] = useState<string>(langFilter || "");
+  const navigate = useNavigate();
+
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedLang = event.target.value;
+    setSelectedLanguage(selectedLang);
+    navigate(`?langFilter=${selectedLang}`); // Update the URL with the selected language
+  };
+
   const teachers: Teacher[] = [
     {
       image: teacher1,
@@ -131,12 +144,42 @@ const Teacher_Select: React.FC = () => {
   };
 
   return (
-    <main className="pt-3">
-      {allLanguages.map((language) => {
-        // Filter teachers that teach the current language
-        const filteredTeachers = teachers.filter((teacher) => teacher.languages.includes(language));
-        return filteredTeachers.length > 0 ? languageSection(filteredTeachers, language) : null;
-      })}
+    <main className="pt-6">
+      {/* Language Filter Dropdown */}
+      <div className="px-24 mb-6 max-1300:px-12 max-900:px-6 max-600:px-1">
+        <label htmlFor="language-select" className="text-xl font-semibold">Select Language: </label>
+        <select
+          id="language-select"
+          value={selectedLanguage}
+          onChange={handleLanguageChange}
+          className="p-2 ml-2 border border-gray-300 rounded"
+        >
+          <option value="">All Languages</option>
+          {allLanguages.map((language) => (
+            <option key={language} value={language}>
+              <div className="flex items-center">
+                <Flag code={languageToCountryCode[language]} alt={`${language} flag`} className="mr-2" />
+                {language}
+              </div>
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {selectedLanguage
+        ? languageSection(
+            teachers.filter((teacher) => teacher.languages.includes(selectedLanguage)),
+            selectedLanguage
+          )
+        : allLanguages.map((language) => {
+            const filteredTeachers = teachers.filter((teacher) =>
+              teacher.languages.includes(language)
+            );
+
+            return filteredTeachers.length > 0
+              ? languageSection(filteredTeachers, language)
+              : null;
+          })}
     </main>
   );
 };
