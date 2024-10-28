@@ -9,6 +9,8 @@ import ForgotPassword from './pages/Forgot_Password';
 import Footer from './components/Footer/Footer';
 import Teacher_Select from './pages/Teacher_Select';
 import TeacherProfile from './pages/TeacherProfile';
+import Modals from './components/Modals/Modals';
+// import TestElement from './components/TestElement/TestElement';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -26,6 +28,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+        <Modals />
         <ScrollToTop />
         <NavBar currentSection={currentSection} /> {/* Pass currentSection to NavBar */}
         <Routes>
@@ -38,6 +41,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/teacher/:teacherId" element={<TeacherProfile />} />
+          {/* <Route path="/test" element={<TestElement />} /> */}
         </Routes>
       </Router>
       <Footer />

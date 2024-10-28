@@ -7,6 +7,7 @@ import userIcon from "../../assets/user-profile.svg";
 import { useAuth } from '../../context/authContext';
 import Button from '../Button/Button';
 import WorldFlag from 'react-world-flags';
+import { createPopupEvent } from '../../utility/modal_utils';
 
 interface NavbarProps {
   currentSection: string | "hero" | "how" | "language" | "pricing";
@@ -43,6 +44,22 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
         break;
     }
   }, [currentSection])
+
+  const logoutClick = () => {
+    createPopupEvent(
+      "Logout",
+      `Are you sure you want to logout of ${currentUser?.email}`,
+      {
+        success: { text: "Logout", type: "danger" },
+        cancel: { text: "Cancel", type: "secondary" },
+      },
+      (response: boolean) => {
+        if (response){
+          logout();
+        }
+      }
+    );
+  }
 
   const handleNavClick = (path: string) => {
     toggleMenu();
@@ -146,7 +163,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
   }, [languageSelectRef, hamburgerLanguageSelectRef, hamburgerMenuRef, profileSelectRef]);
 
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full">
+    <nav className="fixed top-0 left-0 z-30 w-full">
       <div className='relative w-full h-24 px-24 bg-white shadow max-1300:px-12 max-900:px-6 max-600:px-1'>
         <div className="flex items-center justify-between w-full">
           {/* LOGO */}
@@ -204,7 +221,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
                       My Classes
                     </button>
                     <button
-                      onClick={logout}
+                      onClick={logoutClick}
                       className="w-full p-2 text-left rounded-t-none rounded-xl hover:bg-red-100 focus:outline-none"
                     >
                       Logout
@@ -294,7 +311,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
                     My Classes
                   </button>
                   <button
-                    onClick={logout}
+                    onClick={logoutClick}
                     className="w-full p-2 px-6 text-left rounded-lg rounded-t-none hover:bg-red-100 focus:outline-none"
                   >
                     Logout

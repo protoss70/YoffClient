@@ -4,6 +4,7 @@ import { useAuth } from '../context/authContext'; // Import the useAuth hook
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Link } from 'react-router-dom';
 import Button from '../components/Button/Button';
+import { createNotificationEvent } from '../utility/modal_utils';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -24,6 +25,11 @@ const Login: React.FC = () => {
     try {
       await login(email, password);
       console.log('Login successful');
+      createNotificationEvent(
+        "Login Successful",
+        `Succesfully logged into ${email}`,
+        "success"
+      );
       navigate('/'); // Redirect after successful login
     } catch (error) {
       console.error('Error during login:', error);
@@ -34,6 +40,11 @@ const Login: React.FC = () => {
     try {
       await loginWithGoogle();
       console.log('Google login successful');
+      createNotificationEvent(
+        "Login Successful",
+        `Succesfully logged in`,
+        "success"
+      );
       navigate('/'); // Redirect after successful Google login
     } catch (error) {
       console.error('Error during Google login:', error);
