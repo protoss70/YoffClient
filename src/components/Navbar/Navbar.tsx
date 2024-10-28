@@ -190,9 +190,12 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
                 >
                   <div className="flex flex-col items-start w-full">
                     <div
-                      className="w-full p-2 text-left rounded-b-none rounded-xl"
+                      className="w-full p-2 text-left rounded-b-none whitespace-nowrap rounded-xl"
                     >
-                      {currentUser?.email}
+                      <b>Email:</b> {currentUser?.email}
+                    </div>
+                    <div className='w-full p-2 text-left whitespace-nowrap'>
+                      <b>Credits:</b> 1
                     </div>
                     <button
                       onClick={() => {}}
@@ -280,6 +283,9 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
                     className="w-full p-2 px-6 text-left rounded-b-none rounded-xl"
                   >
                     {currentUser?.email}
+                  </div>
+                  <div className='w-full p-2 px-6 text-left'>
+                    Credits: 1 demo credit
                   </div>
                   <button
                     onClick={() => {}}
