@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { createNotificationEvent } from '../../utility/modal_utils';
+import Calendar from '../Calendar/Calendar';
 
 const TestElement: React.FC = () => {
 
@@ -14,6 +15,7 @@ const TestElement: React.FC = () => {
 
   return (
     <div>
+      <Calendar />
         TESTING      
     </div>
   );
