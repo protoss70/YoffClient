@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment-timezone';
 import { adjustScheduleByTimeZone } from '../../utility/calendar';
 
@@ -39,13 +39,22 @@ const Calendar: React.FC = () => {
     { date: '2024-11-11', hours: [] },
     { date: '2024-11-12', hours: ['10:35', '12:55', '18:40', '08:00', '14:15'] },
     { date: '2024-11-13', hours: ['09:00', '11:30', '14:45', '16:00', '19:15', '20:00', '21:30', '22:50'] },
-];
+  ];
+
   // State to manage the current index of the displayed dates
   const [currentIndex, setCurrentIndex] = useState(0);
   // State to manage the selected time zone
-  const [selectedTimezone, setSelectedTimezone] = useState<string>('Europe/Budapest');
+  const [selectedTimezone, setSelectedTimezone] = useState<string>('Africa/Abidjan GMT +00:00');
   // State to manage the schedule with converted times
   const [schedule, setSchedule] = useState(initialSchedule);
+
+  useEffect(() => {
+    // Get user's timezone and adjust the schedule accordingly
+    const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    setSelectedTimezone(userTimeZone); // Set the user's timezone as the selected timezone
+    const adjustedSchedule = adjustScheduleByTimeZone(userTimeZone, userTimeZone, initialSchedule);
+    setSchedule(adjustedSchedule); // Adjust the schedule based on the user's timezone
+  }, []);
 
   // Function to go to the next set of dates
   const handleNext = () => {
@@ -74,14 +83,14 @@ const Calendar: React.FC = () => {
   });
 
   return (
-    <div className='flex flex-col items-center gap-4 mt-60 w-max'>
+    <div className='flex flex-col items-center gap-4 w-max'>
       <div className='flex items-center justify-between w-full'>
         <div className='flex items-center justify-start w-full'>
-          <button className={`w-10 h-8 border rounded-s-lg bg-white border-custom_gray ${currentIndex === 0 ? "!bg-custom_gray" : ""}`} onClick={handlePrev} disabled={currentIndex === 0}>
+          <button className={`w-10 h-8 border rounded-s-lg bg-white border-custom_gray ${currentIndex === 0 ? "!bg-gray-400" : ""}`} onClick={handlePrev} disabled={currentIndex === 0}>
             &lt;
           </button>
 
-          <button onClick={handleNext} className={`w-10 h-8 border rounded-e-lg bg-white border-custom_gray ${currentIndex >= dateRange.length - 7 ? "!bg-custom_gray" : ""}`} disabled={currentIndex >= dateRange.length - 7}>
+          <button onClick={handleNext} className={`w-10 h-8 border rounded-e-lg bg-white border-custom_gray ${currentIndex >= dateRange.length - 7 ? "!bg-gray-400" : ""}`} disabled={currentIndex >= dateRange.length - 7}>
             &gt;
           </button>
 
@@ -104,25 +113,29 @@ const Calendar: React.FC = () => {
       </div>
       
       <div className='flex gap-1'>
-      {displayedDates.map(({ dayName, dayNumber, dateString, fullDate }) => (
-        <div 
-          className={`flex flex-col items-center px-8 py-2 border-t-4 border-t-main font-gilroy ${schedule.find(item => item.date === fullDate)?.hours.length === 0 ? "border-t-custom_gray" : "border-t-main"}`} 
-          key={dateString}
-        >
-          <span className={`text-lg ${todayString === dateString ? 'text-main' : ''}`}>{dayName}</span>
-          <span className={`text-lg ${todayString === dateString ? 'text-main' : ''}`}>{dayNumber}</span>
-          <div className="flex flex-col w-full gap-2 mt-1">
-            {schedule.find(item => item.date === fullDate)?.hours.map((hour) => (
-              <span 
-                key={hour} 
-                className="text-sm hover:cursor-pointer font-poppins p-0 h-4 border-b-[1px] w-9 text-center border-custom_gray"
-              >
-                {hour} {/* Directly displaying the hour without any calculations */}
-              </span>
-            ))}
+        {displayedDates.map(({ dayName, dayNumber, dateString, fullDate }) => (
+          <div 
+          className={`flex flex-col items-center px-8 py-2 border-t-4 font-gilroy ${
+            schedule.find(item => item.date === fullDate)?.hours.length === 0
+              ? "border-t-custom_gray"
+              : "border-t-main"
+          }`} 
+            key={dateString}
+          >
+            <span className={`text-lg ${todayString === dateString ? 'text-main' : ''}`}>{dayName}</span>
+            <span className={`text-lg ${todayString === dateString ? 'text-main' : ''}`}>{dayNumber}</span>
+            <div className="flex flex-col w-full gap-2 mt-1">
+              {schedule.find(item => item.date === fullDate)?.hours.map((hour) => (
+                <span 
+                  key={hour} 
+                  className="text-sm font-semibold hover:cursor-pointer font-poppins p-0 h-4 border-b-[1px] w-9 text-center border-custom_gray"
+                >
+                  {hour} {/* Directly displaying the hour without any calculations */}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
       </div>
     </div>
   );

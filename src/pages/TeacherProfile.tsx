@@ -12,6 +12,8 @@ import teacher3 from "../assets/hero_page/teacherImage3.webp";
 import teacher4 from "../assets/hero_page/teacherImage4.webp";
 import teacher5 from "../assets/hero_page/teacherImage5.webp";
 
+import Calendar from "../components/Calendar/Calendar";
+
 const TeacherProfile: React.FC = () => {
     const { teacherId } = useParams<{ teacherId: string }>(); // Get teacherId from URL params
 
@@ -159,6 +161,9 @@ const TeacherProfile: React.FC = () => {
                         })}
                     </div>
                 </div>
+            </div>
+            <div className="flex justify-start w-full">
+                <Calendar />
             </div>
 
             {/* Teacher profile top bg image */}
