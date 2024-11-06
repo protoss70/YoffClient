@@ -1,22 +1,11 @@
-import React, { useEffect } from 'react';
-import { createNotificationEvent } from '../../utility/modal_utils';
-import Calendar from '../Calendar/Calendar';
+import React from 'react';
+import Scheduled_Class from '../Scheduled_Class/Scheduled_Class';
 
 const TestElement: React.FC = () => {
 
-    useEffect(() => {
-        createNotificationEvent(
-            "File Deleted",
-            "Succesfully deleted the file",
-            "success",
-            3000
-          );
-    }, [])
-
   return (
-    <div>
-      <Calendar />
-        TESTING      
+    <div className='p-20'>
+      <Scheduled_Class />
     </div>
   );
 };
