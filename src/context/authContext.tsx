@@ -33,6 +33,27 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [userData, setUserData] = useState<UserDataType | null>(null);
   const [isAuth, setIsAuth] = useState<boolean>(false);
 
+  // Load cached userData from localStorage on mount
+  useEffect(() => {
+    const cachedUserData = localStorage.getItem('userData');
+    if (cachedUserData && !userData) {
+      setUserData(JSON.parse(cachedUserData));
+    }
+  }, []);
+
+  // Cache userData in localStorage whenever it changes
+  useEffect(() => {
+    const cachedUserData = localStorage.getItem('userData');
+    if (userData) {
+      localStorage.setItem('userData', JSON.stringify(userData));
+      console.log("SET CACHE")
+    } else if (cachedUserData){
+      setUserData(JSON.parse(cachedUserData));
+      console.log("LOADED CACHE");  
+    }
+    console.log(userData);
+  }, [userData]);
+
   useEffect(() => {
     // Check for authenticated user when the component mounts
     const checkAuthStatus = async () => {
@@ -93,7 +114,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     try {
       await signOutHandler();
       setCurrentUser(null);
+      setUserData(null); // Clear userData on logout
       setIsAuth(false);
+      localStorage.removeItem('userData'); 
     } catch (error) {
       console.error('Failed to log out:', error);
       throw error;

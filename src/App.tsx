@@ -10,6 +10,7 @@ import Footer from './components/Footer/Footer';
 import Teacher_Select from './pages/Teacher_Select';
 import TeacherProfile from './pages/TeacherProfile';
 import Modals from './components/Modals/Modals';
+import My_Classes from './pages/My_Classes';
 // import TestElement from './components/TestElement/TestElement';
 
 function ScrollToTop() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/teacher/:teacherId" element={<TeacherProfile />} />
+          <Route path="/my-classes" element={<My_Classes />} />
           {/* <Route path="/test" element={<TestElement />} /> */}
         </Routes>
       </Router>

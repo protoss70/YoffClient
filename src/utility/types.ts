@@ -56,10 +56,28 @@ export interface LanguageCard {
     notification_time?: number; // Optional time for popup display
   }
 
+  export type ScheduleDateType = {
+    day: string,
+    hour: string,
+    date: string
+  } 
+
   export type UserDataType = {
     _id: string,
     email: string,
     credits: string,
     emailVerified: string,
-    demoClass: Date
+    demoClass: string
+  }
+
+  export type ScheduledClassType = {
+    _id: string,
+    date: ScheduleDateType,
+    language: string,
+    isDemoClass: boolean,
+    teacherDetails: {
+      name: string,
+      surname: string,
+      _id: string
+    }
   }

@@ -218,7 +218,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
                       <b>Credits:</b> 1
                     </div>
                     <button
-                      onClick={() => {}}
+                      onClick={() => {handleNavClick("my-classes")}}
                       className="w-full p-2 text-left hover:bg-gray-200 focus:outline-none"
                     >
                       My Classes
@@ -308,7 +308,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
                     Credits: 1 demo credit
                   </div>
                   <button
-                    onClick={() => {}}
+                    onClick={() => {handleNavClick("my-classes")}}
                     className="w-full p-2 px-6 text-left hover:bg-gray-200 focus:outline-none"
                   >
                     My Classes
