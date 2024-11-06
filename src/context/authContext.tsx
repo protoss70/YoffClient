@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useEffect, useContext, ReactNode, SetStateAction } from 'react';
 import {
   signInWithEmailAndPasswordHandler,
   registerWithEmailAndPasswordHandler,
@@ -9,16 +9,19 @@ import {
   sendPasswordResetEmailHandler // Import this function
 } from '../auth/firebaseAuth';
 import { User } from 'firebase/auth';
+import { UserDataType } from '../utility/types';
 
 // Define the shape of your context data
 interface AuthContextType {
   currentUser: User | null;
-  login: (email: string, password: string) => Promise<void>;
-  register: (email: string, password: string) => Promise<void>;
-  loginWithGoogle: () => Promise<void>;
+  login: (email: string, password: string) => Promise<User | null>;
+  register: (email: string, password: string) => Promise<User | null>;
+  loginWithGoogle: () => Promise<User | null>;
   logout: () => Promise<void>;
   sendPasswordResetEmail: (email: string) => Promise<void>; // Updated to include this
   isAuthenticated: boolean;
+  userData: UserDataType | null;
+  setUserData: React.Dispatch<SetStateAction<UserDataType | null>>
 }
 
 // Create the context with the initial value
@@ -27,6 +30,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 // Create a provider component
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [userData, setUserData] = useState<UserDataType | null>(null);
   const [isAuth, setIsAuth] = useState<boolean>(false);
 
   useEffect(() => {
@@ -49,6 +53,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const user = getCurrentUser();
       setCurrentUser(user);
       setIsAuth(true);
+      return user;
     } catch (error) {
       console.error('Failed to log in:', error);
       throw error;
@@ -62,6 +67,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const user = getCurrentUser();
       setCurrentUser(user);
       setIsAuth(true);
+      return user;
     } catch (error) {
       console.error('Failed to register:', error);
       throw error;
@@ -75,6 +81,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const user = getCurrentUser();
       setCurrentUser(user);
       setIsAuth(true);
+      return user;
     } catch (error) {
       console.error('Failed to log in with Google:', error);
       throw error;
@@ -110,6 +117,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     register,
     loginWithGoogle,
     logout,
+    userData,
+    setUserData,
     sendPasswordResetEmail, // Provide this in the context
     isAuthenticated: isAuth,
   };

@@ -5,11 +5,12 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Link } from 'react-router-dom';
 import Button from '../components/Button/Button';
 import { createNotificationEvent } from '../utility/modal_utils';
+import { findOrCreateUser } from '../api/user/getUser';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, loginWithGoogle } = useAuth(); // Destructure context functions
+  const { login, loginWithGoogle, setUserData, logout } = useAuth(); // Destructure context functions
   const navigate = useNavigate();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,23 +24,45 @@ const Login: React.FC = () => {
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      await login(email, password);
-      console.log('Login successful');
+      const user = await login(email, password);
+      console.log(user)
+      if (!user){
+        throw new Error("User not found")
+      }
+      const token = await user.getIdToken();
+      const userData = await findOrCreateUser(token);
+      setUserData(userData);
       createNotificationEvent(
         "Login Successful",
         `Succesfully logged into ${email}`,
         "success"
       );
-      navigate('/'); // Redirect after successful login
+      navigate('/');
     } catch (error) {
+      createNotificationEvent(
+        "Login Failed",
+        `Something went wrong while logging in`,
+        "danger", 
+        5000
+      );
       console.error('Error during login:', error);
+      await logout();
     }
   };
 
   const handleGoogleLogin = async () => {
     try {
-      await loginWithGoogle();
-      console.log('Google login successful');
+      const user = await loginWithGoogle();
+
+      // If user not found throw error
+      if (!user){
+        throw new Error("User not found")
+      }
+
+      const token = await user.getIdToken();
+      const userData = await findOrCreateUser(token);
+      setUserData(userData);
+      console.log("user data", userData);
       createNotificationEvent(
         "Login Successful",
         `Succesfully logged in`,
@@ -47,7 +70,14 @@ const Login: React.FC = () => {
       );
       navigate('/'); // Redirect after successful Google login
     } catch (error) {
+      createNotificationEvent(
+        "Login Failed",
+        `Something went wrong while logging in`,
+        "danger", 
+        5000
+      );
       console.error('Error during Google login:', error);
+      await logout();
     }
   };
 

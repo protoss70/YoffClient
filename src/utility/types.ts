@@ -55,3 +55,11 @@ export interface LanguageCard {
     callback?: (success: boolean) => void; // Optional callback function
     notification_time?: number; // Optional time for popup display
   }
+
+  export type UserDataType = {
+    _id: string,
+    email: string,
+    credits: string,
+    emailVerified: string,
+    demoClass: Date
+  }

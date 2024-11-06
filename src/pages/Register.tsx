@@ -4,12 +4,14 @@ import { useAuth } from '../context/authContext'; // Import the useAuth hook
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Link } from 'react-router-dom';
 import Button from '../components/Button/Button';
+import { findOrCreateUser } from '../api/user/getUser';
+import { createNotificationEvent } from '../utility/modal_utils';
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const { register, loginWithGoogle } = useAuth(); // Destructure context functions
+  const { register, loginWithGoogle, setUserData, logout } = useAuth(); // Destructure context functions
   const navigate = useNavigate();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,8 +33,20 @@ const Register: React.FC = () => {
       return;
     }
     try {
-      await register(email, password);
-      console.log('User registered successfully');
+      const user = await register(email, password);
+      
+      if (!user){
+        throw new Error("User not found");
+      }
+      
+      const token = await user.getIdToken();
+      const userData = await findOrCreateUser(token);
+      setUserData(userData);
+      createNotificationEvent(
+        "Register Successful",
+        `Succesfully logged in`,
+        "success"
+      );
       navigate('/'); // Redirect after successful registration
     } catch (error) {
       console.error('Error registering user:', error);
@@ -41,11 +55,31 @@ const Register: React.FC = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      await loginWithGoogle();
-      console.log('Google register successful');
+      const user = await loginWithGoogle();
+
+      // If user not found throw error
+      if (!user){
+        throw new Error("User not found")
+      }
+
+      const token = await user.getIdToken();
+      const userData = await findOrCreateUser(token);
+      setUserData(userData);
+      createNotificationEvent(
+        "Register Successful",
+        `Succesfully logged in`,
+        "success"
+      );
       navigate('/'); // Redirect after successful Google login
     } catch (error) {
-      console.error('Error with Google register:', error);
+      createNotificationEvent(
+        "Login Failed",
+        `Something went wrong while logging in`,
+        "danger", 
+        5000
+      );
+      console.error('Error during Google login:', error);
+      await logout();
     }
   };
 

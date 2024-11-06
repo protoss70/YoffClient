@@ -60,6 +60,9 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
       }
     );
   }
+  currentUser?.getIdToken().then((res) => {
+    console.log(res);
+  })
 
   const handleNavClick = (path: string) => {
     toggleMenu();
