@@ -25,6 +25,7 @@ jobs:
       - name: Build the project
         env:
           VITE_FIREBASE_CONFIG_BASE64: ${{ vars.VITE_FIREBASE_CONFIG_BASE64 }}
+          VITE_SERVER_PRODUCTION_URL: ${{vars.VITE_SERVER_PRODUCTION_URL}}
         run: npm run build
 
       - name: Install Firebase CLI
