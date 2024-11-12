@@ -10,6 +10,7 @@ import {
 } from '../auth/firebaseAuth';
 import { User } from 'firebase/auth';
 import { UserDataType } from '../utility/types';
+import { findOrCreateUser } from '../api/user/getUser';
 
 // Define the shape of your context data
 interface AuthContextType {
@@ -21,8 +22,11 @@ interface AuthContextType {
   sendPasswordResetEmail: (email: string) => Promise<void>; // Updated to include this
   isAuthenticated: boolean;
   userData: UserDataType | null;
-  setUserData: React.Dispatch<SetStateAction<UserDataType | null>>
+  setUserData: React.Dispatch<SetStateAction<UserDataType | null>>;
+  resetUserCache: () => void;
 }
+
+const CACHE_EXPIRY_TIME = 60 * 60 * 1000; // 1 hour in milliseconds
 
 // Create the context with the initial value
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -36,23 +40,52 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   // Load cached userData from localStorage on mount
   useEffect(() => {
     const cachedUserData = localStorage.getItem('userData');
-    if (cachedUserData && !userData) {
-      setUserData(JSON.parse(cachedUserData));
+    const cachedTimestamp = localStorage.getItem('userDataTimestamp');
+
+    if (cachedUserData && cachedTimestamp) {
+      const cacheAge = Date.now() - Number(cachedTimestamp);
+      if (cacheAge < CACHE_EXPIRY_TIME) {
+        // Cache is still valid
+        setUserData(JSON.parse(cachedUserData));
+        console.log('LOADED CACHE');
+      } else {
+        // Cache has expired
+        console.log('CACHE EXPIRED');
+        localStorage.removeItem('userData');
+        localStorage.removeItem('userDataTimestamp');
+      }
     }
   }, []);
 
   // Cache userData in localStorage whenever it changes
   useEffect(() => {
-    const cachedUserData = localStorage.getItem('userData');
-    if (userData) {
-      localStorage.setItem('userData', JSON.stringify(userData));
-      console.log("SET CACHE")
-    } else if (cachedUserData){
-      setUserData(JSON.parse(cachedUserData));
-      console.log("LOADED CACHE");  
+    async function getUserData() {
+      if (!currentUser) return;
+      const token = await currentUser.getIdToken();
+      const userD = await findOrCreateUser(token);
+      setUserData(userD);
     }
+
+    const cachedUserData = localStorage.getItem('userData');
+    if (!currentUser) {
+      localStorage.removeItem('userData');
+      localStorage.removeItem('userDataTimestamp');
+    }
+
+    if (userData) {
+      // Cache data with timestamp
+      localStorage.setItem('userData', JSON.stringify(userData));
+      localStorage.setItem('userDataTimestamp', Date.now().toString());
+      console.log('SET CACHE');
+    } else if (cachedUserData) {
+      setUserData(JSON.parse(cachedUserData));
+      console.log('LOADED CACHE');
+    } else {
+      getUserData();
+    }
+
     console.log(userData);
-  }, [userData]);
+  }, [userData, currentUser]);
 
   useEffect(() => {
     // Check for authenticated user when the component mounts
@@ -66,6 +99,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     };
     checkAuthStatus();
   }, []);
+
+  function resetUserCache() {
+    // Remove user data and timestamp from localStorage
+    localStorage.removeItem('userData');
+    localStorage.removeItem('userDataTimestamp');
+    
+    // Set userData state to null
+    setUserData(null);
+    console.log('CACHE RESET');
+  }
 
   // Function to handle login with email and password
   const login = async (email: string, password: string) => {
@@ -144,6 +187,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setUserData,
     sendPasswordResetEmail, // Provide this in the context
     isAuthenticated: isAuth,
+    resetUserCache,
   };
 
   return (

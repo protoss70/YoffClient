@@ -15,7 +15,7 @@ interface NavbarProps {
 
 const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
   const navigate = useNavigate();
-  const { isAuthenticated, logout, currentUser } = useAuth();
+  const { isAuthenticated, logout, currentUser, userData } = useAuth();
   const [language, setLanguage] = useState("English");
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const location = useLocation();
@@ -215,7 +215,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
                       <b>Email:</b> {currentUser?.email}
                     </div>
                     <div className='w-full p-2 text-left whitespace-nowrap'>
-                      <b>Credits:</b> 1
+                      <b>Credits:</b> {userData?.credits}
                     </div>
                     <button
                       onClick={() => {handleNavClick("my-classes")}}
@@ -305,7 +305,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
                     {currentUser?.email}
                   </div>
                   <div className='w-full p-2 px-6 text-left'>
-                    Credits: 1 demo credit
+                    <b>Credits:</b> {userData?.credits}
                   </div>
                   <button
                     onClick={() => {handleNavClick("my-classes")}}
