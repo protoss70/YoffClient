@@ -11,6 +11,7 @@ import {
 import { User } from 'firebase/auth';
 import { UserDataType } from '../utility/types';
 import { findOrCreateUser } from '../api/user/getUser';
+import { getUserGMTOffset } from '../utility/dates';
 
 // Define the shape of your context data
 interface AuthContextType {
@@ -62,7 +63,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     async function getUserData() {
       if (!currentUser) return;
       const token = await currentUser.getIdToken();
-      const userD = await findOrCreateUser(token);
+      const userD = await findOrCreateUser(token, getUserGMTOffset());
       setUserData(userD);
     }
 

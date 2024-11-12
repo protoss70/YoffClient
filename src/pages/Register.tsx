@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Button from '../components/Button/Button';
 import { findOrCreateUser } from '../api/user/getUser';
 import { createNotificationEvent } from '../utility/modal_utils';
+import { getUserGMTOffset } from '../utility/dates';
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -40,7 +41,7 @@ const Register: React.FC = () => {
       }
       
       const token = await user.getIdToken();
-      const userData = await findOrCreateUser(token);
+      const userData = await findOrCreateUser(token, getUserGMTOffset());
       setUserData(userData);
       createNotificationEvent(
         "Register Successful",
@@ -63,7 +64,7 @@ const Register: React.FC = () => {
       }
 
       const token = await user.getIdToken();
-      const userData = await findOrCreateUser(token);
+      const userData = await findOrCreateUser(token, getUserGMTOffset());
       setUserData(userData);
       createNotificationEvent(
         "Register Successful",

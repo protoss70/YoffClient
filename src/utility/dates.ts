@@ -1,3 +1,5 @@
+import { GMTOffset } from "./types";
+
 // Utility function to format an ISO date string to dd/mm/yyyy
 export const formatIsoDate = (isoDateString: string): string => {
     const date = new Date(isoDateString);
@@ -30,4 +32,20 @@ export function adjustForUserTimeZone(date: Date) {
     date: localDateString,
     time: localTimeString
   };
+}
+
+export function getUserGMTOffset(): GMTOffset {
+  const date = new Date();
+  const timeZoneOffset = date.getTimezoneOffset(); // The offset in minutes from UTC (positive if behind UTC, negative if ahead)
+  
+  const sign = timeZoneOffset > 0 ? '-' : '+'; // Determine whether the offset is positive or negative
+  const hours = Math.abs(Math.floor(timeZoneOffset / 60)); // Get the whole hours part of the offset
+  const formattedOffset = `GMT${sign}${hours}`; // Format it as GMT+X or GMT-X without padding
+
+  // Return the formatted offset if it's within the valid range, otherwise default to GMT+0
+  if (hours >= 0 && hours <= 14) {
+    return formattedOffset as GMTOffset;
+  }
+
+  return "GMT+0"; // Default if offset is out of the expected range
 }

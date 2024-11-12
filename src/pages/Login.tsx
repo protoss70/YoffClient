@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Button from '../components/Button/Button';
 import { createNotificationEvent } from '../utility/modal_utils';
 import { findOrCreateUser } from '../api/user/getUser';
+import { getUserGMTOffset } from '../utility/dates';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -30,7 +31,7 @@ const Login: React.FC = () => {
         throw new Error("User not found")
       }
       const token = await user.getIdToken();
-      const userData = await findOrCreateUser(token);
+      const userData = await findOrCreateUser(token, getUserGMTOffset());
       setUserData(userData);
       createNotificationEvent(
         "Login Successful",
@@ -60,7 +61,7 @@ const Login: React.FC = () => {
       }
 
       const token = await user.getIdToken();
-      const userData = await findOrCreateUser(token);
+      const userData = await findOrCreateUser(token, getUserGMTOffset());
       setUserData(userData);
       console.log("user data", userData);
       createNotificationEvent(
