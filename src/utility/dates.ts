@@ -10,3 +10,24 @@ export const formatIsoDate = (isoDateString: string): string => {
     // Return formatted date as dd/mm/yyyy
     return `${day}/${month}/${year}`;
   };
+
+// Utility function to adjust date for user's local timezone
+export function adjustForUserTimeZone(date: Date) {
+  // Ensure the input is a valid Date object
+  if (isNaN(date.getTime())) {
+    console.error("Invalid date input");
+    return { date: "Invalid Date", time: "Invalid Time" };
+  }
+
+  // Convert date to the user's local timezone and format
+  const localDateString = date.toLocaleDateString(); // User's locale for date
+  const localTimeString = date.toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit'
+  }); // User's locale for time
+  
+  return {
+    date: localDateString,
+    time: localTimeString
+  };
+}
