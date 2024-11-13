@@ -24,7 +24,7 @@ const Teacher_Select: React.FC = () => {
 
   useEffect(() => {
     async function getCards(){
-        const teacherCardValues = await getTeacherCards();
+        const teacherCardValues = await getTeacherCards(100);
         setTeachers(teacherCardValues);
     }
     getCards();
