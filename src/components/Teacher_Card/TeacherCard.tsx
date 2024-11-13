@@ -38,7 +38,8 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
   const handleTeacherClick = () => {
     navigate(`/teacher/${_id}`)
   }
-  const formattedName = name.replace(" ", "-") as keyof typeof teacherImages;
+  console.log(name.replace(" ", "-"))
+  const formattedName = name.replace(/ /g, "-") as keyof typeof teacherImages;
   const imagePath = teacherImages[formattedName] || ''; // Fallback if not found
 
   return (
@@ -75,6 +76,8 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
               countryCode = 'KR'; // Fallback to South Korea for Korean
             } else if (languageName === 'Arabic') {
               countryCode = 'SA'; // Fallback to Saudi Arabia for Arabic
+            } else if (languageName === "Turkish"){
+              countryCode = "TR";
             }
           }
 

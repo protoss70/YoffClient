@@ -69,6 +69,8 @@ const Teacher_Select: React.FC = () => {
         countryCode = 'KR'; // Fallback to South Korea for Korean
       } else if (languageName === 'Arabic') {
         countryCode = 'SA'; // Fallback to Saudi Arabia for Arabic
+      }else if (languageName === "Turkish"){
+        countryCode = "TR";
       }
     }
   

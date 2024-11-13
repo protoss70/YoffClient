@@ -24,8 +24,9 @@ const TeacherProfile: React.FC = () => {
         if (!teacherId) return;
         const teacherData: Teacher = await getTeacher(teacherId);
         setTeacher(teacherData);
-  
-        const formattedName = teacherData.name + "-" + teacherData.surname as keyof typeof teacherImages;
+        const fullnamePath = teacherData.name + "-" + teacherData.surname
+        console.log(fullnamePath.replace(" ", "-"))
+        const formattedName = fullnamePath.replace(/ /g, "-") as keyof typeof teacherImages;
         const image = teacherImages[formattedName] || ''; // Default to empty string if not found
         setImagePath(image); // Update the imagePath state
       }
@@ -105,7 +106,9 @@ const TeacherProfile: React.FC = () => {
                                 countryCode = 'KR'; // Fallback to South Korea for Korean
                                 } else if (languageName === 'Arabic') {
                                 countryCode = 'SA'; // Fallback to Saudi Arabia for Arabic
-                                }
+                                }else if (languageName === "Turkish"){
+                                    countryCode = "TR";
+                                  }
                             }
 
                             console.log(languageName, countryCode); // Debugging output

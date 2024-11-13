@@ -19,4 +19,6 @@ export const allLanguages: string[] = [
     "Arabic",
     "Korean",
     "Russian",
+    "Spanish",
+    "Turkish"
 ]

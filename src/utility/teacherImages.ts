@@ -6,6 +6,8 @@ import Marc from "../assets/teachers/Marc-Nassr.webp";
 import Masha from "../assets/teachers/Maria-Kolosova.webp";
 import Mostafa from "../assets/teachers/Mostafa-Agha.webp";
 import Nam from "../assets/teachers/Hyunuk-Nam.webp";
+import Emre from "../assets/teachers/Emre-Topcu.webp";
+import Darian from "../assets/teachers/Darian-Pérez Rodríguez.webp"
 
 
 export default {
@@ -16,5 +18,7 @@ export default {
     "Maria-Kolosova":Masha,
     "Mostafa-Agha":Mostafa,
     "Maria-Seledtsova": maria,
-    "Hyunuk-Nam": Nam
+    "Hyunuk-Nam": Nam,
+    "Emre-Topcu": Emre,
+    "Darian-Pérez-Rodríguez": Darian
 }
