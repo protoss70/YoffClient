@@ -16,15 +16,7 @@ export const languageToCountryCode: Record<string, string> = {
 
 export const allLanguages: string[] = [
     "English",
-    "German",
-    "Dutch",
-    "Czech",
-    "Spanish",
-    "Portuguese",
-    "French",
-    "Japanese",
+    "Arabic",
+    "Korean",
     "Russian",
-    "Italian",
-    "Urdu",
-    "Irish",
 ]

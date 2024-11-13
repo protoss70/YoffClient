@@ -4,24 +4,25 @@ import Flag from 'react-world-flags';
 import { languageToCountryCode } from '../../utility/languages';
 import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
+import teacherImages from '../../utility/teacherImages';
 
 interface TeacherCardProps {
-  image: string;
   name: string;
   country: string;
   hobbies: string[];
   languages: string[];
   className?: string; // Add className prop, defaulting to ""
   isAbsolute?: boolean;
+  _id: string;
   showCTA?:boolean;
 }
 
 const TeacherCard: React.FC<TeacherCardProps> = ({
-  image,
   name,
   country,
   hobbies,
   languages,
+  _id,
   className = '', // Default to an empty string
   isAbsolute=true,
   showCTA=false,
@@ -35,14 +36,16 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
     : 'h-12 w-12'; // Default size
 
   const handleTeacherClick = () => {
-    navigate(`/teacher/${name}`)
+    navigate(`/teacher/${_id}`)
   }
+  const formattedName = name.replace(" ", "-") as keyof typeof teacherImages;
+  const imagePath = teacherImages[formattedName] || ''; // Fallback if not found
 
   return (
     <div className={`flex flex-col p-5 pb-0 rounded-lg ${isAbsolute ? "card" : "hover:scale-105"} transition-all duration-300 teacherCard shadow-lg ${className}`}>
       {/* Image */}
       <div className="relative flex items-center justify-center w-full mb-5">
-        <img loading="lazy" onClick={handleTeacherClick} src={image} alt={`${name} profile image`} className="rounded-full hover:cursor-pointer cardImage" />
+        <img loading="lazy" onClick={handleTeacherClick} src={imagePath} alt={`${name} profile image`} className="object-cover rounded-full hover:cursor-pointer cardImage" />
         <div onClick={handleTeacherClick} className="absolute bottom-[-20px]  flex flex-col items-center justify-center px-3 py-1 text-white rounded-md bg-gradient-to-r from-main to-secondary font-gilroy">
           <div className="font-semibold hover:cursor-pointer hover:underline">{name}</div>
           <div className="font-medium">{country}</div>
@@ -59,19 +62,34 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
       {!showCTA ? <div className="flex flex-col mt-4 text-center font-gilroy">
         <div className="font-semibold text-custom_blue">Languages</div>
         <div className="flex justify-center gap-3 px-[10%]">
-          {languages.map((language, index) => {
-            const countryCode = languageToCountryCode[language]; // Get country code for the language
-            return countryCode ? (
-              <div key={index} className='flex flex-col items-center justify-center'>
-                <Flag
-                  code={countryCode} // Use country code
-                  alt={`${language} flag`}
-                  className={`transition-transform duration-200 rounded-3xl hover:scale-125 ${flagSizeClass}`}
-                />
-                <span className="mt-1 font-semibold text-md text-custom_blue">{language}</span>
-              </div>
-            ) : null; // If no mapping, return null
-          })}
+        {languages.map((language, index) => {
+          // Extract the language part before any parentheses (if any)
+          const languageName = language.split(' (')[0];
+
+          // Check for specific exceptions (Korean, Arabic)
+          let countryCode = languageToCountryCode[languageName];
+
+          // Fallback for specific exceptions
+          if (!countryCode) {
+            if (languageName === 'Korean') {
+              countryCode = 'KR'; // Fallback to South Korea for Korean
+            } else if (languageName === 'Arabic') {
+              countryCode = 'SA'; // Fallback to Saudi Arabia for Arabic
+            }
+          }
+
+          // Render flag and language if countryCode is found
+          return countryCode ? (
+            <div key={index} className="flex flex-col items-center justify-center">
+              <Flag
+                code={countryCode} // Use country code
+                alt={`${languageName} flag`}
+                className={`rounded-3xl ${flagSizeClass}`}
+              />
+              <span className="mt-1 font-semibold text-md text-nowrap text-custom_blue">{language}</span> {/* Display the full language with additional info */}
+            </div>
+          ) : null; // If no mapping, return null
+        })}
         </div>
       </div>: null}
       {showCTA ?

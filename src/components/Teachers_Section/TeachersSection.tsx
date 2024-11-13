@@ -1,71 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import arrowLeft from "../../assets/hero_page/arrowLeft.png";
-import teacher1 from "../../assets/hero_page/teacherImage1.webp";
-import teacher2 from "../../assets/hero_page/teacherImage2.webp";
-import teacher3 from "../../assets/hero_page/teacherImage3.webp";
-import teacher4 from "../../assets/hero_page/teacherImage4.webp";
-import teacher5 from "../../assets/hero_page/teacherImage5.webp";
 import TeacherCard from '../Teacher_Card/TeacherCard'; // Ensure the path is correct
+import { TeacherCardDisplay } from "../../utility/types";
+import { getTeacherCards } from "../../api/teacher/getTeacher";
 
 function TeachersSection() {
-    const teachers = [
-        {
-            image: teacher1,
-            name: "Eva Michael",
-            country: "Germany",
-            hobbies: ["Cooking", "Hiking", "Dancing", "Painting"],
-            languages: ["German", "Spanish", "Dutch", "Czech"],
-        },
-        {
-            image: teacher2,
-            name: "John Doe",
-            country: "USA",
-            hobbies: ["Reading", "Cycling", "Traveling"],
-            languages: ["English", "French"],
-        },
-        {
-            image: teacher3,
-            name: "Maria Silva",
-            country: "Brazil",
-            hobbies: ["Dancing", "Singing", "Surfing"],
-            languages: ["Portuguese", "Spanish"],
-        },
-        {
-            image: teacher4,
-            name: "Hiroshi Tanaka",
-            country: "Japan",
-            hobbies: ["Calligraphy", "Martial Arts"],
-            languages: ["Japanese", "English"],
-        },
-        {
-            image: teacher5,
-            name: "Anya Ivanova",
-            country: "Russia",
-            hobbies: ["Chess", "Ballet"],
-            languages: ["Russian", "English"],
-        },
-        {
-            image: teacher1,
-            name: "Liam O'Connor",
-            country: "Ireland",
-            hobbies: ["Football", "Cooking"],
-            languages: ["English", "Irish"],
-        },
-        {
-            image: teacher2,
-            name: "Sofia Rossi",
-            country: "Italy",
-            hobbies: ["Photography", "Cooking"],
-            languages: ["Italian", "English"],
-        },
-        {
-            image: teacher4,
-            name: "Ahmed Khan",
-            country: "Pakistan",
-            hobbies: ["Cricket", "Writing"],
-            languages: ["English", "French"],
+    const [teachers, setTeachers] = useState<TeacherCardDisplay[]>([])
+    useEffect(() => {
+        async function getCards(){
+            const teacherCardValues = await getTeacherCards();
+            setTeachers(teacherCardValues);
         }
-    ];
+        getCards();
+    }, [])
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -92,7 +39,7 @@ function TeachersSection() {
 
             {/* Teachers Slider */}
             <div className="flex relative justify-center mt-16 mb-10 h-[500px] items-center">
-                {Array.from({ length: 5 }).map((_, index) => {
+                {teachers.length > 0 ? Array.from({ length: 5 }).map((_, index) => {
                     const indexToDisplay = (currentIndex + index) % teachers.length;
                     const teacher = teachers[indexToDisplay];
 
@@ -109,15 +56,15 @@ function TeachersSection() {
                     return (
                         <TeacherCard
                             key={index}
-                            image={teacher.image}
-                            name={teacher.name}
-                            country={teacher.country}
+                            _id={teacher._id}
+                            name={`${teacher.name} ${teacher.surname}`}
+                            country={teacher.origin}
                             hobbies={teacher.hobbies}
                             languages={teacher.languages}
-                            className={cardClass} // Pass the dynamically assigned class name
-                        />
+                            className={cardClass}
+                            />
                     );
-                })}
+                }): null}
             </div>
 
             {/* Left and Right Arrows */}

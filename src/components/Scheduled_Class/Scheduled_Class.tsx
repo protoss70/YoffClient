@@ -24,8 +24,14 @@ const Scheduled_Class: React.FC<ScheduledClassProps> = ({ data, token, userId })
       createNotificationEvent(
         "Class Cancelled Successfully",
         "Your class has been cancelled and your credits refunded.",
-        "success",
-        3000
+        "success"
+      );
+    }else{
+      createNotificationEvent(
+        "Failed to cancel class",
+        "Oh, something went wrong. PLease try again later. If the issue persists please contact support.",
+        "danger",
+        6000
       );
     }
   }
