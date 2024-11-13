@@ -175,16 +175,16 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
           </div>
 
           {/* Mid Nav Buttons */}
-          <div className='flex justify-between font-poppins gap-9 max-900:hidden'>
+          <div className='flex justify-between font-poppins gap-9 max-1000:hidden'>
             <button onClick={() => handleNavClick("/#HeroSection")} className={`${activeIndex === 0 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>Home</button>
-            <button onClick={() => handleNavClick("/#HowItWorks")} className={`${activeIndex === 1 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline max-1100:hidden`}>How It Works</button>
+            <button onClick={() => handleNavClick("/#HowItWorks")} className={`${activeIndex === 1 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline max-1200:hidden`}>How It Works</button>
             <button onClick={() => handleNavClick("/#LanguageSelection")} className={`${activeIndex === 2 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>Languages</button>
             <button onClick={() => handleNavClick("/#PricingSection")} className={`${activeIndex === 3 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>Pricing</button>
             <button onClick={() => handleNavClick("/teachers")} className={`${activeIndex === 4 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>Teachers</button>
           </div>
 
           {/* End Nav Buttons */}
-          <div className='flex gap-6 p-1 font-poppins max-900:hidden'>
+          <div className='flex gap-6 p-1 font-poppins max-1000:hidden'>
 
             {/* LOGIN BUTTON */}
             {!isAuthenticated ? 

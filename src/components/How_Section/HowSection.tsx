@@ -8,7 +8,7 @@ import lines3 from "../../assets/hero_page/lines3.png";
 
 function HowSection() {
   return (
-    <section id="HowItWorks" className="px-24 mt-40 min-w-96 max-1300:px-12 max-900:px-6 max-900:mt-10 max-600:px-1 max-600:min-w-0">
+    <section id="HowItWorks" className="px-24 mt-40 min-w-96 max-1300:px-12 max-900:px-6 max-900:mt-28 max-800:mt-12 max-600:px-1 max-600:min-w-0">
         {/* Title */}
         <div className="flex justify-center w-full">
             <h1 className="text-6xl max-600:text-4xl">How It&nbsp;<span className="text-6xl max-600:text-4xl underline--double text-main">Works</span></h1>

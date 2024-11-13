@@ -11,7 +11,7 @@ interface HamburgerProps {
 const Hamburger: React.FC<HamburgerProps> = ({ toggleMenu, isOpen }) => {
 
   return (
-    <div className='hidden max-900:block'>
+    <div className='hidden max-1000:block'>
       <IconButton
         color="inherit"
         onClick={toggleMenu}
