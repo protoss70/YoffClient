@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 interface CreateFolderModalProps {
   show: boolean;
   handleClose: () => void;
-  handleSchedule: (language: string, isDemoClass: boolean) => boolean;
+  handleSchedule: (language: string, isDemoClass: boolean) => Promise<boolean>;
   isDemoCredit: boolean;
   languages: string[];
   date: string; // Expecting a date string in the format "YYYY-MM-DD HH:mm"
