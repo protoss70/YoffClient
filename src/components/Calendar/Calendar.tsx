@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment-timezone';
+import { Teacher } from '../../utility/types';
+import { useAuth } from '../../context/authContext';
+import { createScheduleModalEvent } from '../../utility/modal_utils';
+import { useNavigate } from 'react-router-dom';
+import { postScheduledClasses } from '../../api/schedule/postSchedule';
+import { handleScheduleNotification } from '../../utility/SchedulingErrorMessages';
 
 interface CalendarProps {
   initialSchedule: string[];
+  teacher: Teacher,
+  teacherImage: string
 }
 
-const Calendar: React.FC<CalendarProps> = ({initialSchedule}) => {
+const Calendar: React.FC<CalendarProps> = ({initialSchedule, teacher, teacherImage}) => {
   // Get today's date
   const today = new Date();
   const todayString = `${today.getDate()} ${today.toLocaleString('en-US', { weekday: 'short' }).toUpperCase()}`;
+
+  const { userData, currentUser } = useAuth();
 
   // Create an array for the next 14 days
   const dateRange = Array.from({ length: 14 }, (_, i) => {
@@ -32,6 +42,8 @@ const Calendar: React.FC<CalendarProps> = ({initialSchedule}) => {
   // State to manage the schedule with converted times
   const [schedule, setSchedule] = useState<string[]>([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     setSelectedTimezone(userTimeZone); // Set the user's timezone as the selected timezone
@@ -43,7 +55,6 @@ const Calendar: React.FC<CalendarProps> = ({initialSchedule}) => {
     });
   
     setSchedule(adjustedSchedule); // Set the adjusted schedule with the full date string
-    console.log(adjustedSchedule);
   }, []);
 
   // Function to go to the next set of dates
@@ -71,6 +82,41 @@ const Calendar: React.FC<CalendarProps> = ({initialSchedule}) => {
       label: `${zone} GMT ${sign}${hours}:${minutes}`
     };
   });
+
+  async function handlePostScheduleClass(date: string, language: string, isDemoClass: boolean){
+    if (!userData || !currentUser) return false;
+    
+    const token = await currentUser.getIdToken();
+    if (!token) return false;
+    try{
+      const response = await postScheduledClasses(date, teacher._id, userData._id, language, token, isDemoClass);
+      if (!response){
+        return false
+      }
+
+      handleScheduleNotification(response.code);
+      return response.success;
+    }catch{
+      return false;
+    }
+  }
+
+  function onDateClick(date: string, isOccupied: boolean){
+    if (isOccupied) return;
+    if (!userData) {
+      navigate("/login");
+      return;
+    };
+    createScheduleModalEvent(
+      async (language: string, isDemoClass: boolean) => { return await handlePostScheduleClass(date, language, isDemoClass)}, 
+      teacher.name,  // name
+      teacher.surname, // surname
+      teacher.languages, // languages
+      date, // date
+      teacherImage, // teacherImage
+      !userData.demoClass // isDemoCredit
+    );
+  }
 
   useEffect(() => {
     const adjustedSchedule = initialSchedule.map((isoString) => {
@@ -133,16 +179,29 @@ const Calendar: React.FC<CalendarProps> = ({initialSchedule}) => {
             <span className={`text-lg ${todayString === dateString ? 'text-main' : ''}`}>{dayName}</span>
             <span className={`text-lg ${todayString === dateString ? 'text-main' : ''}`}>{dayNumber}</span>
             <div className="flex flex-col w-full gap-2 mt-1">
-              {schedule
-                .filter(item => item.split('T')[0] === fullDate)
-                .map((time, index) => {
-                  const momentTime = moment(time).tz(selectedTimezone);
-                  return (
-                    <span key={index} className="text-sm font-semibold hover:cursor-pointer font-poppins p-0 h-4 border-b-[1px] w-9 text-center border-custom_gray">
-                      {momentTime.format('HH:mm')}
-                    </span>
-                  );
-                })}
+            {schedule
+  .filter(item => item.split('T')[0] === fullDate) // Filter schedule items matching the full date
+  .map((time, index) => {
+    const momentTime = moment(time).tz(selectedTimezone);
+
+    // Normalize the comparison to ISO string format
+    const isOccupied = Array.isArray(teacher.occupiedClassDates) && 
+      teacher.occupiedClassDates.some(occupied => 
+        new Date(occupied.date).toISOString() === new Date(time).toISOString()
+      );
+
+    return (
+      <span
+        key={index}
+        onClick={() => onDateClick(time, isOccupied)}
+        className={`text-sm font-semibold hover:cursor-pointer font-poppins p-0 h-4 border-b-[1px] w-9 text-center border-custom_gray ${
+          isOccupied ? '!text-danger !border-b-danger hover:!cursor-default' : '' // Add 'red' class if the time is in the occupied dates
+        }`}
+      >
+        {momentTime.format('HH:mm')}
+      </span>
+    );
+  })}
             </div>
           </div>
         ))}

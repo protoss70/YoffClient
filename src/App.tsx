@@ -11,7 +11,7 @@ import Teacher_Select from './pages/Teacher_Select';
 import TeacherProfile from './pages/TeacherProfile';
 import Modals from './components/Modals/Modals';
 import My_Classes from './pages/My_Classes';
-// import TestElement from './components/TestElement/TestElement';
+import TestElement from './components/TestElement/TestElement';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -43,7 +43,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/teacher/:teacherId" element={<TeacherProfile />} />
           <Route path="/my-classes" element={<My_Classes />} />
-          {/* <Route path="/test" element={<TestElement />} /> */}
+          <Route path="/test" element={<TestElement />} />
         </Routes>
       </Router>
       <Footer />

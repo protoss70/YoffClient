@@ -38,7 +38,6 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
   const handleTeacherClick = () => {
     navigate(`/teacher/${_id}`)
   }
-  console.log(name.replace(" ", "-"))
   const formattedName = name.replace(/ /g, "-") as keyof typeof teacherImages;
   const imagePath = teacherImages[formattedName] || ''; // Fallback if not found
 

@@ -25,7 +25,6 @@ const TeacherProfile: React.FC = () => {
         const teacherData: Teacher = await getTeacher(teacherId);
         setTeacher(teacherData);
         const fullnamePath = teacherData.name + "-" + teacherData.surname
-        console.log(fullnamePath.replace(" ", "-"))
         const formattedName = fullnamePath.replace(/ /g, "-") as keyof typeof teacherImages;
         const image = teacherImages[formattedName] || ''; // Default to empty string if not found
         setImagePath(image); // Update the imagePath state
@@ -92,7 +91,6 @@ const TeacherProfile: React.FC = () => {
                         <h3 className="w-full text-2xl font-semibold text-start font-gilroy text-main">Languages</h3>
                         <div className="flex justify-start gap-5 pt-1">
                         {teacher.languages.map((language, index) => {
-                            console.log('LANG', language);
 
                             // Extract the language part before any parentheses (if any)
                             const languageName = language.split(' (')[0];
@@ -111,8 +109,6 @@ const TeacherProfile: React.FC = () => {
                                   }
                             }
 
-                            console.log(languageName, countryCode); // Debugging output
-
                             // Render flag and language if countryCode is found
                             return countryCode ? (
                                 <div key={index} className="flex flex-col items-center">
@@ -129,7 +125,7 @@ const TeacherProfile: React.FC = () => {
                     </div>
                 </div>
                 <div className="flex justify-start w-full">
-                    <Calendar initialSchedule={teacher.scheduleDates} />
+                    <Calendar teacher={teacher} initialSchedule={teacher.scheduleDates} teacherImage={imagePath} />
                 </div>
 
                 {/* Teacher profile top bg image */}

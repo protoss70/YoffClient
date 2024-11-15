@@ -14,9 +14,17 @@ export const createNotificationEvent = (title: string, text: string, type: Notif
     window.dispatchEvent(showNotificationEvent);
   };
 
-export const createFolderModalEvent = (callback: (folderName: string) => void) => {
+export const createScheduleModalEvent = (
+  callback: (language: string, isDemoClass: boolean) => Promise<boolean>, 
+  name: string, 
+  surname: string,
+  languages: string[],
+  date: string,
+  teacherImage: string,
+  isDemoCredit: boolean,
+) => {
   const showCreateFolderModalEvent = new CustomEvent('showCreateFolder', { 
-    detail: { callback } 
+    detail: { callback, name, surname, languages, date, teacherImage, isDemoCredit } 
   });
   window.dispatchEvent(showCreateFolderModalEvent);
 };

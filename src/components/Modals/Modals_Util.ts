@@ -23,10 +23,17 @@ import {
     }
   };
 
-  export const handleCreateFolder = (event: CustomEvent, showCreateFolder: (callback: (folderName: string) => void) => void) => {
+  export const handleScheduleClassModal = (event: CustomEvent, showCreateFolder: (
+    callback: (language: string, isDemoClass: boolean) => Promise<boolean>, 
+    name: string, 
+    surname: string,
+    languages: string[],
+    date: string,
+    teacherImage: string,
+    isDemoCredit: boolean,) => void) => {
     if (event.detail) {
-      const { callback } = event.detail;
-      showCreateFolder(callback);
+      const { callback, name, surname, languages, date, teacherImage, isDemoCredit } = event.detail;
+      showCreateFolder(callback, name, surname, languages, date, teacherImage, isDemoCredit);
     }
   };
   
@@ -82,8 +89,15 @@ import {
     };
   };
 
-  export const setupCreateFolderListener = (showCreateFolder: (callback: (folderName: string) => void) => void) => {
-    const handleCustomEvent = (event: CustomEvent) => handleCreateFolder(event, showCreateFolder);
+  export const setupCreateFolderListener = (showCreateFolder: (
+    callback: (language: string, isDemoClass: boolean) => Promise<boolean>, 
+    name: string, 
+    surname: string,
+    languages: string[],
+    date: string,
+    teacherImage: string,
+    isDemoCredit: boolean,) => void) => {
+    const handleCustomEvent = (event: CustomEvent) => handleScheduleClassModal(event, showCreateFolder);
   
     window.addEventListener('showCreateFolder', handleCustomEvent as EventListener);
   
