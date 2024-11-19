@@ -167,7 +167,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
 
   return (
     <nav className="fixed top-0 left-0 z-30 w-full">
-      <div className='relative w-full h-24 px-24 bg-white shadow max-1300:px-12 max-900:px-6 max-600:px-1'>
+      <div className='relative w-full h-24 px-24 bg-white shadow-md max-1300:px-12 max-900:px-6 max-600:px-1'>
         <div className="flex items-center justify-between w-full">
           {/* LOGO */}
           <div onClick={() => handleNavClick("/")} className='flex items-center h-24 mr-28 hover:cursor-pointer'>
