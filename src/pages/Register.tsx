@@ -12,6 +12,8 @@ const Register: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState(''); // Add state for name
+  const [surname, setSurname] = useState(''); // Add state for surname
   const { register, loginWithGoogle, setUserData, logout } = useAuth(); // Destructure context functions
   const navigate = useNavigate();
 
@@ -27,6 +29,14 @@ const Register: React.FC = () => {
     setConfirmPassword(event.target.value);
   };
 
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
+  };
+
+  const handleSurnameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSurname(event.target.value);
+  };
+
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault();
     if (password !== confirmPassword) {
@@ -36,16 +46,16 @@ const Register: React.FC = () => {
     try {
       const user = await register(email, password);
       
-      if (!user){
+      if (!user) {
         throw new Error("User not found");
       }
-      
+
       const token = await user.getIdToken();
-      const userData = await findOrCreateUser(token, getUserGMTOffset());
+      const userData = await findOrCreateUser(token, getUserGMTOffset(), name, surname); // Pass name and surname in the request
       setUserData(userData);
       createNotificationEvent(
         "Register Successful",
-        `Succesfully logged in`,
+        `Successfully logged in`,
         "success"
       );
       navigate('/'); // Redirect after successful registration
@@ -59,16 +69,16 @@ const Register: React.FC = () => {
       const user = await loginWithGoogle();
 
       // If user not found throw error
-      if (!user){
-        throw new Error("User not found")
+      if (!user) {
+        throw new Error("User not found");
       }
 
       const token = await user.getIdToken();
-      const userData = await findOrCreateUser(token, getUserGMTOffset());
+      const userData = await findOrCreateUser(token, getUserGMTOffset()); // Pass name and surname in the request
       setUserData(userData);
       createNotificationEvent(
         "Register Successful",
-        `Succesfully logged in`,
+        `Successfully logged in`,
         "success"
       );
       navigate('/'); // Redirect after successful Google login
@@ -89,6 +99,32 @@ const Register: React.FC = () => {
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-md shadow-md">
         <h2 className="text-2xl font-bold">Register</h2>
         <form onSubmit={handleRegister} className="space-y-4">
+        <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 text-start">
+              First Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={handleNameChange}
+              required
+              className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label htmlFor="surname" className="block text-sm font-medium text-gray-700 text-start">
+              Last Name
+            </label>
+            <input
+              type="text"
+              id="surname"
+              value={surname}
+              onChange={handleSurnameChange}
+              required
+              className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+            />
+          </div>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 text-start">
               Email
@@ -116,12 +152,12 @@ const Register: React.FC = () => {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 text-start">
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 text-start">
               Confirm Password
             </label>
             <input
               type="password"
-              id="confirmPassword" // Update the id to match the value variable
+              id="confirmPassword"
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
               required

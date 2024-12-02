@@ -1,25 +1,38 @@
 import axios from 'axios';
 import { UserDataType, GMTOffset } from '../../utility/types';
+
 const serverUrl = import.meta.env.VITE_SERVER_PRODUCTION_URL;
 
 // Function to make the GET request
-export const findOrCreateUser = async (token: string, timezone: GMTOffset): Promise<UserDataType> => {
+export const findOrCreateUser = async (
+  token: string, 
+  timezone: GMTOffset, 
+  name?: string, 
+  surname?: string
+): Promise<UserDataType> => {
   if (!serverUrl) {
     throw new Error('Server URL is not defined in the environment');
   }
 
   try {
-    // Sending the POST request with Bearer token in Authorization header and timezone in the body
+    // Combine name and surname into a single fullName if both exist
+    const fullName = name && surname ? `${name} ${surname}` : undefined;
+
+    // Prepare the body object, including fullName if it exists
+    const body: Record<string, string> = { timezone };
+
+    if (fullName) {
+      body.fullName = fullName;
+    }
+
+    // Sending the POST request with Bearer token in Authorization header and body containing timezone and fullName
     const response = await axios.post(
       `${serverUrl}/api/users/findOrCreate`,
-      { timezone },  // Add the timezone to the request body
+      body,  // Send the full body with timezone and optionally fullName
       {
         headers: {
           Authorization: `Bearer ${token}`,
-        },
-        data: {
-          timezone
-        },
+        }
       }
     );
 
