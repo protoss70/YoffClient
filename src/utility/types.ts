@@ -34,7 +34,7 @@ export const pricingPlans = {
 export interface LanguageCard {
     language: string;         // The name of the language
     teachersCount: number;    // The number of teachers for that language
-    flagSrc: string;          // The source of the flag image
+    flagCode: string;          // The source of the flag image
   }
 
   export interface ButtonConfig {

@@ -2,6 +2,7 @@
 import React from "react";
 import { LanguageCard as LanguageCardType } from "../../utility/types"; // Adjust the path as necessary
 import arrowLeft from "../../assets/hero_page/arrowMain.png";
+import Flag from "react-world-flags";
 
 interface LanguageCardProps {
   languageCard: LanguageCardType;
@@ -13,12 +14,11 @@ const LanguageCard: React.FC<LanguageCardProps> = ({ languageCard }) => {
       {/* Flag Image and Text */}
       <div className="flex gap-3">
         <div className="bg-[#b671ff33] p-1 rounded-full">
-          <div className="bg-gradient-to-r from-main to-[#CC5FB8] w-16 p-4 rounded-full">
-            <img
-              loading="lazy"
-              src={languageCard.flagSrc}
+          <div className="bg-gradient-to-r from-main to-[#CC5FB8] w-16 h-16 p-2 rounded-full">
+            <Flag
+              code={languageCard.flagCode} // Replace this with the actual country code field in your data
               alt={`${languageCard.language} flag`}
-              className="w-16"
+              style={{ width: "100%", height: "100%", borderRadius: "100%" }}
             />
           </div>
         </div>

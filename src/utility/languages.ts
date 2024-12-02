@@ -11,7 +11,9 @@ export const languageToCountryCode: Record<string, string> = {
     Italian: 'IT',
     Urdu: 'PK',
     Irish: 'IE',
-    // Add more mappings as needed
+    Korean: 'KR', // South Korea for Korean
+    Arabic: 'SA', // Saudi Arabia for Arabic
+    Turkish: 'TR', // Turkey for Turkish
 };
 
 export const allLanguages: string[] = [
@@ -22,3 +24,15 @@ export const allLanguages: string[] = [
     "Spanish",
     "Turkish"
 ]
+
+export type Language = (typeof allLanguages)[number]; // Infer a union type from the array
+
+// Define a mapped type for teacher counts
+export const languageTeacherCounts: Record<Language, number> = {
+    English: 4,
+    Arabic: 3,
+    Korean: 2,
+    Russian: 2,
+    Spanish: 1,
+    Turkish: 2,
+  };

@@ -1,28 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import dutchFlag from "../../assets/flags/dutch.png";
-import germanFlag from "../../assets/flags/german.png";
-import spanishFlag from "../../assets/flags/spanish.png";
-import czechFlag from "../../assets/flags/czech.png";
-import arabicFlag from "../../assets/flags/arabic.png";
-import chineseFlag from "../../assets/flags/chinese.png";
-import frenchFlag from "../../assets/flags/french.png";
-import italianFlag from "../../assets/flags/italian.png";
 import LanguageCard from "../LanguageCard/LanguageCard"; // Adjust the import path as necessary
-
-const languageData = [
-  { language: "Spanish", teachersCount: 7, flagSrc: spanishFlag },
-  { language: "Czech", teachersCount: 1, flagSrc: czechFlag },
-  { language: "Arabic", teachersCount: 12, flagSrc: arabicFlag },
-  { language: "Italian", teachersCount: 3, flagSrc: italianFlag },
-  { language: "French", teachersCount: 26, flagSrc: frenchFlag },
-  { language: "German", teachersCount: 2, flagSrc: germanFlag },
-  { language: "Chinese", teachersCount: 17, flagSrc: chineseFlag },
-  { language: "Dutch", teachersCount: 4, flagSrc: dutchFlag },
-];
+import { languageToCountryCode, allLanguages, languageTeacherCounts } from "../../utility/languages"; // Adjust path
 
 function LanguageSection() {
   const navigate = useNavigate();
-  
+
+  // Build `languageData` dynamically
+  const languageData = allLanguages.map((language: string) => ({
+    language,
+    teachersCount: languageTeacherCounts[language] || 0, // Default to 0 if no count is found
+    flagCode: languageToCountryCode[language] || "UN", // Use "UN" as fallback flag
+  }));
+
   return (
     <section
       id="LanguageSelection"
@@ -41,7 +30,7 @@ function LanguageSection() {
               languageCard={{
                 language: language.language,
                 teachersCount: language.teachersCount,
-                flagSrc: language.flagSrc,
+                flagCode: language.flagCode,
               }}
             />
           </div>

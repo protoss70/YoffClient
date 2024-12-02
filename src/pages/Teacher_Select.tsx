@@ -61,18 +61,7 @@ const Teacher_Select: React.FC = () => {
     const languageName = language.split(' (')[0];
   
     // Handle language fallbacks for specific languages like Korean and Arabic
-    let countryCode = languageToCountryCode[languageName];
-  
-    if (!countryCode) {
-      // Fallbacks for specific languages
-      if (languageName === 'Korean') {
-        countryCode = 'KR'; // Fallback to South Korea for Korean
-      } else if (languageName === 'Arabic') {
-        countryCode = 'SA'; // Fallback to Saudi Arabia for Arabic
-      }else if (languageName === "Turkish"){
-        countryCode = "TR";
-      }
-    }
+    const countryCode = languageToCountryCode[languageName];
   
     return (
       <section key={language} className="px-24 my-10 max-1300:px-12 max-900:px-6 max-600:px-1">

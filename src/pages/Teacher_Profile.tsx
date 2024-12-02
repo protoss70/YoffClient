@@ -96,18 +96,7 @@ const TeacherProfile: React.FC = () => {
                             const languageName = language.split(' (')[0];
 
                             // Check for specific exceptions (Korean, Arabic)
-                            let countryCode = languageToCountryCode[languageName];
-
-                            // Fallback for specific exceptions
-                            if (!countryCode) {
-                                if (languageName === 'Korean') {
-                                countryCode = 'KR'; // Fallback to South Korea for Korean
-                                } else if (languageName === 'Arabic') {
-                                countryCode = 'SA'; // Fallback to Saudi Arabia for Arabic
-                                }else if (languageName === "Turkish"){
-                                    countryCode = "TR";
-                                  }
-                            }
+                            const countryCode = languageToCountryCode[languageName];
 
                             // Render flag and language if countryCode is found
                             return countryCode ? (
