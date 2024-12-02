@@ -12,7 +12,7 @@ export const languageToCountryCode: Record<string, string> = {
     Urdu: 'PK',
     Irish: 'IE',
     Korean: 'KR', // South Korea for Korean
-    Arabic: 'SA', // Saudi Arabia for Arabic
+    Arabic: 'AE', // Saudi Arabia for Arabic
     Turkish: 'TR', // Turkey for Turkish
 };
 
@@ -34,5 +34,5 @@ export const languageTeacherCounts: Record<Language, number> = {
     Korean: 2,
     Russian: 2,
     Spanish: 1,
-    Turkish: 2,
+    Turkish: 1,
   };

@@ -71,7 +71,7 @@ const Scheduled_Class: React.FC<ScheduledClassProps> = ({ data, token, userId })
         isDeleted ? "hidden" : ""
       }`}
     >
-      <h1 className="text-3xl font-bold">{data.language} Class</h1>
+      <h1 className="text-3xl font-bold">{data.language.split(" ")[0]} Class</h1>
       <div className="flex justify-between gap-10">
         <div>
           <div className="flex gap-2">

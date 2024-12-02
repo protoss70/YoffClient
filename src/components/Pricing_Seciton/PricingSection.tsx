@@ -68,15 +68,15 @@ function PricingSection() {
               {/* Included Items in Plan */}
               <div className="flex gap-3 font-poppins">
                 <img className="w-5 h-5" src={pricingTick} alt="Tick icon" />
-                <span className="text-sm font-normal">$11.25 per class</span>
+                <span className="text-sm font-normal">$11.25 Per Class</span>
               </div>
               <div className="flex gap-3 font-poppins">
                 <img className="w-5 h-5" src={pricingTick} alt="Tick icon" />
                 <span className="text-sm font-normal">24/7 Support</span>
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-3 font-poppins">
                 <img className="w-5 h-5" src={pricingTick} alt="Tick icon" />
-                <span className="text-sm font-normal">Lorem Ipsum is simply dummy text</span>
+                <span className="text-sm font-normal">Free Demo Class</span>
               </div>
             </div>
           </div>
@@ -110,13 +110,9 @@ function PricingSection() {
                 <img className="w-5 h-5" src={premiumTick} alt="Tick icon" />
                 <span className="text-sm font-normal">24/7 Support</span>
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-3 font-poppins">
                 <img className="w-5 h-5" src={premiumTick} alt="Tick icon" />
-                <span className="text-sm font-normal">Lorem Ipsum is simply dummy text</span>
-              </div>
-              <div className="flex gap-3">
-                <img className="w-5 h-5" src={premiumTick} alt="Tick icon" />
-                <span className="text-sm font-normal">Lorem Ipsum is simply dummy text</span>
+                <span className="text-sm font-normal">Free Demo Class</span>
               </div>
             </div>
           </div>
@@ -151,19 +147,15 @@ function PricingSection() {
               {/* Included Items in Plan */}
               <div className="flex gap-3 font-poppins">
                 <img className="w-5 h-5" src={pricingTick} alt="Tick icon" />
-                <span className="text-sm font-normal">$7 per class</span>
+                <span className="text-sm font-normal">$7 Per class</span>
               </div>
               <div className="flex gap-3 font-poppins">
                 <img className="w-5 h-5" src={pricingTick} alt="Tick icon" />
                 <span className="text-sm font-normal">24/7 Support</span>
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-3 font-poppins">
                 <img className="w-5 h-5" src={pricingTick} alt="Tick icon" />
-                <span className="text-sm font-normal">Lorem Ipsum is simply dummy text</span>
-              </div>
-              <div className="flex gap-3">
-                <img className="w-5 h-5" src={pricingTick} alt="Tick icon" />
-                <span className="text-sm font-normal">Lorem Ipsum is simply dummy text</span>
+                <span className="text-sm font-normal">Free Demo Class</span>
               </div>
             </div>
           </div>

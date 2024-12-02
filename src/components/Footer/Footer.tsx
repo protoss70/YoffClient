@@ -36,15 +36,15 @@ const Footer: React.FC = () => {
                 <h3 className='text-xl font-semibold font-gilroy max-900:font-extrabold'>Contact Information</h3>
                 <div className='flex gap-3 ml-1'>
                     <img className='w-4' src={call} alt="phone icon" />
-                    845-123-4567
+                    962-963-10-31
                 </div>
                 <div className='flex gap-3 ml-1'>
                     <img className='w-4' src={email} alt="phone icon" />
-                    www.info@yoffacademy.com
+                    info@yoff.academy
                 </div>
                 <div className='flex gap-3 ml-1'>
                     <img className='w-4' src={location} alt="phone icon" />
-                    Address: 13951 Jefferson Davis Hwy <br /> Woodbridge, VA 22191
+                    Banskobystrická 2081/9, 193 00 <br /> Praha 9, Czech Republic
                 </div>
             </div>
 

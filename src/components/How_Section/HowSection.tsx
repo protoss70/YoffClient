@@ -31,7 +31,7 @@ function HowSection() {
                 </h2>
 
                 <div className="mt-3 text-sm font-normal leading-6 max-1300:mt-2 font-poppins">
-                  Select from a wide range of languages, from popular choices like Spanish and French to niche languages like Japanese or Arabic.
+                Select from a wide range of languages, from popular choices like English and Spanish to unique options like Arabic, Korean, Turkish, and Russian.
                 </div>
 
                 {/* Lines */}
@@ -58,7 +58,7 @@ function HowSection() {
                 </h2>
 
                 <div className="mt-3 text-sm font-normal leading-6 max-1300:mt-2 font-poppins">
-                  Schedule lessons at times that work for you. Learn one-on-one with native speakers or join group classes for a more interactive.              
+                  Schedule lessons at times that work for you. Learn one-on-one with experienced teachers.           
                 </div>
 
                 {/* Lines */}
@@ -88,7 +88,7 @@ function HowSection() {
                 </h2>
 
                 <div className="mt-3 text-sm font-normal leading-6 max-1300:mt-2 font-poppins">
-                  Join live sessions with experienced teachers, access interactive learning materials, and practice with fellow students.              
+                  Join live sessions with expert teachers, access interactive learning materials.             
                 </div>
                 {/* Lines */}
                 <div className="absolute top-[-55px] right-[-100px] z-[-1] max-1100:hidden">
@@ -120,7 +120,7 @@ function HowSection() {
                 </h2>
 
                 <div className="mt-3 text-sm font-normal leading-6 max-1300:mt-2 font-poppins">
-                  Receive feedback after every session and track your learning journey with our progress dashboard.              
+                Enjoy personalized feedback after every session, track your progress, and stay on course to achieve your language goals.          
                 </div>
               </div>
             </div>
