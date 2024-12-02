@@ -10,6 +10,27 @@ export interface Teacher {
     occupiedClassDates: {date: string}[];
 }
 
+export const pricingPlans = {
+  basic: {
+    name: 'Basic',
+    price: 45,
+    perClass: 11.25,
+    amountOfClasses: 4
+  },
+  premium: {
+    name: 'Premium',
+    price: 90,
+    perClass: 9,
+    amountOfClasses: 10
+  },
+  ultimate: {
+    name: 'Ultimate',
+    price: 170,
+    perClass: 7,
+    amountOfClasses: 24
+  }
+}
+
 export interface LanguageCard {
     language: string;         // The name of the language
     teachersCount: number;    // The number of teachers for that language

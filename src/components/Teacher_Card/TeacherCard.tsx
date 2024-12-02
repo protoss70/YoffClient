@@ -55,7 +55,7 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
       {/* Hobbies */}
       <div className="flex flex-col mt-4 text-center font-gilroy">
         <div className="font-semibold text-custom_blue">Hobbies</div>
-        <div className="font-medium">{hobbies.join(', ')}</div>
+        <div className="font-medium">{hobbies.slice(0, 2).join(', ')}</div>
       </div>
 
       {/* Languages */}

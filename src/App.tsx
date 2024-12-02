@@ -8,7 +8,7 @@ import { AuthProvider } from './context/authContext';
 import ForgotPassword from './pages/Forgot_Password';
 import Footer from './components/Footer/Footer';
 import Teacher_Select from './pages/Teacher_Select';
-import TeacherProfile from './pages/TeacherProfile';
+import TeacherProfile from './pages/Teacher_Profile';
 import Modals from './components/Modals/Modals';
 import My_Classes from './pages/My_Classes';
 // import TestElement from './components/TestElement/TestElement';
