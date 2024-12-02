@@ -3,6 +3,7 @@ import { ScheduledClassType } from "../../utility/types";
 import { adjustForUserTimeZone, formatIsoDate } from "../../utility/dates";
 import { deleteScheduledClass } from "../../api/schedule/deleteSchedule";
 import { createNotificationEvent, createPopupEvent } from "../../utility/modal_utils";
+import { Link } from 'react-router-dom';
 
 interface ScheduledClassProps {
   data: ScheduledClassType;
@@ -17,6 +18,9 @@ const Scheduled_Class: React.FC<ScheduledClassProps> = ({ data, token, userId })
   const date = new Date(data.date);
   const _date = adjustForUserTimeZone(date);
 
+  // Check if the class is in the past
+  const classIsInPast = new Date() > date;
+
   async function handleDelete() {
     const result = await deleteScheduledClass(data._id, token, userId, teacherData._id);
     setIsDeleted(result);
@@ -26,10 +30,10 @@ const Scheduled_Class: React.FC<ScheduledClassProps> = ({ data, token, userId })
         "Your class has been cancelled and your credits refunded.",
         "success"
       );
-    }else{
+    } else {
       createNotificationEvent(
         "Failed to cancel class",
-        "Oh, something went wrong. PLease try again later. If the issue persists please contact support.",
+        "Oh, something went wrong. Please try again later. If the issue persists please contact support.",
         "danger",
         6000
       );
@@ -72,9 +76,7 @@ const Scheduled_Class: React.FC<ScheduledClassProps> = ({ data, token, userId })
         <div>
           <div className="flex gap-2">
             <span className="font-bold">Teacher:</span>
-            <span className="font-semibold text-blue-600 underline hover:cursor-pointer">
-              {teacherData.name} {teacherData.surname}
-            </span>
+            <Link className='font-semibold text-blue-600 underline hover:cursor-pointer' to={`/teacher/${teacherData._id}`}>{teacherData.name} {teacherData.surname}</Link>
           </div>
           <div className="flex gap-2">
             <span className="font-bold">Duration:</span>
@@ -93,12 +95,15 @@ const Scheduled_Class: React.FC<ScheduledClassProps> = ({ data, token, userId })
         </div>
       </div>
       <div className="flex justify-end">
-        <button
-          onClick={handleCancelClick}
-          className="p-2 text-white transition-all duration-200 rounded-lg bg-danger hover:bg-danger-dark"
-        >
-          Cancel Class
-        </button>
+      <button
+        onClick={handleCancelClick}
+        className={`p-2 text-white transition-all duration-200 rounded-lg ${
+          classIsInPast ? "bg-gray-400" : "bg-danger hover:bg-danger-dark"
+        }`}
+        disabled={classIsInPast}  // Disable button if the class is in the past
+      >
+        Cancel Class
+      </button>
       </div>
     </div>
   );
