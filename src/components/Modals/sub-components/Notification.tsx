@@ -34,7 +34,7 @@ const Notification: React.FC<NotificationProps> = ({
 
   return (
     <div
-      className={`fixed right-1/2 translate-x-1/2 z-50 min-w-[500px] p-4 rounded-lg shadow-lg transition-all duration-500 ease-in-out ${
+      className={`fixed right-1/2 translate-x-1/2 z-50 min-w-[300px] max-1000:text-sm p-4 rounded-lg shadow-lg transition-all duration-500 ease-in-out ${
         isVisible ? 'top-28 opacity-100' : 'top-[-100px] opacity-0'
       } ${typeClasses[type]}`}
     >
