@@ -93,7 +93,9 @@ const TeacherProfile: React.FC = () => {
                         {teacher.languages.map((language, index) => {
 
                             // Extract the language part before any parentheses (if any)
-                            const languageName = language.split(' (')[0];
+                            const splitLanguage = language.split(' (');
+                            const languageName = splitLanguage[0];
+                            const languageLevel = " (" + splitLanguage[1] || ""
 
                             // Check for specific exceptions (Korean, Arabic)
                             const countryCode = languageToCountryCode[languageName];
@@ -106,7 +108,7 @@ const TeacherProfile: React.FC = () => {
                                     alt={`${languageName} flag`}
                                     className="w-12 h-12 duration-200 rounded-2xl"
                                 />
-                                <span className="mt-1 font-semibold font-gilroy text-md">{language}</span> {/* Display the full language with additional info */}
+                                <span className="mt-1 font-semibold font-gilroy text-md">{languageName}<span className='text-sm font-normal'>{languageLevel}</span></span> {/* Display the full language with additional info */}
                                 </div>
                             ) : null; // If no mapping, return null
                             })}

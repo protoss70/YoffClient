@@ -32,7 +32,7 @@ const Teacher_Select: React.FC = () => {
 
   // Default CSS variable values
   const defaultCSSVariables: Record<string, string> = {
-    "--card-width-difference": "50px",
+    "--card-width-difference": "40px",
     "--card-width": "350px",
     "--card-height-difference": "50px",
     "--card-height": "500px",

@@ -64,7 +64,9 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
         <div className="flex justify-center gap-3 px-[10%]">
         {languages.map((language, index) => {
           // Extract the language part before any parentheses (if any)
-          const languageName = language.split(' (')[0];
+          const splitLanguage = language.split(' (');
+          const languageName = splitLanguage[0];
+          const languageLevel = " (" + splitLanguage[1] || ""
 
           // Check for specific exceptions (Korean, Arabic)
           const countryCode = languageToCountryCode[languageName];
@@ -77,7 +79,7 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
                 alt={`${languageName} flag`}
                 className={`rounded-3xl ${flagSizeClass}`}
               />
-              <span className="mt-1 font-semibold text-md text-nowrap text-custom_blue">{language}</span> {/* Display the full language with additional info */}
+              <span className="mt-1 font-semibold text-md text-nowrap text-custom_blue">{languageName}<span className='text-sm font-normal'>{languageLevel}</span></span>
             </div>
           ) : null; // If no mapping, return null
         })}
