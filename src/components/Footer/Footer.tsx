@@ -25,10 +25,7 @@ const Footer: React.FC = () => {
             <div className='flex flex-col gap-5 max-900:basis-1/3'>
                 <h3 className='text-xl font-semibold max-900:font-bold font-gilroy'>Quick Links</h3>
                 <a className='font-poppins hover:underline hover:cursor-pointer' href="/#HeroSection">Home</a>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#HowItWorks">How It Works</a>
                 <a className='font-poppins hover:underline hover:cursor-pointer' href="/#LanguageSelection">Languages</a>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/teachers">Teachers</a>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#PricingSection">Pricing</a>
             </div>
 
             {/* Contact Info */}
@@ -60,13 +57,29 @@ const Footer: React.FC = () => {
         {/* Footer Bottom section */}
         <div className='absolute z-50 flex justify-end gap-5 bottom-3 right-28 max-1100:right-4 max-1300:right-14 max-800:right-5'>
             <div>
-                <img className='w-12 max-900:w-10 hover:cursor-pointer max-800:w-11' src={instagram} alt="Instagram icon" />
+                <a 
+                    href="https://www.instagram.com/yoffacademy/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                >
+                    <img 
+                        className="w-12 max-900:w-10 hover:cursor-pointer max-800:w-11" 
+                        src={instagram} 
+                        alt="Instagram icon" 
+                    />
+                </a>
             </div>
             <div>
                 <img className='w-12 max-900:w-10 hover:cursor-pointer max-800:w-11' src={twitter} alt="Twitter icon" />
             </div>
             <div>
+                <a 
+                    href="https://www.linkedin.com/company/yoff-academy/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                >
                 <img className='w-12 max-900:w-10 hover:cursor-pointer max-800:w-11' src={linkedIn} alt="Linkedin icon" />
+                </a>
             </div>
         </div>
 
