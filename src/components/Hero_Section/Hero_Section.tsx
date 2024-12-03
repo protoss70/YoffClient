@@ -4,6 +4,13 @@ import Button from "../Button/Button";
 
 
 function HeroSeciton() {
+
+  const handleOnclick = () => {
+    const element = document.getElementById("countdown");
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+  }
   return (
     <section className="relative opacity-100">
       {/* Hero Content */}
@@ -22,7 +29,7 @@ function HeroSeciton() {
           </div>
           <br />
           <div className="max-800:mx-24 max-600:mx-0">
-            <Button text='Get Started' variant='inline' wrapperClasses="max-800:!w-full" buttonClasses='!px-7 max-800:!w-full max-800:!text-lg !py-3 font-poppins !shadow-inner  max-1100:!py-3 max-1100:!px-6 max-1100:!text-base'/>
+            <Button text='Launching 06/12/2024' onClick={handleOnclick} variant='inline' wrapperClasses="max-800:!w-full" buttonClasses='!px-7 max-800:!w-full max-800:!text-lg !py-3 font-poppins !shadow-inner  max-1100:!py-3 max-1100:!px-6 max-1100:!text-base'/>
           </div>
         </div>
         

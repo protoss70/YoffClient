@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import LanguageCard from "../LanguageCard/LanguageCard"; // Adjust the import path as necessary
 import { languageToCountryCode, allLanguages, languageTeacherCounts } from "../../utility/languages"; // Adjust path
 
 function LanguageSection() {
-  const navigate = useNavigate();
 
   // Build `languageData` dynamically
   const languageData = allLanguages.map((language: string) => ({
@@ -25,7 +23,7 @@ function LanguageSection() {
       {/* Language Cards Wrapper */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-1000:grid-cols-2 max-600:grid-cols-1 max-1380:grid-cols-3">
         {languageData.map((language, index) => (
-          <div key={index} onClick={() => navigate(`/teachers?langFilter=${language.language}`)}>
+          <div key={index} onClick={() => {}}>
             <LanguageCard
               languageCard={{
                 language: language.language,

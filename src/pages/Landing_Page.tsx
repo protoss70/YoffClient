@@ -1,10 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import HeroSeciton from '../components/Hero_Section/Hero_Section';
-import HowSection from '../components/How_Section/HowSection';
 import LanguageSection from '../components/Languages_Section/LanguageSection';
-import PricingSection from '../components/Pricing_Seciton/PricingSection';
-import TeachersSection from '../components/Teachers_Section/TeachersSection';
-import ContactSection from '../components/Contact_Section/ContactSection';
+import Countdown from '../components/Countdown/Countdown';
 
 interface LandingPageProps {
   setCurrentSection: (section: string) => void; // Accept setCurrentSection prop
@@ -51,18 +48,11 @@ const Landing_Page: React.FC<LandingPageProps> = ({ setCurrentSection }) => {
       <div ref={sectionsRef.hero} id="hero">
         <HeroSeciton />
       </div>
-      <div ref={sectionsRef.how} id="how">
-        <HowSection />
-      </div>
-      <TeachersSection />
       <div ref={sectionsRef.language} id="language">
         <LanguageSection />
       </div>
-      <div ref={sectionsRef.pricing} id="pricing">
-        <PricingSection />
-      </div>
       <div>
-      <ContactSection />
+        <Countdown />
       </div>
     </div>
   );

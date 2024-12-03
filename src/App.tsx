@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Landing_Page from './pages/Landing_Page';
-import Login from './pages/Login';
-import Register from './pages/Register';
+// import Login from './pages/Login';
+// import Register from './pages/Register';
 import NavBar from './components/Navbar/Navbar';
 import { AuthProvider } from './context/authContext';
-import ForgotPassword from './pages/Forgot_Password';
+// import ForgotPassword from './pages/Forgot_Password';
 import Footer from './components/Footer/Footer';
-import Teacher_Select from './pages/Teacher_Select';
-import TeacherProfile from './pages/Teacher_Profile';
+// import Teacher_Select from './pages/Teacher_Select';
+// import TeacherProfile from './pages/Teacher_Profile';
 import Modals from './components/Modals/Modals';
-import My_Classes from './pages/My_Classes';
-import TestElement from './components/TestElement/TestElement';
+// import My_Classes from './pages/My_Classes';
+// import TestElement from './components/TestElement/TestElement';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -37,13 +37,13 @@ function App() {
             path="/"
             element={<Landing_Page setCurrentSection={setCurrentSection} />} // Pass setCurrentSection to Landing_Page
           />
-          <Route path="/teachers" element={<Teacher_Select />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/teacher/:teacherId" element={<TeacherProfile />} />
-          <Route path="/my-classes" element={<My_Classes />} />
-          <Route path="/test" element={<TestElement />} />
+          {/* <Route path="/teachers" element={<Teacher_Select />} /> */}
+          {/* <Route path="/login" element={<Login />} /> */}
+          {/* <Route path="/register" element={<Register />} /> */}
+          {/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
+          {/* <Route path="/teacher/:teacherId" element={<TeacherProfile />} /> */}
+          {/* <Route path="/my-classes" element={<My_Classes />} /> */}
+          {/* <Route path="/test" element={<TestElement />} /> */}
         </Routes>
       </Router>
       <Footer />
