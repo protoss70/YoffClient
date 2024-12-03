@@ -12,8 +12,7 @@ const Register: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [name, setName] = useState(''); // Add state for name
-  const [surname, setSurname] = useState(''); // Add state for surname
+  const [fullName, setFullName] = useState(''); // Add state for name
   const { register, loginWithGoogle, setUserData, logout } = useAuth(); // Destructure context functions
   const navigate = useNavigate();
 
@@ -30,17 +29,19 @@ const Register: React.FC = () => {
   };
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  };
-
-  const handleSurnameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSurname(event.target.value);
+    setFullName(event.target.value);
   };
 
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault();
     if (password !== confirmPassword) {
       console.error('Passwords do not match');
+      createNotificationEvent(
+        "Passwords Match Error",
+        "The passwords dont match.",
+        "danger",
+        3000
+      )
       return;
     }
     try {
@@ -51,7 +52,7 @@ const Register: React.FC = () => {
       }
 
       const token = await user.getIdToken();
-      const userData = await findOrCreateUser(token, getUserGMTOffset(), name, surname); // Pass name and surname in the request
+      const userData = await findOrCreateUser(token, getUserGMTOffset(), fullName); // Pass name and surname in the request
       setUserData(userData);
       createNotificationEvent(
         "Register Successful",
@@ -95,32 +96,19 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen py-12 bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-md shadow-md">
         <h2 className="text-2xl font-bold">Register</h2>
         <form onSubmit={handleRegister} className="space-y-4">
         <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 text-start">
-              First Name
+              Full Name
             </label>
             <input
               type="text"
               id="name"
-              value={name}
+              value={fullName}
               onChange={handleNameChange}
-              required
-              className="w-full p-2 mt-1 border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label htmlFor="surname" className="block text-sm font-medium text-gray-700 text-start">
-              Last Name
-            </label>
-            <input
-              type="text"
-              id="surname"
-              value={surname}
-              onChange={handleSurnameChange}
               required
               className="w-full p-2 mt-1 border border-gray-300 rounded-md"
             />

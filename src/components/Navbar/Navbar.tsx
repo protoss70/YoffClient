@@ -114,7 +114,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
     hamburgerProfileRef.current.classList.toggle("hidden");
   };
 
-  const languageSelect = (language: "Russian" | "English", hamburgerButton: boolean = false) => {
+  const languageSelect = (language: "Türkçe" | "English", hamburgerButton: boolean = false) => {
     setLanguage(language);
     if (hamburgerButton) {
       toggleHamburgerLanguageSelect(); // Close the hamburger language select
@@ -254,11 +254,11 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
                     English
                   </button>
                   <button
-                    onClick={() => { languageSelect('Russian') }}
+                    onClick={() => { languageSelect('Türkçe') }}
                     className="flex items-center w-full p-2 text-left rounded-t-none rounded-xl hover:bg-gray-200 focus:outline-none"
                   >
-                    <WorldFlag code="RU" style={{ width: '20px', height: '20px', marginRight: '8px' }} /> {/* Flag for Russia */}
-                    Russian
+                    <WorldFlag code="TR" style={{ width: '20px', height: '20px', marginRight: '8px' }} /> {/* Flag for Russia */}
+                    Türkçe
                   </button>
                 </div>
               </div>
@@ -343,11 +343,11 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
                   English
                 </button>
                 <button
-                  onClick={() => { languageSelect('Russian') }}
+                  onClick={() => { languageSelect('Türkçe') }}
                   className="flex items-center w-full p-2 text-left rounded-t-none rounded-xl hover:bg-gray-200 focus:outline-none"
                 >
-                  <WorldFlag code="RU" style={{ width: '20px', height: '20px', marginRight: '8px' }} /> {/* Flag for Russia */}
-                  Russian
+                  <WorldFlag code="TR" style={{ width: '20px', height: '20px', marginRight: '8px' }} /> {/* Flag for Turkish */}
+                  Türkçe
                 </button>
               </div>
             </div>

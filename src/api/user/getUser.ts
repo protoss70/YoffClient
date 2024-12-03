@@ -7,16 +7,13 @@ const serverUrl = import.meta.env.VITE_SERVER_PRODUCTION_URL;
 export const findOrCreateUser = async (
   token: string, 
   timezone: GMTOffset, 
-  name?: string, 
-  surname?: string
+  fullName?: string,
 ): Promise<UserDataType> => {
   if (!serverUrl) {
     throw new Error('Server URL is not defined in the environment');
   }
 
   try {
-    // Combine name and surname into a single fullName if both exist
-    const fullName = name && surname ? `${name} ${surname}` : undefined;
 
     // Prepare the body object, including fullName if it exists
     const body: Record<string, string> = { timezone };
