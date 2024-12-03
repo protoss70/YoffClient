@@ -8,7 +8,7 @@ function TeachersSection() {
     const [teachers, setTeachers] = useState<TeacherCardDisplay[]>([])
     useEffect(() => {
         async function getCards(){
-            const teacherCardValues = await getTeacherCards();
+            const teacherCardValues = await getTeacherCards(8, true);
             setTeachers(teacherCardValues);
         }
         getCards();
