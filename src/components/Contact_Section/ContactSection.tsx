@@ -1,14 +1,57 @@
 import React, { useState, FocusEvent } from 'react';
 import contactImage from '../../assets/hero_page/ContactImage.webp';
 import Button from "../Button/Button";
+import { sendContactUsMessage } from '../../api/message/postMessage';
+import { createNotificationEvent } from '../../utility/modal_utils';
 
 function ContactSection() {
   const [nameFocused, setNameFocused] = useState<boolean>(false);
   const [emailFocused, setEmailFocused] = useState<boolean>(false);
   const [descriptionFocused, setDescriptionFocused] = useState<boolean>(false);
 
+  // State for the form fields
+  const [fullName, setFullName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [question, setQuestion] = useState<string>('');
+
   const handleBlur = (setFocused: React.Dispatch<React.SetStateAction<boolean>>, e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFocused(e.target.value !== '');
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (email.trim() === "" || fullName.trim() === "" || question.trim() === ""){
+      createNotificationEvent(
+        "Please Fill The Form",
+        "It looks like you did not fill all the necessary fields",
+        "info",
+        5000
+      )
+      return;
+    }
+    
+    const result = await sendContactUsMessage(email, fullName, question);
+
+    if (result && result.success){
+      createNotificationEvent(
+        "We Got Your Message",
+        "Our team has recieved your message! We will respond as soon as possible 😊",
+        "success",
+        5000
+      )
+      setFullName("");
+      setEmail("");
+      setQuestion("");
+    }else{
+      createNotificationEvent(
+        "Oops Something Went Wrong",
+        "Please try again later or directly email us at info@yoff.academy",
+        "danger",
+        8500
+      )
+    }
+    // Add the API call logic here to send the data to your server
   };
 
   return (
@@ -22,17 +65,19 @@ function ContactSection() {
             Have questions or ready to start your project? We're here to help! Contact us using the form.
           </div>
 
-          <div className="w-full mt-4">
+          <div className="w-full mt-4" onSubmit={handleSubmit}>
             
             {/* Name Input */}
             <div className="relative w-full">
               <input
                 className="w-full p-3 border border-[#00000033] rounded-lg bg-transparent focus:outline-none focus:border-blue-500 peer placeholder-transparent pt-6"
                 type="text"
-                name="Name"
+                name="fullName"
                 id="contact-name"
                 placeholder="Type here"
                 autoComplete="off"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
                 onFocus={() => setNameFocused(true)}
                 onBlur={(e) => handleBlur(setNameFocused, e)}
               />
@@ -44,7 +89,7 @@ function ContactSection() {
                     nameFocused ? 'top-1 text-xs text-blue-500' : ''
                 }`}
               >
-                Name
+                Full Name
               </label>
             </div>
 
@@ -57,6 +102,8 @@ function ContactSection() {
                 id="contact-email"
                 placeholder="Type here"
                 autoComplete="off"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 onFocus={() => setEmailFocused(true)}
                 onBlur={(e) => handleBlur(setEmailFocused, e)}
               />
@@ -79,6 +126,8 @@ function ContactSection() {
                 name="Description"
                 id="description"
                 placeholder="Type here"
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
                 onFocus={() => setDescriptionFocused(true)}
                 onBlur={(e) => handleBlur(setDescriptionFocused, e)}
               ></textarea>
@@ -90,13 +139,13 @@ function ContactSection() {
                     descriptionFocused ? 'top-1 text-xs text-blue-500' : ''
                 }`}
               >
-                Description
+                Question
               </label>
             </div>
           </div>
 
           <div className="w-full font-poppins">
-            <Button text='Submit' wrapperClasses='!rounded-md max-1000:w-full' buttonClasses='!px-8 !text-base !font-medium !rounded-md max-1000:!w-full
+            <Button text='Submit' onClick={handleSubmit} wrapperClasses='!rounded-md max-1000:w-full' buttonClasses='!px-8 !text-base !font-medium !rounded-md max-1000:!w-full
             ' variant='inline'/>
           </div>
         </div>  

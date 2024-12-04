@@ -63,6 +63,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     async function getUserData() {
       if (!currentUser) return;
       const token = await currentUser.getIdToken();
+      console.log("TOKEN", token);
       const userD = await findOrCreateUser(token, getUserGMTOffset());
       setUserData(userD);
     }
