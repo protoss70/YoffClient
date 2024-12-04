@@ -4,6 +4,7 @@ import { adjustForUserTimeZone, formatIsoDate } from "../../utility/dates";
 import { deleteScheduledClass } from "../../api/schedule/deleteSchedule";
 import { createNotificationEvent, createPopupEvent } from "../../utility/modal_utils";
 import { Link } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
 interface ScheduledClassProps {
   data: ScheduledClassType;
@@ -14,6 +15,8 @@ interface ScheduledClassProps {
 const Scheduled_Class: React.FC<ScheduledClassProps> = ({ data, token, userId }) => {
   const teacherData = data.teacherDetails;
   const [isDeleted, setIsDeleted] = useState(false);
+
+  const { t } = useTranslation();
 
   const date = new Date(data.date);
   const _date = adjustForUserTimeZone(date);
@@ -71,25 +74,25 @@ const Scheduled_Class: React.FC<ScheduledClassProps> = ({ data, token, userId })
         isDeleted ? "hidden" : ""
       }`}
     >
-      <h1 className="text-3xl font-bold">{data.language.split(" ")[0]} Class</h1>
+      <h1 className="text-3xl font-bold">{t(`allLanguages.${data.language.split(" ")[0]}`)} {t("classDetails.title")}</h1>
       <div className="flex justify-between gap-10">
         <div>
           <div className="flex gap-2">
-            <span className="font-bold">Teacher:</span>
+            <span className="font-bold">{t("classDetails.teacher")}</span>
             <Link className='font-semibold text-blue-600 underline hover:cursor-pointer' to={`/teacher/${teacherData._id}`}>{teacherData.name} {teacherData.surname}</Link>
           </div>
           <div className="flex gap-2">
-            <span className="font-bold">Duration:</span>
-            <span>{data.isDemoClass ? "30 minutes" : "45 minutes"}</span>
+            <span className="font-bold">{t("classDetails.duration")}</span>
+            <span>{data.isDemoClass ? t("classDetails.demoDurationValue") : t("classDetails.durationValue")}</span>
           </div>
         </div>
         <div>
           <div className="flex gap-2">
-            <span className="font-bold">Date:</span>
+            <span className="font-bold">{t("classDetails.date")}</span>
             <span>{formatIsoDate(_date.date)}</span>
           </div>
           <div className="flex gap-2">
-            <span className="font-bold">Time:</span>
+            <span className="font-bold">{t("classDetails.time")}</span>
             <span>{`${_date.time} - ${endTime}`}</span>
           </div>
         </div>
@@ -102,7 +105,7 @@ const Scheduled_Class: React.FC<ScheduledClassProps> = ({ data, token, userId })
         }`}
         disabled={classIsInPast}  // Disable button if the class is in the past
       >
-        Cancel Class
+        {t("classDetails.cancelClass")}
       </button>
       </div>
     </div>

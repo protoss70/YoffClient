@@ -1,10 +1,184 @@
 {
   "nav": {
-    "logo": "LOGO",
-    "login": "Login",
-    "register": "Register",
-    "logout": "Logout",
+    "home": "Home",
+    "howItWorks": "How It Works",
     "languages": "Languages",
-    "teachers": "Teachers"
+    "pricing": "Pricing",
+    "teachers": "Teachers",
+    "login": "Login",
+    "scheduleClass": "Schedule Class",
+    "profile": "Profile",
+    "logout": "Logout",
+    "myClasses": "My Classes",
+    "email": "Email",
+    "credits": "Credits",
+    "language": "Language",
+    "confirmLogout": "Are you sure you want to logout of {{email}}",
+    "logoutButton": "Logout",
+    "cancelButton": "Cancel",
+    "actions": "Actions"
+  },
+  "calendar": {
+    "MON": "MON",
+    "TUE": "TUE",
+    "WED": "WED",
+    "THU": "THU",
+    "FRI": "FRI",
+    "SAT": "SAT",
+    "SUN": "SUN"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Have questions or ready to start your project? We're here to help! Contact us using the form.",
+    "form": {
+      "name": {
+        "label": "Full Name",
+        "placeholder": "Type here"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Type here"
+      },
+      "description": {
+        "label": "Question",
+        "placeholder": "Type here"
+      },
+      "submit": "Submit"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 . All rights reserved.",
+    "quickLinks": {
+      "title": "Quick Links",
+      "home": "Home",
+      "howItWorks": "How It Works",
+      "languages": "Languages",
+      "teachers": "Teachers",
+      "pricing": "Pricing"
+    },
+    "contactInfo": {
+      "title": "Contact Information"
+    },
+    "help": {
+      "title": "Help",
+      "helpCenter": "Help Center",
+      "trustAndSafety": "Trust and Safety",
+      "privacySettings": "Privacy Settings"
+    }
+  },
+  "hero": {
+    "title": {
+      "line1": "Anytime, Anywhere",
+      "line2": "with Expert",
+      "highlight": "Teachers"
+    },
+    "description": "Unlock your language potential with expert teachers from around the globe. Whether you're a beginner or advanced learner.",
+    "button_text": "Get Started"
+  },
+  "howItWorks": {
+    "title": {
+      "line1": "How It",
+      "line2": "Works"
+    },
+    "cards": [
+      {
+        "title": "Select a Language",
+        "description": "Select from a wide range of languages, from popular choices like English and Spanish to unique options like Arabic, Korean, Turkish, and Russian.",
+        "image_alt": "Person with chat bubbles",
+        "lines": "lines1"
+      },
+      {
+        "title": "Book Your Classes",
+        "description": "Schedule lessons at times that work for you. Learn one-on-one with experienced teachers.",
+        "image_alt": "Person with chat bubbles",
+        "lines": "lines2"
+      },
+      {
+        "title": "Learn & Practice",
+        "description": "Join live sessions with expert teachers, access interactive learning materials.",
+        "image_alt": "Person with chat bubbles",
+        "lines": "lines3"
+      },
+      {
+        "title": "Track Your Progress",
+        "description": "Enjoy personalized feedback after every session, track your progress, and stay on course to achieve your language goals.",
+        "image_alt": "Person with chat bubbles"
+      }
+    ]
+  },
+  "allLanguages": {
+    "tutor": "tutor",
+    "teacher": "Teacher",
+    "teachers": "Teachers",
+    "English": "English",
+    "Arabic": "Arabic",
+    "Korean": "Korean",
+    "Russian": "Russian",
+    "Spanish": "Spanish",
+    "Turkish": "Turkish"
+  },
+  "languageSelection": {
+    "title": {
+      "line1": "Languages",
+      "line2": "We Offer"
+    }
+  },
+  "pricingSection": {
+    "title": {
+      "line1": "Our",
+      "line2": "Pricing"
+    },
+    "pricingCards": [
+      {
+        "planTitle": "Basic Plan",
+        "price": "$45",
+        "duration": "/ 4 classes",
+        "whatsIncluded": {
+          "title": "What's Included",
+          "items": ["$11.25 Per Class", "24/7 Support", "Free Demo Class"]
+        },
+        "getStartedButton": "Get Started!"
+      },
+      {
+        "planTitle": "Premium Plan",
+        "price": "$90",
+        "duration": "/ 10 classes",
+        "whatsIncluded": {
+          "title": "What's Included",
+          "items": ["$9 per class", "24/7 Support", "Free Demo Class"]
+        },
+        "getStartedButton": "Get Started!",
+        "mostPopularTag": "Most Popular"
+      },
+      {
+        "planTitle": "Ultimate Plan",
+        "price": "$170",
+        "duration": "/ 24 classes",
+        "whatsIncluded": {
+          "title": "What's Included",
+          "items": ["$7 Per class", "24/7 Support", "Free Demo Class"]
+        },
+        "getStartedButton": "Get Started!"
+      }
+    ]
+  },
+  "classDetails": {
+    "title": "Class",
+    "teacher": "Teacher:",
+    "teacherLink": "Go to Teacher Profile",
+    "duration": "Duration:",
+    "durationValue": "45 minutes",
+    "demoDurationValue": "30 minutes",
+    "date": "Date:",
+    "time": "Time:",
+    "cancelClass": "Cancel Class"
+  },
+  "sendMessage": {
+    "header": "Send Message",
+    "teacherName": "Teacher Name",
+    "description": "Let the tutor know about you, your learning targets, and any questions you have.",
+    "questionLabel": "Question",
+    "placeholder": "Type here",
+    "submitButton": "Submit"
   }
 }

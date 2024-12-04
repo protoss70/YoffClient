@@ -9,6 +9,8 @@ import Button from '../Button/Button';
 import WorldFlag from 'react-world-flags';
 import { createPopupEvent } from '../../utility/modal_utils';
 import { getStartedClick } from '../../utility/quick_start_actions';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 interface NavbarProps {
   currentSection: string | "hero" | "how" | "language" | "pricing";
@@ -27,6 +29,8 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
   const hamburgerProfileRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState<number>(0);
   
+    const { t } = useTranslation();
+
   useEffect(() => {
     switch (currentSection) {
       case "hero":
@@ -116,11 +120,25 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
   };
 
   const languageSelect = (language: "Türkçe" | "English", hamburgerButton: boolean = false) => {
-    setLanguage(language);
-    if (hamburgerButton) {
-      toggleHamburgerLanguageSelect(); // Close the hamburger language select
-    } else {
-      toggleLanguageSelect(); // Close the main language select
+    // Map custom labels to language codes
+    const languageMap: { [key: string]: string } = {
+      "Türkçe": "tr",
+      "English": "en"
+    };
+  
+    const languageCode = languageMap[language];
+  
+    // Change the language using the mapped code
+    if (languageCode) {
+      i18next.changeLanguage(languageCode);
+      setLanguage(language); // Update the language state with the custom label
+  
+      // Close the appropriate select menu based on the `hamburgerButton` flag
+      if (hamburgerButton) {
+        toggleHamburgerLanguageSelect(); // Close the hamburger language select
+      } else {
+        toggleLanguageSelect(); // Close the main language select
+      }
     }
   };
 
@@ -177,11 +195,11 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
 
           {/* Mid Nav Buttons */}
           <div className='flex justify-between font-poppins gap-9 max-1000:hidden'>
-            <button onClick={() => handleNavClick("/#HeroSection")} className={`${activeIndex === 0 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>Home</button>
-            <button onClick={() => handleNavClick("/#HowItWorks")} className={`${activeIndex === 1 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline max-1200:hidden`}>How It Works</button>
-            <button onClick={() => handleNavClick("/#LanguageSelection")} className={`${activeIndex === 2 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>Languages</button>
-            <button onClick={() => handleNavClick("/#PricingSection")} className={`${activeIndex === 3 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>Pricing</button>
-            <button onClick={() => handleNavClick("/teachers")} className={`${activeIndex === 4 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>Teachers</button>
+            <button onClick={() => handleNavClick("/#HeroSection")} className={`${activeIndex === 0 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>{t("nav.home")}</button>
+            <button onClick={() => handleNavClick("/#HowItWorks")} className={`${activeIndex === 1 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline max-1200:hidden`}>{t("nav.howItWorks")}</button>
+            <button onClick={() => handleNavClick("/#LanguageSelection")} className={`${activeIndex === 2 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>{t("nav.languages")}</button>
+            <button onClick={() => handleNavClick("/#PricingSection")} className={`${activeIndex === 3 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>{t("nav.pricing")}</button>
+            <button onClick={() => handleNavClick("/teachers")} className={`${activeIndex === 4 ? "px-5 py-1 font-semibold text-white bg-main rounded-2xl" : ""} hover:underline`}>{t("nav.teachers")}</button>
           </div>
 
           {/* End Nav Buttons */}
@@ -190,19 +208,19 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
             {/* LOGIN BUTTON */}
             {!isAuthenticated ? 
               <button onClick={() => handleNavClick("/login")} className='font-semibold underline text-main'>
-                Login
+                {t("nav.login")}
               </button>
               :
               null
             }
-            <Button text='Schedule Class' onClick={() => {getStartedClick(location.pathname, navigate)}} variant='inline' buttonClasses='!px-3 !py-1'/>
+            <Button text={`${t("nav.scheduleClass")}`} onClick={() => {getStartedClick(location.pathname, navigate)}} variant='inline' buttonClasses='!px-3 !py-1'/>
 
             {/* USER PROFILE */}
             {isAuthenticated ? 
               <div className='relative font-poppins'>
                 <button onClick={toggleProfilePopup} className='flex items-center gap-2 px-2 py-3 bg-white border border-black font-poppins rounded-xl'>
                     <img className='h-6' src={userIcon} alt="globe icon" />
-                    <span className='font-medium'>Profile</span>
+                    <span className='font-medium'>{t("nav.profile")}</span>
                 </button>
                 {/* USER PROFILE POPUP */}
                 <div
@@ -213,22 +231,22 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
                     <div
                       className="w-full p-2 text-left rounded-b-none whitespace-nowrap rounded-xl"
                     >
-                      <b>Email:</b> {currentUser?.email}
+                      <b>{t("nav.email")}:</b> {currentUser?.email}
                     </div>
                     <div className='w-full p-2 text-left whitespace-nowrap'>
-                      <b>Credits:</b> {userData?.credits}
+                      <b>{t("nav.credits")}:</b> {userData?.credits}
                     </div>
                     <button
                       onClick={() => {handleNavClick("my-classes")}}
                       className="w-full p-2 text-left hover:bg-gray-200 focus:outline-none"
                     >
-                      My Classes
+                      {t("nav.myClasses")}
                     </button>
                     <button
                       onClick={logoutClick}
                       className="w-full p-2 text-left rounded-t-none rounded-xl hover:bg-red-100 focus:outline-none"
                     >
-                      Logout
+                      {t("nav.logoutButton")}
                     </button>
                     </div>
                   </div>
@@ -271,29 +289,29 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
           <div ref={hamburgerMenuRef} className='absolute left-0 flex flex-col hidden w-full bg-white shadow-md min-900:hidden font-poppins top-24'>
             <h3 className='px-6 text-lg font-semibold'>Links</h3>
             <hr className='mx-6 border-t-2 border-t-main' />
-            <button onClick={() => handleNavClick("/")} className='w-full px-6 py-2 font-semibold text-start text-main hover:underline'>Home</button>
-            <button onClick={() => handleNavClick("/#HowItWorks")} className='px-6 py-2 text-start hover:underline'>How It Works</button>
-            <button onClick={() => handleNavClick("/#LanguageSelection")} className='px-6 py-2 text-start hover:underline'>Languages</button>
-            <button onClick={() => handleNavClick("/#PricingSection")} className='px-6 py-2 text-start hover:underline'>Pricing</button>
-            <button onClick={() => handleNavClick("/teachers")} className='px-6 py-2 text-start hover:underline'>Teachers</button>
+            <button onClick={() => handleNavClick("/")} className='w-full px-6 py-2 font-semibold text-start text-main hover:underline'>{t("nav.home")}</button>
+            <button onClick={() => handleNavClick("/#HowItWorks")} className='px-6 py-2 text-start hover:underline'>{t("nav.howItWorks")}</button>
+            <button onClick={() => handleNavClick("/#LanguageSelection")} className='px-6 py-2 text-start hover:underline'>{t("nav.languages")}</button>
+            <button onClick={() => handleNavClick("/#PricingSection")} className='px-6 py-2 text-start hover:underline'>{t("nav.pricing")}</button>
+            <button onClick={() => handleNavClick("/teachers")} className='px-6 py-2 text-start hover:underline'>{t("nav.teachers")}</button>
             <br />
-            <h3 className='px-6 text-lg font-semibold'>Actions</h3>
+            <h3 className='px-6 text-lg font-semibold'>{t("nav.actions")}</h3>
             <hr className='mx-6 border-t-2 border-t-main' />
             {!isAuthenticated?
               <button onClick={() => handleNavClick("/login")} className='px-6 py-2 font-medium hover:underline text-start'>
-                Login
+                {t("nav.login")}
               </button>
               : null
             }
             
             <button onClick={() => {getStartedClick(location.pathname, navigate)}} className='px-6 py-2 font-semibold text-main text-start hover:underline'>
-              Schedule Class
+              {t("nav.scheduleClass")}
             </button>
             {isAuthenticated ? 
             <>
               <button onClick={toggleHamburgerProfileSelect} className='flex items-center gap-2 px-5 py-2 pl-6'>
                 <img className='h-6' src={userIcon} alt="user icon" />
-                <span className='font-medium text-start hover:underline'>Profile</span>
+                <span className='font-medium text-start hover:underline'>{t("nav.profile")}</span>
               </button>
               <div
               ref={hamburgerProfileRef}
@@ -306,19 +324,19 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
                     {currentUser?.email}
                   </div>
                   <div className='w-full p-2 px-6 text-left'>
-                    <b>Credits:</b> {userData?.credits}
+                    <b>{t("nav.credits")}:</b> {userData?.credits}
                   </div>
                   <button
                     onClick={() => {handleNavClick("my-classes")}}
                     className="w-full p-2 px-6 text-left hover:bg-gray-200 focus:outline-none"
                   >
-                    My Classes
+                    {t("nav.myClasses")}
                   </button>
                   <button
                     onClick={logoutClick}
                     className="w-full p-2 px-6 text-left rounded-lg rounded-t-none hover:bg-red-100 focus:outline-none"
                   >
-                    Logout
+                    {t("nav.logoutButton")}
                   </button>
                   </div>
                   

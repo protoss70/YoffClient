@@ -5,13 +5,17 @@ import image4 from "../../assets/hero_page/HowImage4.webp";
 import lines1 from "../../assets/hero_page/lines1.png";
 import lines2 from "../../assets/hero_page/lines2.png";
 import lines3 from "../../assets/hero_page/lines3.png";
+import { useTranslation } from "react-i18next";
 
 function HowSection() {
+
+  const { t } = useTranslation();
+
   return (
     <section id="HowItWorks" className="px-24 mt-40 min-w-96 max-1300:px-12 max-900:px-6 max-900:mt-28 max-800:mt-12 max-600:px-1 max-600:min-w-0">
         {/* Title */}
         <div className="flex justify-center w-full">
-            <h1 className="text-6xl max-600:text-4xl">How It&nbsp;<span className="text-6xl max-600:text-4xl underline--double text-main">Works</span></h1>
+            <h1 className="text-6xl max-600:text-4xl">{t("howItWorks.title.line1")}&nbsp;<span className="text-6xl max-600:text-4xl underline--double text-main">{t("howItWorks.title.line2")}</span></h1>
         </div>
 
         {/* How it works cards */}
@@ -27,11 +31,11 @@ function HowSection() {
                 </div>
 
                 <h2 className="mt-2 text-xl font-bold font-gilroy max-1300:mt-1">
-                  Select a Language
+                {t("howItWorks.cards.0.title")}
                 </h2>
 
                 <div className="mt-3 text-sm font-normal leading-6 max-1300:mt-2 font-poppins">
-                Select from a wide range of languages, from popular choices like English and Spanish to unique options like Arabic, Korean, Turkish, and Russian.
+                {t("howItWorks.cards.0.description")}
                 </div>
 
                 {/* Lines */}
@@ -54,11 +58,11 @@ function HowSection() {
                 </div>
 
                 <h2 className="mt-2 text-xl font-bold font-gilroy max-1300:mt-1">
-                  Book Your Classes
+                {t("howItWorks.cards.1.title")}
                 </h2>
 
                 <div className="mt-3 text-sm font-normal leading-6 max-1300:mt-2 font-poppins">
-                  Schedule lessons at times that work for you. Learn one-on-one with experienced teachers.           
+                {t("howItWorks.cards.1.description")}
                 </div>
 
                 {/* Lines */}
@@ -84,11 +88,11 @@ function HowSection() {
                 </div>
 
                 <h2 className="mt-2 text-xl font-bold font-gilroy max-1300:mt-1">
-                  Learn & Practice
+                {t("howItWorks.cards.2.title")}
                 </h2>
 
                 <div className="mt-3 text-sm font-normal leading-6 max-1300:mt-2 font-poppins">
-                  Join live sessions with expert teachers, access interactive learning materials.             
+                {t("howItWorks.cards.2.description")}
                 </div>
                 {/* Lines */}
                 <div className="absolute top-[-55px] right-[-100px] z-[-1] max-1100:hidden">
@@ -116,11 +120,11 @@ function HowSection() {
                 </div>
 
                 <h2 className="mt-2 text-xl font-bold font-gilroy max-1300:mt-1">
-                  Track Your Progress              
+                {t("howItWorks.cards.3.title")}              
                 </h2>
 
                 <div className="mt-3 text-sm font-normal leading-6 max-1300:mt-2 font-poppins">
-                Enjoy personalized feedback after every session, track your progress, and stay on course to achieve your language goals.          
+                {t("howItWorks.cards.3.description")}
                 </div>
               </div>
             </div>

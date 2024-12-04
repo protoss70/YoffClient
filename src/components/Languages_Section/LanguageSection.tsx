@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import LanguageCard from "../LanguageCard/LanguageCard"; // Adjust the import path as necessary
 import { languageToCountryCode, allLanguages, languageTeacherCounts } from "../../utility/languages"; // Adjust path
+import { useTranslation } from "react-i18next";
 
 function LanguageSection() {
   const navigate = useNavigate();
+
+  const {t} = useTranslation(); 
 
   // Build `languageData` dynamically
   const languageData = allLanguages.map((language: string) => ({
@@ -19,7 +22,7 @@ function LanguageSection() {
     >
       {/* Title */}
       <h1 className="text-6xl font-bold text-center text-white my-14 font-gilroy max-800:text-5xl max-600:text-4xl">
-        Languages <span className="underline--double underline--white">We Offer</span>
+        {t("languageSelection.title.line1")} <span className="underline--double underline--white">{t("languageSelection.title.line2")}</span>
       </h1>
 
       {/* Language Cards Wrapper */}

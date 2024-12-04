@@ -7,9 +7,10 @@ import footerBottomBg from "../../assets/Footer_bottom_bg.png";
 import linkedIn from "../../assets/linkedinLink.svg";
 import instagram from "../../assets/instagramLink.svg";
 import twitter from "../../assets/twitterLink.svg";
+import { useTranslation } from 'react-i18next';
 
 const Footer: React.FC = () => {
-
+    const { t } = useTranslation();
   return (
     <footer className='relative flex flex-col justify-between w-full pb-16 text-white max-1300:px-14 max-900:px-8 bg-footer px-28 pt-9'>
         {/* Footer Links section */}
@@ -18,22 +19,22 @@ const Footer: React.FC = () => {
             {/* Logo section*/}
             <div className='flex flex-col gap-5 max-900:basis-1/3'>
                 <img src={logo} alt="Yoff logo" className='w-24'/>
-                <div className=' font-poppins'>© 2024 . All rights reserved.</div>
+                <div className=' font-poppins'>{t("footer.copyright")}</div>
             </div>
 
             {/* Quick links */} 
             <div className='flex flex-col gap-5 max-900:basis-1/3'>
-                <h3 className='text-xl font-semibold max-900:font-bold font-gilroy'>Quick Links</h3>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#HeroSection">Home</a>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#HowItWorks">How It Works</a>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#LanguageSelection">Languages</a>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/teachers">Teachers</a>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#PricingSection">Pricing</a>
+                <h3 className='text-xl font-semibold max-900:font-bold font-gilroy'>{t("footer.quickLinks.title")}</h3>
+                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#HeroSection">{t("footer.quickLinks.home")}</a>
+                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#HowItWorks">{t("footer.quickLinks.howItWorks")}</a>
+                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#LanguageSelection">{t("footer.quickLinks.languages")}</a>
+                <a className='font-poppins hover:underline hover:cursor-pointer' href="/teachers">{t("footer.quickLinks.teachers")}</a>
+                <a className='font-poppins hover:underline hover:cursor-pointer' href="/#PricingSection">{t("footer.quickLinks.pricing")}</a>
             </div>
 
             {/* Contact Info */}
             <div className='flex flex-col gap-5 max-900:basis-1/3 max-900:mt-6'>
-                <h3 className='text-xl font-semibold font-gilroy max-900:font-extrabold'>Contact Information</h3>
+                <h3 className='text-xl font-semibold font-gilroy max-900:font-extrabold'>{t("footer.contactInfo.title")}</h3>
                 <div className='flex gap-3 ml-1'>
                     <img className='w-4' src={call} alt="phone icon" />
                     962-963-10-31
@@ -50,10 +51,10 @@ const Footer: React.FC = () => {
 
             {/* Help */}
             <div className='flex flex-col gap-5 max-900:basis-1/3 max-900:mt-6'>
-            <h3 className='text-xl font-semibold font-gilroy max-900:font-extrabold'>Help</h3>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/">Help Center</a>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/">Trust and Safety</a>
-                <a className='font-poppins hover:underline hover:cursor-pointer' href="/">Privacy Settings</a>
+            <h3 className='text-xl font-semibold font-gilroy max-900:font-extrabold'>{t("footer.help.title")}</h3>
+                <a className='font-poppins hover:underline hover:cursor-pointer' href="/">{t("footer.help.helpCenter")}</a>
+                <a className='font-poppins hover:underline hover:cursor-pointer' href="/">{t("footer.help.trustAndSafety")}</a>
+                <a className='font-poppins hover:underline hover:cursor-pointer' href="/">{t("footer.help.privacySettings")}</a>
             </div>
         </div>
 

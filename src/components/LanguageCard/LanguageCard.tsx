@@ -3,12 +3,16 @@ import React from "react";
 import { LanguageCard as LanguageCardType } from "../../utility/types"; // Adjust the path as necessary
 import arrowLeft from "../../assets/hero_page/arrowMain.png";
 import Flag from "react-world-flags";
+import { useTranslation } from "react-i18next";
 
 interface LanguageCardProps {
   languageCard: LanguageCardType;
 }
 
 const LanguageCard: React.FC<LanguageCardProps> = ({ languageCard }) => {
+  
+  const { t } = useTranslation();
+
   return (
     <div className="flex items-center justify-between w-full gap-2 p-3 transition-all duration-300 bg-white rounded-lg hover:scale-105">
       {/* Flag Image and Text */}
@@ -24,10 +28,10 @@ const LanguageCard: React.FC<LanguageCardProps> = ({ languageCard }) => {
         </div>
         <div className="flex flex-col justify-center gap-1 mt-1 font-gilroy">
           <div className="text-xl font-semibold text-dark max-1300:text-lg hover:underline hover:cursor-pointer">
-            {`${languageCard.language} Tutors`}
+            {`${t(`allLanguages.${languageCard.language}`)} ${t("allLanguages.tutor")}`}
           </div>
           <div className="font-medium text-custom_gray">
-            {`${languageCard.teachersCount} Teacher${languageCard.teachersCount !== 1 ? 's' : ''}`}
+            {`${languageCard.teachersCount} ${languageCard.teachersCount !== 1 ? t("allLanguages.teachers") : t("allLanguages.teacher")}`}
           </div>
         </div>
       </div>

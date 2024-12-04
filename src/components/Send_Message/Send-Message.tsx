@@ -3,6 +3,7 @@ import Button from "../Button/Button";
 import { sendMessageToTeacher } from "../../api/message/postMessage";
 import { useAuth } from "../../context/authContext";
 import { createNotificationEvent } from "../../utility/modal_utils";
+import { useTranslation } from "react-i18next";
 
 interface MessageTeacherProps {
   teacher: { name: string; surname: string, _id: string } | null;
@@ -15,6 +16,8 @@ const MessageTeacher: React.FC<MessageTeacherProps> = ({ teacher, imagePath, isV
   const [question, setQuestion] = useState<string>("");
   const [descriptionFocused, setDescriptionFocused] = useState<boolean>(false);
   const { currentUser, userData } = useAuth();
+
+  const {t} = useTranslation();
 
   const handleBlur = (e: FocusEvent<HTMLTextAreaElement>) => {
     setDescriptionFocused(e.target.value !== "");
@@ -65,7 +68,7 @@ const MessageTeacher: React.FC<MessageTeacherProps> = ({ teacher, imagePath, isV
       >
         {/* Header */}
         <div className="flex justify-between w-full p-4 text-white rounded-t-md bg-main">
-          <h5 className="text-lg font-semibold">Send Message</h5>
+          <h5 className="text-lg font-semibold">{t("sendMessage.header")}</h5>
           <button
             type="button"
             className="text-2xl text-white"
@@ -83,7 +86,7 @@ const MessageTeacher: React.FC<MessageTeacherProps> = ({ teacher, imagePath, isV
             {teacher?.name} {teacher?.surname}
           </div>
           <div className="text-center max-w-96 font-poppins">
-            Let the tutor know about you, your learning targets, and any questions you have.
+          {t("sendMessage.description")}
           </div>
 
           {/* Question Input */}
@@ -92,7 +95,7 @@ const MessageTeacher: React.FC<MessageTeacherProps> = ({ teacher, imagePath, isV
               className="resize-none w-full p-3 border border-[#00000033] rounded-lg bg-transparent focus:outline-none focus:border-blue-500 peer placeholder-transparent pt-6 min-h-32"
               name="Description"
               id="description"
-              placeholder="Type here"
+              placeholder={t("sendMessage.placeholder")}
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               onFocus={() => setDescriptionFocused(true)}
@@ -106,12 +109,12 @@ const MessageTeacher: React.FC<MessageTeacherProps> = ({ teacher, imagePath, isV
                   descriptionFocused ? "top-1 text-xs text-blue-500" : ""
                 }`}
             >
-              Question
+              {t("sendMessage.questionLabel")}
             </label>
           </div>
 
           {/* Submit Button */}
-          <Button text="Submit" onClick={handleSubmit} variant="inline" wrapperClasses="w-full" buttonClasses="w-full" />
+          <Button text={t("sendMessage.submitButton")} onClick={handleSubmit} variant="inline" wrapperClasses="w-full" buttonClasses="w-full" />
         </div>
       </div>
     </div>

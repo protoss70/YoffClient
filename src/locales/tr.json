@@ -1,0 +1,184 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "howItWorks": "Nasıl Çalışır",
+    "languages": "Diller",
+    "pricing": "Fiyatlandırma",
+    "teachers": "Öğretmenler",
+    "login": "Giriş Yap",
+    "scheduleClass": "Ders Planla",
+    "profile": "Profil",
+    "logout": "Çıkış Yap",
+    "myClasses": "Derslerim",
+    "email": "E-posta",
+    "credits": "Krediler",
+    "language": "Dil",
+    "confirmLogout": "{{email}} hesabından çıkmak istediğinizden emin misiniz?",
+    "logoutButton": "Çıkış Yap",
+    "cancelButton": "İptal",
+    "actions": "Aksiyonlar"
+  },
+  "calendar": {
+    "MON": "PZT",
+    "TUE": "SAL",
+    "WED": "ÇAR",
+    "THU": "PER",
+    "FRI": "CUM",
+    "SAT": "CMT",
+    "SUN": "PAZAR"
+  },
+  "contact": {
+    "title": "Bize Ulaşın",
+    "description": "Sorularınız mı var yoksa projenize başlamak için hazır mısınız? Yardımcı olmaktan mutluluk duyarız! Bizimle iletişime geçmek için formu kullanın.",
+    "form": {
+      "name": {
+        "label": "Ad Soyad",
+        "placeholder": "Buraya yazın"
+      },
+      "email": {
+        "label": "E-posta",
+        "placeholder": "Buraya yazın"
+      },
+      "description": {
+        "label": "Soru",
+        "placeholder": "Buraya yazın"
+      },
+      "submit": "Gönder"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 . Tüm hakları saklıdır.",
+    "quickLinks": {
+      "title": "Hızlı Bağlantılar",
+      "home": "Ana Sayfa",
+      "howItWorks": "Nasıl Çalışır",
+      "languages": "Diller",
+      "teachers": "Öğretmenler",
+      "pricing": "Fiyatlandırma"
+    },
+    "contactInfo": {
+      "title": "İletişim Bilgileri"
+    },
+    "help": {
+      "title": "Yardım",
+      "helpCenter": "Yardım Merkezi",
+      "trustAndSafety": "Güven ve Güvenlik",
+      "privacySettings": "Gizlilik Ayarları"
+    }
+  },
+  "hero": {
+    "title": {
+      "line1": "Her Zaman, Her Yerde",
+      "line2": "Uzman",
+      "highlight": "Öğretmenlerle"
+    },
+    "description": "Dünyanın dört bir yanından gelen uzman öğretmenlerle dil potansiyelinizi açığa çıkarın. İster yeni başlayan, ister ileri düzey olun.",
+    "button_text": "Başlayın"
+  },
+  "howItWorks": {
+    "title": {
+      "line1": "Nasıl",
+      "line2": "Çalışır"
+    },
+    "cards": [
+      {
+        "title": "Bir Dil Seçin",
+        "description": "İngilizce ve İspanyolca gibi popüler seçeneklerden Arapça, Korece, Türkçe ve Rusça gibi benzersiz seçeneklere kadar geniş bir dil yelpazesi arasından seçim yapın.",
+        "image_alt": "Sohbet balonları olan kişi",
+        "lines": "lines1"
+      },
+      {
+        "title": "Derslerinizi Rezerve Edin",
+        "description": "Sizin için uygun olan zamanlarda derslerinizi planlayın. Deneyimli öğretmenlerle birebir öğrenin.",
+        "image_alt": "Sohbet balonları olan kişi",
+        "lines": "lines2"
+      },
+      {
+        "title": "Öğrenin ve Pratik Yapın",
+        "description": "Uzman öğretmenlerle canlı oturumlara katılın, etkileşimli öğrenme materyallerine erişin.",
+        "image_alt": "Sohbet balonları olan kişi",
+        "lines": "lines3"
+      },
+      {
+        "title": "İlerlemenizi Takip Edin",
+        "description": "Her oturumdan sonra kişiselleştirilmiş geri bildirim alın, ilerlemenizi takip edin ve dil hedeflerinize ulaşmak için yolunda kalın.",
+        "image_alt": "Sohbet balonları olan kişi"
+      }
+    ]
+  },
+  "allLanguages": {
+    "tutor": "Hocası",
+    "teacher": "Öğretmen",
+    "teachers": "Öğretmen",
+    "English": "İngilizce",
+    "Arabic": "Arapça",
+    "Korean": "Korece",
+    "Russian": "Rusça",
+    "Spanish": "İspanyolca",
+    "Turkish": "Türkçe"
+  },
+  "languageSelection": {
+    "title": {
+      "line1": "Sunduğumuz",
+      "line2": "Diller"
+    }
+  },
+  "pricingSection": {
+    "title": {
+      "line1": "Bizim",
+      "line2": "Fiyatlandırmamız"
+    },
+    "pricingCards": [
+      {
+        "planTitle": "Temel Plan",
+        "price": "$45",
+        "duration": "/ 4 ders",
+        "whatsIncluded": {
+          "title": "İçerik",
+          "items": ["Ders Başına 11.25$", "7/24 Destek", "Ücretsiz Demo Dersi"]
+        },
+        "getStartedButton": "Başlayın!"
+      },
+      {
+        "planTitle": "Premium Plan",
+        "price": "90$",
+        "duration": "/ 10 ders",
+        "whatsIncluded": {
+          "title": "İçerik",
+          "items": ["Ders başına 9$", "7/24 Destek", "Ücretsiz Demo Dersi"]
+        },
+        "getStartedButton": "Başlayın!",
+        "mostPopularTag": "En Popüler"
+      },
+      {
+        "planTitle": "Ultimate Plan",
+        "price": "170$",
+        "duration": "/ 24 ders",
+        "whatsIncluded": {
+          "title": "İçerik",
+          "items": ["Ders Başına 7$", "7/24 Destek", "Ücretsiz Demo Dersi"]
+        },
+        "getStartedButton": "Başlayın!"
+      }
+    ]
+  },
+  "classDetails": {
+    "title": "Dersi",
+    "teacher": "Öğretmen:",
+    "teacherLink": "Öğretmen Profili'ne Git",
+    "duration": "Süre:",
+    "durationValue": "45 dakika",
+    "demoDurationValue": "30 dakika",
+    "date": "Tarih:",
+    "time": "Saat:",
+    "cancelClass": "Dersi İptal Et"
+  },
+  "sendMessage": {
+    "header": "Mesaj Gönder",
+    "teacherName": "Öğretmen Adı",
+    "description": "Öğretmene kendiniz hakkında, öğrenme hedefleriniz ve sorularınız hakkında bilgi verin.",
+    "questionLabel": "Soru",
+    "placeholder": "Buraya yazın",
+    "submitButton": "Gönder"
+  }
+}

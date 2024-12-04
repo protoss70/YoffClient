@@ -6,6 +6,7 @@ import { createScheduleModalEvent } from '../../utility/modal_utils';
 import { useNavigate } from 'react-router-dom';
 import { postScheduledClasses } from '../../api/schedule/postSchedule';
 import { handleScheduleNotification } from '../../utility/SchedulingErrorMessages';
+import { useTranslation } from 'react-i18next';
 
 interface CalendarProps {
   initialSchedule: string[];
@@ -17,6 +18,8 @@ const Calendar: React.FC<CalendarProps> = ({initialSchedule, teacher, teacherIma
   // Get today's date
   const today = new Date();
   const todayString = `${today.getDate()} ${today.toLocaleString('en-US', { weekday: 'short' }).toUpperCase()}`;
+
+  const { t } = useTranslation();
 
   const { userData, currentUser } = useAuth();
 
@@ -147,7 +150,11 @@ const Calendar: React.FC<CalendarProps> = ({initialSchedule, teacher, teacherIma
           </button>
 
           <div className='ml-5'>
-            {displayedDates[0] ? displayedDates[0].dateString : ""} - {displayedDates[6] ? displayedDates[6].dateString : ""}, {new Date(today).getFullYear()}
+          <div className='ml-5'>
+          {displayedDates[0] ? `${t(`calendar.${displayedDates[0].dayName}`)} ${displayedDates[0].dayNumber}` : ""} - 
+          {displayedDates[6] ? ` ${t(`calendar.${displayedDates[6].dayName}`)} ${displayedDates[6].dayNumber}` : ""}, 
+          {new Date(today).getFullYear()}
+        </div>
           </div>
         </div>
 
@@ -176,7 +183,7 @@ const Calendar: React.FC<CalendarProps> = ({initialSchedule, teacher, teacherIma
             }`}
             key={dateString}
           >
-            <span className={`text-lg ${todayString === dateString ? 'text-main' : ''}`}>{dayName}</span>
+            <span className={`text-lg ${todayString === dateString ? 'text-main' : ''}`}>{t(`calendar.${dayName}`)}</span>
             <span className={`text-lg ${todayString === dateString ? 'text-main' : ''}`}>{dayNumber}</span>
             <div className="flex flex-col w-full gap-2 mt-1">
             {schedule

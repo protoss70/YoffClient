@@ -3,11 +3,14 @@ import contactImage from '../../assets/hero_page/ContactImage.webp';
 import Button from "../Button/Button";
 import { sendContactUsMessage } from '../../api/message/postMessage';
 import { createNotificationEvent } from '../../utility/modal_utils';
+import { useTranslation } from "react-i18next"
 
 function ContactSection() {
   const [nameFocused, setNameFocused] = useState<boolean>(false);
   const [emailFocused, setEmailFocused] = useState<boolean>(false);
   const [descriptionFocused, setDescriptionFocused] = useState<boolean>(false);
+
+  const { t } = useTranslation();
 
   // State for the form fields
   const [fullName, setFullName] = useState<string>('');
@@ -60,9 +63,9 @@ function ContactSection() {
         
         {/* Form */}
         <div className="mt-3 basis-1/2 max-1000:basis-auto">
-          <h2 className="text-5xl font-bold font-gilroy">Contact Us</h2>
+          <h2 className="text-5xl font-bold font-gilroy">{t("contact.title")}</h2>
           <div className="font-poppins text-[#434343] mt-2">
-            Have questions or ready to start your project? We're here to help! Contact us using the form.
+            {t("contact.description")}
           </div>
 
           <div className="w-full mt-4" onSubmit={handleSubmit}>
@@ -74,7 +77,7 @@ function ContactSection() {
                 type="text"
                 name="fullName"
                 id="contact-name"
-                placeholder="Type here"
+                placeholder={t("contact.form.name.placeholder")}
                 autoComplete="off"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
@@ -89,7 +92,7 @@ function ContactSection() {
                     nameFocused ? 'top-1 text-xs text-blue-500' : ''
                 }`}
               >
-                Full Name
+                {t("contact.form.name.label")}
               </label>
             </div>
 
@@ -100,7 +103,7 @@ function ContactSection() {
                 type="email"
                 name="Email"
                 id="contact-email"
-                placeholder="Type here"
+                placeholder={t("contact.form.email.placeholder")}
                 autoComplete="off"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -115,7 +118,7 @@ function ContactSection() {
                     emailFocused ? 'top-1 text-xs text-blue-500' : ''
                 }`}
               >
-                Email
+                {t("contact.form.email.label")}
               </label>
             </div>
 
@@ -125,7 +128,7 @@ function ContactSection() {
                 className="resize-none w-full p-3 border border-[#00000033] rounded-lg bg-transparent focus:outline-none focus:border-blue-500 peer placeholder-transparent pt-6 min-h-52"
                 name="Description"
                 id="description"
-                placeholder="Type here"
+                placeholder={t("contact.form.description.placeholder")}
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 onFocus={() => setDescriptionFocused(true)}
@@ -139,13 +142,13 @@ function ContactSection() {
                     descriptionFocused ? 'top-1 text-xs text-blue-500' : ''
                 }`}
               >
-                Question
+                {t("contact.form.description.label")}
               </label>
             </div>
           </div>
 
           <div className="w-full font-poppins">
-            <Button text='Submit' onClick={handleSubmit} wrapperClasses='!rounded-md max-1000:w-full' buttonClasses='!px-8 !text-base !font-medium !rounded-md max-1000:!w-full
+            <Button text={t("contact.form.submit")} onClick={handleSubmit} wrapperClasses='!rounded-md max-1000:w-full' buttonClasses='!px-8 !text-base !font-medium !rounded-md max-1000:!w-full
             ' variant='inline'/>
           </div>
         </div>  
