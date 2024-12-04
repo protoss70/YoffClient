@@ -33,7 +33,9 @@ export const sendMessageToTeacher = async (message: string, teacherID: string, t
         }
       );
       console.log("Message sent to teacher successfully:", response.data);
+      return response.data;
     } catch (error) {
       console.error("Error sending message to teacher:", error);
+      return null
     }
   };

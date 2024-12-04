@@ -9,14 +9,17 @@ import teacherImages from "../utility/teacherImages";
 
 import Calendar from "../components/Calendar/Calendar";
 import { getTeacher } from "../api/teacher/getTeacher";
+import MessageTeacher from "../components/Send_Message/Send-Message";
 
 const TeacherProfile: React.FC = () => {
     const { teacherId } = useParams<{ teacherId: string }>(); // Get teacherId from URL params
 
-
     // Initialize state for teacher
     const [teacher, setTeacher] = useState<Teacher | null>(null); // State for teacher
-    const [imagePath, setImagePath] = useState<string>(''); // State for teacher image path
+    const [imagePath, setImagePath] = useState<string>(''); // State for teacher image path\
+    const [isMessageModalVisible, setIsMessageModalVisible] = useState<boolean>(false);
+
+    
 
     // Effect to find and set the teacher based on the ID from the URL
     useEffect(() => {
@@ -58,7 +61,7 @@ const TeacherProfile: React.FC = () => {
                     {/* CTA */}
                     <div className="flex items-center gap-3 max-800:mt-5 max-600:flex-col">
                         <Button text="Schedule Class" variant="inline" buttonClasses="max-800:w-full" wrapperClasses="max-800:w-full"/>
-                        <Button text="Send Message" variant="border" wrapperClasses="max-800:w-full" buttonClasses="max-800:w-full"/>
+                        <Button text="Send Message" variant="border" onClick={() => {setIsMessageModalVisible(true)}} wrapperClasses="max-800:w-full" buttonClasses="max-800:w-full"/>
                     </div>
                 </div>
 
@@ -125,6 +128,7 @@ const TeacherProfile: React.FC = () => {
                 </div>
             </>
         : <div>Loading...</div>}
+        <MessageTeacher teacher={teacher} imagePath={imagePath} isVisible={isMessageModalVisible} setIsVisible={setIsMessageModalVisible}/>
         </main>
     );
 };
