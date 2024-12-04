@@ -8,6 +8,7 @@ import { useAuth } from '../../context/authContext';
 import Button from '../Button/Button';
 import WorldFlag from 'react-world-flags';
 import { createPopupEvent } from '../../utility/modal_utils';
+import { getStartedClick } from '../../utility/quick_start_actions';
 
 interface NavbarProps {
   currentSection: string | "hero" | "how" | "language" | "pricing";
@@ -194,7 +195,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
               :
               null
             }
-            <Button text='Schedule Class' variant='inline' buttonClasses='!px-3 !py-1'/>
+            <Button text='Schedule Class' onClick={() => {getStartedClick(location.pathname, navigate)}} variant='inline' buttonClasses='!px-3 !py-1'/>
 
             {/* USER PROFILE */}
             {isAuthenticated ? 
@@ -285,7 +286,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
               : null
             }
             
-            <button className='px-6 py-2 font-semibold text-main text-start hover:underline'>
+            <button onClick={() => {getStartedClick(location.pathname, navigate)}} className='px-6 py-2 font-semibold text-main text-start hover:underline'>
               Schedule Class
             </button>
             {isAuthenticated ? 

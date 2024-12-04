@@ -1,9 +1,15 @@
+
+import { useLocation, useNavigate } from "react-router-dom";
 import heroImage from "../../assets/hero_page/Hero Image.webp";
 import heroArrow from "../../assets/hero_page/Hero_Arrow.webp";
 import Button from "../Button/Button";
+import { getStartedClick } from "../../utility/quick_start_actions";
 
 
 function HeroSeciton() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   return (
     <section className="relative opacity-100">
       {/* Hero Content */}
@@ -22,7 +28,7 @@ function HeroSeciton() {
           </div>
           <br />
           <div className="max-800:mx-24 max-600:mx-0">
-            <Button text='Get Started' variant='inline' wrapperClasses="max-800:!w-full" buttonClasses='!px-7 max-800:!w-full max-800:!text-lg !py-3 font-poppins !shadow-inner  max-1100:!py-3 max-1100:!px-6 max-1100:!text-base'/>
+            <Button onClick={() => {getStartedClick(location.pathname, navigate)}} text='Get Started' variant='inline' wrapperClasses="max-800:!w-full" buttonClasses='!px-7 max-800:!w-full max-800:!text-lg !py-3 font-poppins !shadow-inner  max-1100:!py-3 max-1100:!px-6 max-1100:!text-base'/>
           </div>
         </div>
         
