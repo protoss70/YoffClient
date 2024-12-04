@@ -87,8 +87,8 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
       </div>: null}
       {showCTA ?
             <div className="flex flex-col items-center gap-3 mt-2 max-800:mt-5">
-              <Button text="Schedule Class" variant="inline" buttonClasses="!w-full !text-base" wrapperClasses="!text-base !w-full"/>
-              <Button text="Send Message" variant="border" wrapperClasses="!w-full" buttonClasses="!text-base !w-full"/>
+              <Button text="Schedule Class" onClick={() => {navigate(`/teacher/${_id}?schedule=true`)}} variant="inline" buttonClasses="!w-full !text-base" wrapperClasses="!text-base !w-full"/>
+              <Button text="Send Message" onClick={() => {navigate(`/teacher/${_id}?message=true`)}} variant="border" wrapperClasses="!w-full" buttonClasses="!text-base !w-full"/>
             </div>
           : null}
     </div>

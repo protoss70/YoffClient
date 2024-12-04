@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"; // Import useEffect and useState
-import { useParams } from "react-router-dom"; // Import useParams
+import { useParams, useSearchParams } from "react-router-dom"; // Import useParams
 import teacherProfileBg from "../assets/teacherprofile/teacher_Profile_Bg.png";
 import Flag from 'react-world-flags';
 import Button from "../components/Button/Button";
@@ -10,8 +10,16 @@ import teacherImages from "../utility/teacherImages";
 import Calendar from "../components/Calendar/Calendar";
 import { getTeacher } from "../api/teacher/getTeacher";
 import MessageTeacher from "../components/Send_Message/Send-Message";
+import { createNotificationEvent } from "../utility/modal_utils";
 
 const TeacherProfile: React.FC = () => {
+
+    const [searchParams] = useSearchParams();
+
+    // Get the values of schedule and message query params
+    const scheduleQuery = searchParams.get('schedule') === 'true'; // Converts to boolean
+    const messageQuery = searchParams.get('message') === 'true';
+
     const { teacherId } = useParams<{ teacherId: string }>(); // Get teacherId from URL params
 
     // Initialize state for teacher
@@ -19,7 +27,25 @@ const TeacherProfile: React.FC = () => {
     const [imagePath, setImagePath] = useState<string>(''); // State for teacher image path\
     const [isMessageModalVisible, setIsMessageModalVisible] = useState<boolean>(false);
 
-    
+    function handleScheduleClassButtonClick(){
+        const calendarElement = document.getElementById("teacher-calendar");
+        if (calendarElement) {
+        const yOffset = -200; // Adjust the offset
+        const yPosition = calendarElement.getBoundingClientRect().top + window.scrollY + yOffset;
+
+        window.scrollTo({
+            top: yPosition,
+            behavior: "smooth", // Smooth scrolling
+        });
+        }
+
+        createNotificationEvent(
+            "Please Select a Date",
+            "",
+            "info",
+            4000
+        )
+    }
 
     // Effect to find and set the teacher based on the ID from the URL
     useEffect(() => {
@@ -31,6 +57,12 @@ const TeacherProfile: React.FC = () => {
         const formattedName = fullnamePath.replace(/ /g, "-") as keyof typeof teacherImages;
         const image = teacherImages[formattedName] || ''; // Default to empty string if not found
         setImagePath(image); // Update the imagePath state
+
+        if (scheduleQuery){
+            handleScheduleClassButtonClick();
+        }else if(messageQuery){
+            setIsMessageModalVisible(true);
+        }
       }
   
       getTeacherData();
@@ -60,7 +92,7 @@ const TeacherProfile: React.FC = () => {
 
                     {/* CTA */}
                     <div className="flex items-center gap-3 max-800:mt-5 max-600:flex-col">
-                        <Button text="Schedule Class" variant="inline" buttonClasses="max-800:w-full" wrapperClasses="max-800:w-full"/>
+                        <Button text="Schedule Class" onClick={handleScheduleClassButtonClick} variant="inline" buttonClasses="max-800:w-full" wrapperClasses="max-800:w-full"/>
                         <Button text="Send Message" variant="border" onClick={() => {setIsMessageModalVisible(true)}} wrapperClasses="max-800:w-full" buttonClasses="max-800:w-full"/>
                     </div>
                 </div>
@@ -118,7 +150,7 @@ const TeacherProfile: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-start w-full">
+                <div className="flex justify-start w-full" id="teacher-calendar">
                     <Calendar teacher={teacher} initialSchedule={teacher.scheduleDates} teacherImage={imagePath} />
                 </div>
 

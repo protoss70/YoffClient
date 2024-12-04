@@ -28,6 +28,7 @@ const ScheduleClassModal: React.FC<CreateFolderModalProps> = ({
   const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
   const [isDemoClass, setIsDemoClass] = useState(false);
   const navigate = useNavigate();
+
   // Focus on the input when the modal is shown
   useEffect(() => {
     if (show && inputRef.current) {
@@ -37,7 +38,7 @@ const ScheduleClassModal: React.FC<CreateFolderModalProps> = ({
 
   useEffect(() => {
     setSelectedLanguage(languages[0]);
-  }, [languages])
+  }, [languages]);
 
   // Handle keydown events for Escape and Enter
   useEffect(() => {
@@ -106,6 +107,12 @@ const ScheduleClassModal: React.FC<CreateFolderModalProps> = ({
 
   if (!show) return null; // Do not render the modal if it's not shown
 
+  const handleOverlayClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      handleCloseModal();
+    }
+  };
+
   return (
     <>
       <div
@@ -113,6 +120,7 @@ const ScheduleClassModal: React.FC<CreateFolderModalProps> = ({
         tabIndex={-1}
         aria-modal="true"
         role="dialog"
+        onClick={handleOverlayClick}
       >
         <div className="w-full max-w-md bg-white rounded-lg shadow-lg">
           <div className="flex justify-between p-4 text-white rounded-t-lg bg-main">
