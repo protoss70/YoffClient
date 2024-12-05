@@ -34,8 +34,8 @@ function PricingSection() {
     await sleep(1500);
 
     createNotificationEvent(
-      "Payment System is Down",
-      "Oh, it seems our payment system is currently down. Our support team will get in touch with you soon for further information.",
+      t("notifications.pricingSection.paymentDown.title"),
+      t("notifications.pricingSection.paymentDown.description"),
       "info",
       12000
     )

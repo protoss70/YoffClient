@@ -40,8 +40,8 @@ const Register: React.FC = () => {
     if (password !== confirmPassword) {
       console.error('Passwords do not match');
       createNotificationEvent(
-        "Passwords Match Error",
-        "The passwords dont match.",
+        t("notifications.register.passwordMatchError.title"),
+        t("notifications.register.passwordMatchError.description"),
         "danger",
         3000
       )
@@ -58,8 +58,8 @@ const Register: React.FC = () => {
       const userData = await findOrCreateUser(token, getUserGMTOffset(), fullName); // Pass name and surname in the request
       setUserData(userData);
       createNotificationEvent(
-        "Register Successful",
-        `Successfully logged in`,
+        t("notifications.register.registerSuccess.title"),
+        t("notifications.register.registerSuccess.description"),
         "success"
       );
       navigate('/'); // Redirect after successful registration
@@ -81,15 +81,15 @@ const Register: React.FC = () => {
       const userData = await findOrCreateUser(token, getUserGMTOffset()); // Pass name and surname in the request
       setUserData(userData);
       createNotificationEvent(
-        "Register Successful",
-        `Successfully logged in`,
+        t("notifications.register.registerSuccess.title"),
+        t("notifications.register.registerSuccess.description"),
         "success"
       );
       navigate('/'); // Redirect after successful Google login
     } catch (error) {
       createNotificationEvent(
-        "Login Failed",
-        `Something went wrong while logging in`,
+        t("notifications.register.loginFailed.title"),
+        t("notifications.register.loginFailed.description"),
         "danger", 
         5000
       );

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { postScheduledClasses } from '../../api/schedule/postSchedule';
 import { handleScheduleNotification } from '../../utility/SchedulingErrorMessages';
 import { useTranslation } from 'react-i18next';
+import { TFunction } from 'i18next';
 
 interface CalendarProps {
   initialSchedule: string[];
@@ -86,7 +87,7 @@ const Calendar: React.FC<CalendarProps> = ({initialSchedule, teacher, teacherIma
     };
   });
 
-  async function handlePostScheduleClass(date: string, language: string, isDemoClass: boolean){
+  async function handlePostScheduleClass(date: string, language: string, isDemoClass: boolean, t: TFunction){
     if (!userData || !currentUser) return false;
     
     const token = await currentUser.getIdToken();
@@ -97,7 +98,7 @@ const Calendar: React.FC<CalendarProps> = ({initialSchedule, teacher, teacherIma
         return false
       }
 
-      handleScheduleNotification(response.code);
+      handleScheduleNotification(response.code, t);
       return response.success;
     }catch{
       return false;
@@ -111,7 +112,7 @@ const Calendar: React.FC<CalendarProps> = ({initialSchedule, teacher, teacherIma
       return;
     };
     createScheduleModalEvent(
-      async (language: string, isDemoClass: boolean) => { return await handlePostScheduleClass(date, language, isDemoClass)}, 
+      async (language: string, isDemoClass: boolean) => { return await handlePostScheduleClass(date, language, isDemoClass, t)}, 
       teacher.name,  // name
       teacher.surname, // surname
       teacher.languages, // languages

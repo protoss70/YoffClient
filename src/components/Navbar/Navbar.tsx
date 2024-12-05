@@ -211,7 +211,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
               :
               null
             }
-            <Button text={`${t("nav.scheduleClass")}`} onClick={() => {getStartedClick(location.pathname, navigate)}} variant='inline' buttonClasses='!px-3 !py-1'/>
+            <Button text={`${t("nav.scheduleClass")}`} onClick={() => {getStartedClick(location.pathname, navigate, t)}} variant='inline' buttonClasses='!px-3 !py-1'/>
 
             {/* USER PROFILE */}
             {isAuthenticated ? 
@@ -304,7 +304,7 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
               : null
             }
             
-            <button onClick={() => {getStartedClick(location.pathname, navigate)}} className='px-6 py-2 font-semibold text-main text-start hover:underline'>
+            <button onClick={() => {getStartedClick(location.pathname, navigate, t)}} className='px-6 py-2 font-semibold text-main text-start hover:underline'>
               {t("nav.scheduleClass")}
             </button>
             {isAuthenticated ? 

@@ -44,8 +44,8 @@ const TeacherProfile: React.FC = () => {
         }
 
         createNotificationEvent(
-            "Please Select a Date",
-            "",
+            t("notifications.teacherProfile.selectDate.title"),
+            t("notifications.teacherProfile.selectDate.description"),
             "info",
             4000
         )

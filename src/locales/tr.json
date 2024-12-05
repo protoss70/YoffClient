@@ -250,5 +250,6 @@
   "teacherSelect": {
     "selectLanguage": "Dil Seçin: ",
     "allOption": "Tüm Diller"
-  }
+  },
+  "notifications": {}
 }

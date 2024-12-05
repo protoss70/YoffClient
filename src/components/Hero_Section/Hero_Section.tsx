@@ -31,7 +31,7 @@ function HeroSeciton() {
           </div>
           <br />
           <div className="max-800:mx-24 max-600:mx-0">
-            <Button onClick={() => {getStartedClick(location.pathname, navigate)}} text={t("hero.button_text")} variant='inline' wrapperClasses="max-800:!w-full" buttonClasses='!px-7 max-800:!w-full max-800:!text-lg !py-3 font-poppins !shadow-inner  max-1100:!py-3 max-1100:!px-6 max-1100:!text-base'/>
+            <Button onClick={() => {getStartedClick(location.pathname, navigate, t)}} text={t("hero.button_text")} variant='inline' wrapperClasses="max-800:!w-full" buttonClasses='!px-7 max-800:!w-full max-800:!text-lg !py-3 font-poppins !shadow-inner  max-1100:!py-3 max-1100:!px-6 max-1100:!text-base'/>
           </div>
         </div>
         

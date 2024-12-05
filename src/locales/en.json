@@ -243,5 +243,113 @@
   "teacherSelect": {
     "selectLanguage": "Select Language: ",
     "allOption": "All Languages"
+  },
+  "notifications": {
+    "contactSection": {
+      "formValidation": {
+        "title": "Please Fill The Form",
+        "description": "It looks like you did not fill all the necessary fields"
+      },
+      "messageConfirmation": {
+        "title": "We Got Your Message",
+        "description": "Our team has recieved your message! We will respond as soon as possible 😊"
+      },
+      "messageError": {
+        "title": "Oops Something Went Wrong",
+        "description": "Please try again later or directly email us at info@yoff.academy"
+      }
+    },
+    "pricingSection": {
+      "paymentDown": {
+        "title": "Payment System is Down",
+        "description": "Oh, it seems our payment system is currently down. Our support team will get in touch with you soon for further information."
+      }
+    },
+    "scheduledClass": {
+      "classCanceled": {
+        "title": "Class Cancelled Successfully",
+        "description": "Your class has been cancelled and your credits refunded."
+      },
+      "classCanceledError": {
+        "title": "Failed to cancel class",
+        "description": "Oh, something went wrong. Please try again later. If the issue persists please contact support."
+      }
+    },
+    "sendMessage": {
+      "messageError": {
+        "title": "Oops Something Went Wrong",
+        "description": "Please try again later or directly email us at info@yoff.academy"
+      },
+      "recievedMessage": {
+        "title": "{{teacherName}} Received Your Message",
+        "description": "We have sent your message to ${teacher.name} 😊"
+      }
+    },
+    "login": {
+      "emailLogin": {
+        "title": "Login Successful",
+        "description": "Succesfully logged into {{email}}"
+      },
+      "loginFailed": {
+        "title": "Login Failed",
+        "description": "Something went wrong while logging in"
+      },
+      "googleLogin": {
+        "title": "Google Login Successful",
+        "description": "Succesfully logged in"
+      }
+    },
+    "register": {
+      "passwordMatchError": {
+        "title": "Passwords Match Error",
+        "description": "The passwords dont match."
+      },
+      "registerSuccess": {
+        "title": "Register Successful",
+        "description": "Successfully registered in"
+      },
+      "loginFailed": {
+        "title": "Login Failed",
+        "description": "Something went wrong while logging in"
+      }
+    },
+    "teacherProfile": {
+      "selectDate": {
+        "title": "Please Select a Date",
+        "description": ""
+      }
+    },
+    "quickStart": {
+      "selectLanguage": {
+        "title": "Please Select a Language",
+        "description": ""
+      },
+      "selectDate": {
+        "title": "Please Select a Date",
+        "description": ""
+      },
+      "selectTeacher": {
+        "title": "Please Select a Teacher",
+        "description": ""
+      }
+    },
+    "schedulingSystem": {
+      "creditsError": {
+        "title": "Insufficent Credits",
+        "description": "It looks like you don't have enough credits to schedule this class. Please add more credits to continue 😊"
+      },
+      "genericError": {
+        "title": "Something Went Wrong",
+        "description": "Oops! Something went wrong while scheduling your class. Please try again or contact support if the issue persists 🙁"
+      },
+      "dateError": {
+        "title": "Given Date is Not Available",
+        "description": "It looks like the date you have picked is already booked. Please try booking another date 😊"
+      },
+      "scheduleSuccess": {
+        "title": "Class Scheduled",
+        "description": "Your class has been successfully scheduled! We're thrilled to have you as part of our community 🌟"
+      }
+    }
   }
 }

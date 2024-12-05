@@ -37,15 +37,15 @@ const Login: React.FC = () => {
       const userData = await findOrCreateUser(token, getUserGMTOffset());
       setUserData(userData);
       createNotificationEvent(
-        "Login Successful",
-        `Succesfully logged into ${email}`,
+        t("notifications.login.emailLogin.title"),
+        t("notifications.login.emailLogin.description", {email: email}),
         "success"
       );
       navigate('/');
     } catch (error) {
       createNotificationEvent(
-        "Login Failed",
-        `Something went wrong while logging in`,
+        t("notifications.login.loginFailed.title"),
+        t("notifications.login.loginFailed.description"),
         "danger", 
         5000
       );
@@ -68,15 +68,15 @@ const Login: React.FC = () => {
       setUserData(userData);
       console.log("user data", userData);
       createNotificationEvent(
-        "Login Successful",
-        `Succesfully logged in`,
+        t("notifications.login.googleLogin.title"),
+        t("notifications.login.googleLogin.description"),
         "success"
       );
       navigate('/'); // Redirect after successful Google login
     } catch (error) {
       createNotificationEvent(
-        "Login Failed",
-        `Something went wrong while logging in`,
+        t("notifications.login.loginFailed.title"),
+        t("notifications.login.loginFailed.description"),
         "danger", 
         5000
       );

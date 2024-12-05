@@ -33,8 +33,8 @@ const MessageTeacher: React.FC<MessageTeacherProps> = ({ teacher, imagePath, isV
 
     if (!result || !result.success){
         createNotificationEvent(
-            "Oops Something Went Wrong",
-            "Please try again later or directly email us at info@yoff.academy",
+            t("notifications.sendMessage.messageError.title"),
+            t("notifications.sendMessage.messageError.description"),
             "danger",
             8500
           )
@@ -42,8 +42,8 @@ const MessageTeacher: React.FC<MessageTeacherProps> = ({ teacher, imagePath, isV
     }
 
     createNotificationEvent(
-        `${teacher.name} Recieved Your Message`,
-        `We have sent your message to ${teacher.name} 😊`,
+        t("notifications.sendMessage.recievedMessage.title", {teacherName: teacher.name}),
+        t("notifications.sendMessage.recievedMessage.description", {teacherName: teacher.name}),
         "success",
         8000
     )

@@ -1,7 +1,8 @@
 import { createNotificationEvent } from "./modal_utils";
+import { TFunction } from "i18next";
 
 
-const homePageAction = () => {
+const homePageAction = (t: TFunction) => {
   const calendarElement = document.getElementById("LanguageSelection");
     if (calendarElement) {
     const yOffset = -100; // Adjust the offset
@@ -14,14 +15,14 @@ const homePageAction = () => {
     }
 
     createNotificationEvent(
-        "Please Select a Language",
-        "",
+      t("notifications.quickStart.selectLanguage.title"),
+      t("notifications.quickStart.selectLanguage.description"),
         "info",
         3000
     )
 }
 
-export const teacherProfileAction = () => {
+export const teacherProfileAction = (t: TFunction) => {
   const calendarElement = document.getElementById("teacher-calendar");
   if (calendarElement) {
   const yOffset = -200; // Adjust the offset
@@ -34,40 +35,40 @@ export const teacherProfileAction = () => {
   }
 
   createNotificationEvent(
-      "Please Select a Date",
-      "",
+      t("notifications.quickStart.selectDate.title"),
+      t("notifications.quickStart.selectDate.description"),
       "info",
       3000
   )
 }
 
-const teacherSelectAction = (navigate: (pathname: string) => void) => {
+const teacherSelectAction = (navigate: (pathname: string) => void, t: TFunction) => {
   const params = new URLSearchParams(location.search); // Parse the query string
 
   if (params.has("langFilter") && params.get("langFilter")?.trim() !== "") {
     createNotificationEvent(
-      "Please Select a Teacher",
-      "",
+      t("notifications.quickStart.selectTeacher.title"),
+      t("notifications.quickStart.selectTeacher.description"),
       "info",
       3000
   )
   } else {
     navigate("/#LanguageSelection");
     setTimeout(() => {
-        homePageAction();
+        homePageAction(t);
     }, 100)
   }
 }
 
-export const getStartedClick = (location: string, navigate: (pathname: string) => void) => {
+export const getStartedClick = (location: string, navigate: (pathname: string) => void, t: TFunction) => {
   if (location === "/") {
-    homePageAction();
+    homePageAction(t);
   }else if (location === "/teachers") {
-    teacherSelectAction(navigate);
+    teacherSelectAction(navigate, t);
   }else if (location.startsWith("/teacher/")){
-    teacherProfileAction();
+    teacherProfileAction(t);
   }else{
     navigate("/");
-    homePageAction();
+    homePageAction(t);
   }
 }

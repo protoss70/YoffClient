@@ -26,8 +26,8 @@ function ContactSection() {
     
     if (email.trim() === "" || fullName.trim() === "" || question.trim() === ""){
       createNotificationEvent(
-        "Please Fill The Form",
-        "It looks like you did not fill all the necessary fields",
+        t("notifications.contactSection.formValidation.title"),
+        t("notifications.contactSection.formValidation.description"),
         "info",
         5000
       )
@@ -38,8 +38,8 @@ function ContactSection() {
 
     if (result && result.success){
       createNotificationEvent(
-        "We Got Your Message",
-        "Our team has recieved your message! We will respond as soon as possible 😊",
+        t("notifications.contactSection.messageConfirmation.title"),
+        t("notifications.contactSection.messageConfirmation.description"),
         "success",
         5000
       )
@@ -48,8 +48,8 @@ function ContactSection() {
       setQuestion("");
     }else{
       createNotificationEvent(
-        "Oops Something Went Wrong",
-        "Please try again later or directly email us at info@yoff.academy",
+        t("notifications.contactSection.messageError.title"),
+        t("notifications.contactSection.messageError.description"),
         "danger",
         8500
       )
