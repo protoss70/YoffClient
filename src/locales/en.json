@@ -117,6 +117,20 @@
     "Spanish": "Spanish",
     "Turkish": "Turkish"
   },
+  "allCountries": {
+    "Egyptian": "Egyptian",
+    "SriLankan": "Sri Lankan",
+    "Lebanese": "Lebanese",
+    "Russian": "Russian",
+    "Korean": "Korean",
+    "Cuban": "Cuban",
+    "Turkish": "Turkish"
+  },
+  "allLanguageLevels": {
+    "native": "Native",
+    "proficient": "Proficient",
+    "advanced": "Advanced"
+  },
   "languageSelection": {
     "title": {
       "line1": "Languages",
@@ -180,5 +194,54 @@
     "questionLabel": "Question",
     "placeholder": "Type here",
     "submitButton": "Submit"
+  },
+  "teacherCards": {
+    "hobbies": "Hobbies",
+    "languages": "Languages",
+    "scheduleClass": "Schedule Class",
+    "sendMessage": "Send Message"
+  },
+  "teacherSection": {
+    "line1": "Expert",
+    "highlight": "Teachers",
+    "line2": "From",
+    "line3": "Around the World"
+  },
+  "loginPage": {
+    "title": "Login",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "forgotPassword": "Forgot Password?",
+    "loginButton": "Login",
+    "noAccount": "Don't have an account?",
+    "registerLink": "Register",
+    "or": "or",
+    "googleLogin": "Login with Google"
+  },
+  "myClasses": {
+    "noClass": "It seems you don't have any classes scheduled yet... 😅"
+  },
+  "registerPage": {
+    "title": "Register",
+    "fullNameLabel": "Full Name",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm Password",
+    "registerButton": "Register",
+    "alreadyHaveAccount": "Already have an account?",
+    "loginLink": "Login",
+    "or": "or",
+    "googleRegister": "Register with Google"
+  },
+  "teacherProfile": {
+    "schedule": "Schedule Class",
+    "sendMessage": "Send Message",
+    "education": "Education",
+    "hobbies": "Hobbies",
+    "languages": "Languages"
+  },
+  "teacherSelect": {
+    "selectLanguage": "Select Language: ",
+    "allOption": "All Languages"
   }
 }

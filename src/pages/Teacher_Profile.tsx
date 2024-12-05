@@ -12,9 +12,13 @@ import { getTeacher } from "../api/teacher/getTeacher";
 import MessageTeacher from "../components/Send_Message/Send-Message";
 import { createNotificationEvent } from "../utility/modal_utils";
 
+import { useTranslation } from "react-i18next";
+
 const TeacherProfile: React.FC = () => {
 
     const [searchParams] = useSearchParams();
+
+    const { t } = useTranslation();
 
     // Get the values of schedule and message query params
     const scheduleQuery = searchParams.get('schedule') === 'true'; // Converts to boolean
@@ -67,7 +71,7 @@ const TeacherProfile: React.FC = () => {
   
       getTeacherData();
     }, [teacherId]);
-
+    
     return (
         <main className="relative flex flex-col items-center justify-center gap-5 px-24 pt-32 pb-24 max-1300:px-12 max-900:px-6">
             {/* Teacher Image */}
@@ -86,14 +90,14 @@ const TeacherProfile: React.FC = () => {
                             {teacher.name} {" "} {teacher.surname}
                         </div>
                         <div className="text-2xl font-gilroy font-medium opacity-50 text-[#222222]">
-                            {teacher.origin}
+                            {t(`allCountries.${teacher.origin.replace(' ', '')}`)}
                         </div>
                     </div>
 
                     {/* CTA */}
                     <div className="flex items-center gap-3 max-800:mt-5 max-600:flex-col">
-                        <Button text="Schedule Class" onClick={handleScheduleClassButtonClick} variant="inline" buttonClasses="max-800:w-full" wrapperClasses="max-800:w-full"/>
-                        <Button text="Send Message" variant="border" onClick={() => {setIsMessageModalVisible(true)}} wrapperClasses="max-800:w-full" buttonClasses="max-800:w-full"/>
+                        <Button text={t("teacherProfile.schedule")} onClick={handleScheduleClassButtonClick} variant="inline" buttonClasses="max-800:w-full" wrapperClasses="max-800:w-full"/>
+                        <Button text={t("teacherProfile.sendMessage")} variant="border" onClick={() => {setIsMessageModalVisible(true)}} wrapperClasses="max-800:w-full" buttonClasses="max-800:w-full"/>
                     </div>
                 </div>
 
@@ -109,21 +113,21 @@ const TeacherProfile: React.FC = () => {
                 {/* Bottom Info */}
                 <div className="flex justify-between w-full ml-6 gap-7 max-1000:flex-wrap max-1000:flex-row max-800:flex-col-reverse">
                     <div className="basis-1/3 max-1000:basis-1/2">
-                        <h3 className="w-full text-2xl font-semibold text-start font-gilroy text-main">Education</h3>
+                        <h3 className="w-full text-2xl font-semibold text-start font-gilroy text-main">{t("teacherProfile.education")}</h3>
                         <div className="font-gilroy font-semibold text-[#222222] text-lg">
-                            Master's Degree in Linguistics from the University of Milan teaching certifications
+                            {teacher.education}
                         </div>
                     </div>
 
                     <div className="basis-1/3">
-                        <h3 className="w-full text-2xl font-semibold text-start font-gilroy text-main">Hobbies</h3>
+                        <h3 className="w-full text-2xl font-semibold text-start font-gilroy text-main">{t("teacherProfile.hobbies")}</h3>
                         <div className="font-gilroy font-semibold text-[#222222] text-lg">
                             {teacher.hobbies.join(", ")}
                         </div>
                     </div>
 
                     <div className="basis-1/3">
-                        <h3 className="w-full text-2xl font-semibold text-start font-gilroy text-main">Languages</h3>
+                        <h3 className="w-full text-2xl font-semibold text-start font-gilroy text-main">{t("teacherProfile.languages")}</h3>
                         <div className="flex justify-start gap-5 pt-1">
                         {teacher.languages.map((language, index) => {
 
@@ -143,7 +147,7 @@ const TeacherProfile: React.FC = () => {
                                     alt={`${languageName} flag`}
                                     className="w-12 h-12 duration-200 rounded-2xl"
                                 />
-                                <span className="mt-1 font-semibold font-gilroy text-md">{languageName}<span className='text-sm font-normal'>{languageLevel}</span></span> {/* Display the full language with additional info */}
+                                <span className="mt-1 font-semibold font-gilroy text-md">{t(`allLanguages.${languageName}`)}<span className='text-sm font-normal'>&nbsp;({t(`allLanguageLevels.${languageLevel.replace(/[()]/g, '').trim().toLowerCase()}`)})</span></span> {/* Display the full language with additional info */}
                                 </div>
                             ) : null; // If no mapping, return null
                             })}

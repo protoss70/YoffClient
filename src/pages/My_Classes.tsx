@@ -3,11 +3,14 @@ import { getScheduledClasses } from "../api/schedule/getSchedule";
 import { useAuth } from '../context/authContext';
 import Scheduled_Class from "../components/Scheduled_Class/Scheduled_Class";
 import { ScheduledClassType } from "../utility/types";
+import { useTranslation } from "react-i18next";
 
 const My_Classes: React.FC = () => {
   const { currentUser, userData } = useAuth();
   const [scheduledClasses, setScheduledClasses] = useState<ScheduledClassType[] | null>([]);
   const [token, setToken] = useState<string | null>(null);  
+
+  const { t } = useTranslation();
   
     useEffect(() => {
         async function getToken() {
@@ -37,7 +40,7 @@ const My_Classes: React.FC = () => {
         <Scheduled_Class key={classData._id} data={classData} userId={userData._id} token={token}/>
       )) : null}
       {scheduledClasses && scheduledClasses.length === 0 ? 
-        <h1 className="text-4xl font-poppins">It seems you don't have any classes scheduled yet... 😅</h1>
+        <h1 className="text-4xl font-poppins">{t("myClasses.noClass")}</h1>
       : null}
     </div>
   );

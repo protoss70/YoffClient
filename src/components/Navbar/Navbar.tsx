@@ -19,7 +19,6 @@ interface NavbarProps {
 const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
   const navigate = useNavigate();
   const { isAuthenticated, logout, currentUser, userData } = useAuth();
-  const [language, setLanguage] = useState("English");
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const location = useLocation();
   const languageSelectRef = useRef<HTMLDivElement | null>(null);
@@ -131,7 +130,6 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
     // Change the language using the mapped code
     if (languageCode) {
       i18next.changeLanguage(languageCode);
-      setLanguage(language); // Update the language state with the custom label
   
       // Close the appropriate select menu based on the `hamburgerButton` flag
       if (hamburgerButton) {
@@ -257,7 +255,9 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
             <div className='relative font-poppins'>
               <button onClick={toggleLanguageSelect} className='flex items-center gap-2 px-2 py-1 bg-white border border-black rounded-xl'>
                 <img className='h-10' src={globeIcon} alt="globe icon" />
-                <span className='font-medium max-1100:hidden'>{language}</span>
+                <span className='font-medium text-start hover:underline'>
+                  {i18next.language === 'en' ? 'English' : 'Türkçe'}
+                </span>
               </button>
               {/* Language select field */}
               <div
@@ -346,7 +346,9 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
             }
             <button onClick={toggleHamburgerLanguageSelect} className='flex items-center gap-2 px-5 py-2'>
               <img className='h-8' src={globeIcon} alt="globe icon" />
-              <span className='font-medium text-start hover:underline'>{language}</span>
+              <span className='font-medium text-start hover:underline'>
+                {i18next.language === 'en' ? 'English' : 'Türkçe'}
+              </span>
             </button>
             {/* Language select field in hamburger menu */}
             <div

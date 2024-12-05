@@ -7,6 +7,7 @@ export interface Teacher {
     bio: string;
     languages: string[];
     scheduleDates: string[];
+    education: string;
     occupiedClassDates: {date: string}[];
 }
 

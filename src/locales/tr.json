@@ -117,6 +117,20 @@
     "Spanish": "İspanyolca",
     "Turkish": "Türkçe"
   },
+  "allCountries": {
+    "Egyptian": "Mısırlı",
+    "SriLankan": "Sri Lankalı",
+    "Lebanese": "Lübnanlı",
+    "Russian": "Rus",
+    "Korean": "Koreli",
+    "Cuban": "Kübalı",
+    "Turkish": "Türk"
+  },
+  "allLanguageLevels": {
+    "native": "Ana Dil",
+    "proficient": "Yetkin",
+    "advanced": "İleri Seviye"
+  },
   "languageSelection": {
     "title": {
       "line1": "Sunduğumuz",
@@ -180,5 +194,61 @@
     "questionLabel": "Soru",
     "placeholder": "Buraya yazın",
     "submitButton": "Gönder"
+  },
+  "teacherCards": {
+    "hobbies": "Hobiler",
+    "languages": "Diller",
+    "scheduleClass": "Ders Planla",
+    "sendMessage": "Mesaj Gönder"
+  },
+  "teacherSection": {
+    "line1": "Uzman",
+    "highlight": "Öğretmenler",
+    "line2": "Dünyanın Her Yerinden",
+    "line3": ""
+  },
+  "forgotPassword": {
+    "reset": "Şifreyi Sıfırla",
+    "email": "E-posta",
+    "sendResetRequest": "Şifre Sıfırlama E-postası Gönder",
+    "remember": "Şifrenizi mi hatırladınız?",
+    "login": "Giriş Yap"
+  },
+  "loginPage": {
+    "title": "Giriş Yap",
+    "emailLabel": "E-posta",
+    "passwordLabel": "Şifre",
+    "forgotPassword": "Şifrenizi mi unuttunuz?",
+    "loginButton": "Giriş Yap",
+    "noAccount": "Hesabınız yok mu?",
+    "registerLink": "Kayıt Ol",
+    "or": "ya da",
+    "googleLogin": "Google ile Giriş Yap"
+  },
+  "myClasses": {
+    "noClass": "Görünüşe göre henüz planlanmış bir dersiniz yok ... 😅"
+  },
+  "registerPage": {
+    "title": "Kayıt Ol",
+    "fullNameLabel": "Tam Adı",
+    "emailLabel": "E-posta",
+    "passwordLabel": "Şifre",
+    "confirmPasswordLabel": "Şifreyi Onayla",
+    "registerButton": "Kayıt Ol",
+    "alreadyHaveAccount": "Zaten bir hesabınız var mı?",
+    "loginLink": "Giriş Yap",
+    "or": "ya da",
+    "googleRegister": "Google ile Kayıt Ol"
+  },
+  "teacherProfile": {
+    "schedule": "Ders Planla",
+    "sendMessage": "Mesaj Gönder",
+    "education": "Eğitim",
+    "hobbies": "Hobiler",
+    "languages": "Diller"
+  },
+  "teacherSelect": {
+    "selectLanguage": "Dil Seçin: ",
+    "allOption": "Tüm Diller"
   }
 }

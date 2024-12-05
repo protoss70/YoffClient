@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/authContext'; // Import the useAuth hook
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const ForgotPassword: React.FC = () => {
   const [email, setEmail] = useState('');
   const { sendPasswordResetEmail } = useAuth(); // Destructure context function
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -27,11 +30,11 @@ const ForgotPassword: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-md shadow-md">
-        <h2 className="text-2xl font-bold">Reset Password</h2>
+        <h2 className="text-2xl font-bold">{t("forgotPassword.reset")}</h2>
         <form onSubmit={handlePasswordReset} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 text-start">
-              Email
+            {t("forgotPassword.email")}
             </label>
             <input
               type="email"
@@ -46,11 +49,11 @@ const ForgotPassword: React.FC = () => {
             type="submit"
             className="w-full px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
           >
-            Send Password Reset Email
+            {t("forgotPassword.sendResetRequest")}
           </button>
         </form>
         <div className='text-sm'>
-          Remembered your password? <Link className='text-blue-600 hover:underline' to="/login">Login</Link>
+        {t("forgotPassword.remember")}&nbsp;<Link className='text-blue-600 hover:underline' to="/login">{t("forgotPassword.login")}</Link>
         </div>
       </div>
     </div>

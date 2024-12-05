@@ -8,6 +8,8 @@ import { TeacherCardDisplay } from "../utility/types";
 import TeacherCard from "../components/Teacher_Card/TeacherCard";
 import { getTeacherCards } from "../api/teacher/getTeacher";
 
+import { useTranslation } from "react-i18next";
+
 const Teacher_Select: React.FC = () => {
   const location = useLocation(); // Get the location object to access the search params
   const queryParams = new URLSearchParams(location.search); // Parse the query parameters
@@ -15,6 +17,8 @@ const Teacher_Select: React.FC = () => {
   const [selectedLanguage, setSelectedLanguage] = useState<string>(langFilter || "");
   const [teachers, setTeachers] = useState<TeacherCardDisplay[]>([])
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedLang = event.target.value;
@@ -74,7 +78,7 @@ const Teacher_Select: React.FC = () => {
               className={`h-16 w-16 rounded-full p-2 bg-main`}
             />
           )}
-          <h2 className="text-4xl font-bold font-gilroy">{language}</h2>
+          <h2 className="text-4xl font-bold font-gilroy">{t(`allLanguages.${language}`)}</h2>
         </div>
         <div className="flex flex-wrap justify-start gap-10 max-1000:justify-center">
           {teachers.map((teacher, index) => {
@@ -108,12 +112,12 @@ const Teacher_Select: React.FC = () => {
           onChange={handleLanguageChange}
           className="p-2 ml-2 border border-gray-300 rounded"
         >
-          <option value="">All Languages</option>
+          <option value="">{t(`teacherSelect.allOption`)}</option>
           {allLanguages.map((language) => (
             <option key={language} value={language}>
               <div className="flex items-center">
                 <Flag code={languageToCountryCode[language]} alt={`${language} flag`} className="mr-2" />
-                {language}
+                {t(`allLanguages.${language}`)}
               </div>
             </option>
           ))}

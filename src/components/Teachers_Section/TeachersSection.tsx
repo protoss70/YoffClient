@@ -3,9 +3,15 @@ import arrowLeft from "../../assets/hero_page/arrowLeft.png";
 import TeacherCard from '../Teacher_Card/TeacherCard'; // Ensure the path is correct
 import { TeacherCardDisplay } from "../../utility/types";
 import { getTeacherCards } from "../../api/teacher/getTeacher";
+import { useTranslation } from "react-i18next";
 
 function TeachersSection() {
-    const [teachers, setTeachers] = useState<TeacherCardDisplay[]>([])
+    const [teachers, setTeachers] = useState<TeacherCardDisplay[]>([]);
+
+    const { t, i18n  } = useTranslation();
+
+    const isTurkish = i18n.language === "tr";
+
     useEffect(() => {
         async function getCards(){
             const teacherCardValues = await getTeacherCards(8, true);
@@ -28,12 +34,12 @@ function TeachersSection() {
         <section className="px-24 mt-40 min-w-96 max-1300:px-12 max-900:px-6 max-600:px-1 max-600:min-w-0">
             {/* Title */}
             <div className="flex items-center justify-center text-6xl font-bold font-gilroy">
-                <h1>
+                <h1 className={`flex ${isTurkish ? "flex-col-reverse" : "flex-col"}`}>
                     <span className="text-main">
-                        Expert&nbsp;
-                        <span className="underline--double">Teachers&nbsp;</span>
+                        {t("teacherSection.line1")}&nbsp;
+                        <span className="underline--double">{t("teacherSection.highlight")}&nbsp;</span>
                     </span>
-                    from <br />Around the World
+                    {t("teacherSection.line2")}&nbsp;{t("teacherSection.line3")}
                 </h1>
             </div>
 

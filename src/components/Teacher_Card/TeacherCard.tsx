@@ -5,6 +5,7 @@ import { languageToCountryCode } from '../../utility/languages';
 import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
 import teacherImages from '../../utility/teacherImages';
+import { useTranslation } from 'react-i18next';
 
 interface TeacherCardProps {
   name: string;
@@ -27,6 +28,9 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
   isAbsolute=true,
   showCTA=false,
 }) => {
+
+  const {t} = useTranslation();
+
   const navigate = useNavigate();
   // Determine flag size based on className
   const flagSizeClass = className.includes('card1') || className.includes('card5') 
@@ -48,19 +52,19 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
         <img loading="lazy" onClick={handleTeacherClick} src={imagePath} alt={`${name} profile image`} className="object-cover rounded-full hover:cursor-pointer cardImage" />
         <div onClick={handleTeacherClick} className="absolute bottom-[-20px]  flex flex-col items-center justify-center px-3 py-1 text-white rounded-md bg-gradient-to-r from-main to-secondary font-gilroy">
           <div className="font-semibold hover:cursor-pointer hover:underline">{name}</div>
-          <div className="font-medium">{country}</div>
+          <div className="font-medium">{t(`allCountries.${country.replace(" ", "")}`)}</div>
         </div>
       </div>
 
       {/* Hobbies */}
       <div className="flex flex-col mt-4 text-center font-gilroy">
-        <div className="font-semibold text-custom_blue">Hobbies</div>
+        <div className="font-semibold text-custom_blue">{t("teacherCards.hobbies")}</div>
         <div className="font-medium">{hobbies.slice(0, 2).join(', ')}</div>
       </div>
 
       {/* Languages */}
       {!showCTA ? <div className="flex flex-col mt-4 text-center font-gilroy">
-        <div className="font-semibold text-custom_blue">Languages</div>
+        <div className="font-semibold text-custom_blue">{t("teacherCards.languages")}</div>
         <div className="flex justify-center gap-3 px-[10%]">
         {languages.map((language, index) => {
           // Extract the language part before any parentheses (if any)
@@ -87,8 +91,8 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
       </div>: null}
       {showCTA ?
             <div className="flex flex-col items-center gap-3 mt-2 max-800:mt-5">
-              <Button text="Schedule Class" onClick={() => {navigate(`/teacher/${_id}?schedule=true`)}} variant="inline" buttonClasses="!w-full !text-base" wrapperClasses="!text-base !w-full"/>
-              <Button text="Send Message" onClick={() => {navigate(`/teacher/${_id}?message=true`)}} variant="border" wrapperClasses="!w-full" buttonClasses="!text-base !w-full"/>
+              <Button text={t("teacherCards.scheduleClass")} onClick={() => {navigate(`/teacher/${_id}?schedule=true`)}} variant="inline" buttonClasses="!w-full !text-base" wrapperClasses="!text-base !w-full"/>
+              <Button text={t("teacherCards.sendMessage")} onClick={() => {navigate(`/teacher/${_id}?message=true`)}} variant="border" wrapperClasses="!w-full" buttonClasses="!text-base !w-full"/>
             </div>
           : null}
     </div>

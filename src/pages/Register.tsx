@@ -7,6 +7,7 @@ import Button from '../components/Button/Button';
 import { findOrCreateUser } from '../api/user/getUser';
 import { createNotificationEvent } from '../utility/modal_utils';
 import { getUserGMTOffset } from '../utility/dates';
+import { useTranslation } from 'react-i18next';
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -15,6 +16,8 @@ const Register: React.FC = () => {
   const [fullName, setFullName] = useState(''); // Add state for name
   const { register, loginWithGoogle, setUserData, logout } = useAuth(); // Destructure context functions
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -98,11 +101,11 @@ const Register: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-screen py-12 bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-md shadow-md">
-        <h2 className="text-2xl font-bold">Register</h2>
+        <h2 className="text-2xl font-bold">{t("registerPage.title")}</h2>
         <form onSubmit={handleRegister} className="space-y-4">
         <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 text-start">
-              Full Name
+            {t("registerPage.fullNameLabel")}
             </label>
             <input
               type="text"
@@ -115,7 +118,7 @@ const Register: React.FC = () => {
           </div>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 text-start">
-              Email
+            {t("registerPage.emailLabel")}
             </label>
             <input
               type="email"
@@ -128,7 +131,7 @@ const Register: React.FC = () => {
           </div>
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 text-start">
-              Password
+            {t("registerPage.passwordLabel")}
             </label>
             <input
               type="password"
@@ -141,7 +144,7 @@ const Register: React.FC = () => {
           </div>
           <div>
             <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 text-start">
-              Confirm Password
+            {t("registerPage.confirmPasswordLabel")}
             </label>
             <input
               type="password"
@@ -152,12 +155,12 @@ const Register: React.FC = () => {
               className="w-full p-2 mt-1 border border-gray-300 rounded-md"
             />
           </div>
-          <Button onClick={handleRegister} text='Register' variant='border' wrapperClasses='!rounded-lg !w-full' buttonClasses='!w-full !px-4 !py-2 !rounded-lg !bg-main !border-main !text-white !text-base font-medium'/>
+          <Button onClick={handleRegister} text={t("registerPage.registerButton")} variant='border' wrapperClasses='!rounded-lg !w-full' buttonClasses='!w-full !px-4 !py-2 !rounded-lg !bg-main !border-main !text-white !text-base font-medium'/>
         </form>
-        <div className='text-sm'>Already have an account? <Link className='text-blue-600 hover:underline' to="/login">Login</Link></div>
+        <div className='text-sm'>{t("registerPage.alreadyHaveAccount")} <Link className='text-blue-600 hover:underline' to="/login">{t("registerPage.loginLink")}</Link></div>
         <div className="flex items-center justify-between flex-basis-1/3">
           <hr className="flex-1 border-gray-300" />
-          <div className="px-4 text-center">or</div>
+          <div className="px-4 text-center">{t("registerPage.or")}</div>
           <hr className="flex-1 border-gray-300" />
         </div>
         <div className='flex items-center justify-between w-full px-2 py-1 border border-gray-300 rounded-md hover:bg-gray-100'>
@@ -166,7 +169,7 @@ const Register: React.FC = () => {
             onClick={handleGoogleLogin}
             className="flex items-center justify-center w-full px-4 py-2 font-medium text-gray-500 rounded-md"
           >
-            Register with Google
+            {t("registerPage.googleRegister")}
           </button>
         </div>
       </div>
