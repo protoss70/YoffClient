@@ -251,5 +251,112 @@
     "selectLanguage": "Dil Seçin: ",
     "allOption": "Tüm Diller"
   },
-  "notifications": {}
+  "notifications": {
+    "contactSection": {
+      "formValidation": {
+        "title": "Lütfen Formu Doldurun",
+        "description": "Görünüşe göre gerekli tüm alanları doldurmadınız"
+      },
+      "messageConfirmation": {
+        "title": "Mesajınızı Aldık",
+        "description": "Mesajınızı aldık! En kısa sürede size geri dönüş yapacağız 😊"
+      },
+      "messageError": {
+        "title": "Hups, Bir Şeyler Yanlış Gitti",
+        "description": "Lütfen daha sonra tekrar deneyin veya doğrudan info@yoff.academy adresine e-posta gönderin"
+      }
+    },
+    "pricingSection": {
+      "paymentDown": {
+        "title": "Ödeme Sistemi Kapalı",
+        "description": "Ah, ödeme sistemimiz şu anda kapalı gibi görünüyor. Destek ekibimiz en kısa sürede sizinle iletişime geçecektir."
+      }
+    },
+    "scheduledClass": {
+      "classCanceled": {
+        "title": "Ders Başarıyla İptal Edildi",
+        "description": "Dersiniz iptal edildi ve kredileriniz geri verildi."
+      },
+      "classCanceledError": {
+        "title": "Ders İptal Edilemedi",
+        "description": "Ah, bir şeyler yanlış gitti. Lütfen daha sonra tekrar deneyin. Sorun devam ederse, lütfen destek ile iletişime geçin."
+      }
+    },
+    "sendMessage": {
+      "messageError": {
+        "title": "Hups, Bir Şeyler Yanlış Gitti",
+        "description": "Lütfen daha sonra tekrar deneyin veya doğrudan info@yoff.academy adresine e-posta gönderin"
+      },
+      "recievedMessage": {
+        "title": "{{teacherName}} Mesajınızı Aldı",
+        "description": "Mesajınızı {{teacherName}}'a gönderdik 😊"
+      }
+    },
+    "login": {
+      "emailLogin": {
+        "title": "Giriş Başarılı",
+        "description": "{{email}} adresiyle başarıyla giriş yapıldı"
+      },
+      "loginFailed": {
+        "title": "Giriş Başarısız",
+        "description": "Giriş yaparken bir şeyler yanlış gitti"
+      },
+      "googleLogin": {
+        "title": "Google ile Giriş Başarılı",
+        "description": "Başarıyla giriş yapıldı"
+      }
+    },
+    "register": {
+      "passwordMatchError": {
+        "title": "Şifre Eşleşmesi Hatası",
+        "description": "Şifreler eşleşmiyor."
+      },
+      "registerSuccess": {
+        "title": "Kayıt Başarılı",
+        "description": "Başarıyla kayıt oldunuz"
+      },
+      "loginFailed": {
+        "title": "Giriş Başarısız",
+        "description": "Giriş yaparken bir şeyler yanlış gitti"
+      }
+    },
+    "teacherProfile": {
+      "selectDate": {
+        "title": "Lütfen Bir Tarih Seçin",
+        "description": ""
+      }
+    },
+    "quickStart": {
+      "selectLanguage": {
+        "title": "Lütfen Bir Dil Seçin",
+        "description": ""
+      },
+      "selectDate": {
+        "title": "Lütfen Bir Tarih Seçin",
+        "description": ""
+      },
+      "selectTeacher": {
+        "title": "Lütfen Bir Öğretmen Seçin",
+        "description": ""
+      }
+    },
+    "schedulingSystem": {
+      "creditsError": {
+        "title": "Yetersiz Kredi",
+        "description": "Bu dersi planlamak için yeterli krediniz yok gibi görünüyor. Devam etmek için lütfen daha fazla kredi ekleyin 😊"
+      },
+      "genericError": {
+        "title": "Bir Şeyler Yanlış Gitti",
+        "description": "Hups! Dersinizi planlarken bir şeyler yanlış gitti. Lütfen tekrar deneyin veya sorun devam ederse destek ile iletişime geçin 🙁"
+      },
+      "dateError": {
+        "title": "Seçilen Tarih Uygun Değil",
+        "description": "Seçtiğiniz tarih zaten rezerve edilmiş. Lütfen başka bir tarih seçmeyi deneyin 😊"
+      },
+      "scheduleSuccess": {
+        "title": "Ders Planlandı",
+        "description": "Dersiniz başarıyla planlandı! Topluluğumuzun bir parçası olmanızdan dolayı çok heyecanlıyız 🌟"
+      }
+    }
+  }
 }

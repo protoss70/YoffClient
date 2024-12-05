@@ -282,7 +282,7 @@
       },
       "recievedMessage": {
         "title": "{{teacherName}} Received Your Message",
-        "description": "We have sent your message to ${teacher.name} 😊"
+        "description": "We have sent your message to {{teacherName}} 😊"
       }
     },
     "login": {
