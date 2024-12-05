@@ -84,7 +84,7 @@ function TeachersSection() {
                 {/* Current Index Display */}
                 <div className="flex h-[45px] items-center justify-center text-xl font-bold text-main">
                     <div>
-                        {`${currentIndex + 1} of ${teachers.length}`}
+                        {`${currentIndex + 1} / ${teachers.length}`}
                     </div>
                 </div>
                 <div

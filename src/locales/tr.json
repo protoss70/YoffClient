@@ -40,7 +40,7 @@
         "placeholder": "Buraya yazın"
       },
       "description": {
-        "label": "Soru",
+        "label": "Mesaj",
         "placeholder": "Buraya yazın"
       },
       "submit": "Gönder"
@@ -68,11 +68,11 @@
   },
   "hero": {
     "title": {
-      "line1": "Her Zaman, Her Yerde",
+      "line1": "Dilediğin Zaman, Dilediğin Yerde",
       "line2": "Uzman",
       "highlight": "Öğretmenlerle"
     },
-    "description": "Dünyanın dört bir yanından gelen uzman öğretmenlerle dil potansiyelinizi açığa çıkarın. İster yeni başlayan, ister ileri düzey olun.",
+    "description": "İster yeni başlayan, ister ileri düzey olun. Dünyanın dört bir yanından uzman öğretmenlerle dil potansiyelinizi açığa çıkarın.",
     "button_text": "Başlayın"
   },
   "howItWorks": {
@@ -107,7 +107,7 @@
     ]
   },
   "allLanguages": {
-    "tutor": "Hocası",
+    "tutor": "",
     "teacher": "Öğretmen",
     "teachers": "Öğretmen",
     "English": "İngilizce",
@@ -139,7 +139,7 @@
   },
   "pricingSection": {
     "title": {
-      "line1": "Bizim",
+      "line1": "",
       "line2": "Fiyatlandırmamız"
     },
     "pricingCards": [
@@ -191,7 +191,7 @@
     "header": "Mesaj Gönder",
     "teacherName": "Öğretmen Adı",
     "description": "Öğretmene kendiniz hakkında, öğrenme hedefleriniz ve sorularınız hakkında bilgi verin.",
-    "questionLabel": "Soru",
+    "questionLabel": "Mesaj",
     "placeholder": "Buraya yazın",
     "submitButton": "Gönder"
   },
@@ -262,7 +262,7 @@
         "description": "Mesajınızı aldık! En kısa sürede size geri dönüş yapacağız 😊"
       },
       "messageError": {
-        "title": "Hups, Bir Şeyler Yanlış Gitti",
+        "title": "Hay aksi, Bir Şeyler Yanlış Gitti",
         "description": "Lütfen daha sonra tekrar deneyin veya doğrudan info@yoff.academy adresine e-posta gönderin"
       }
     },
@@ -284,7 +284,7 @@
     },
     "sendMessage": {
       "messageError": {
-        "title": "Hups, Bir Şeyler Yanlış Gitti",
+        "title": "Hay aksi, Bir Şeyler Yanlış Gitti",
         "description": "Lütfen daha sonra tekrar deneyin veya doğrudan info@yoff.academy adresine e-posta gönderin"
       },
       "recievedMessage": {
@@ -347,7 +347,7 @@
       },
       "genericError": {
         "title": "Bir Şeyler Yanlış Gitti",
-        "description": "Hups! Dersinizi planlarken bir şeyler yanlış gitti. Lütfen tekrar deneyin veya sorun devam ederse destek ile iletişime geçin 🙁"
+        "description": "Hay aksi! Dersinizi planlarken bir şeyler yanlış gitti. Lütfen tekrar deneyin veya sorun devam ederse destek ile iletişime geçin 🙁"
       },
       "dateError": {
         "title": "Seçilen Tarih Uygun Değil",
@@ -357,6 +357,20 @@
         "title": "Ders Planlandı",
         "description": "Dersiniz başarıyla planlandı! Topluluğumuzun bir parçası olmanızdan dolayı çok heyecanlıyız 🌟"
       }
+    }
+  },
+  "popup": {
+    "logout": {
+      "title": "Çıkış Yap",
+      "description": "{{email}} adresinden çıkış yapmak istediğinizden emin misiniz?",
+      "success": "Çıkış Yap",
+      "cancel": "İptal"
+    },
+    "cancelClass": {
+      "title": "Dersi İptal Et",
+      "description": "{{name}} ile {{language}} dersinizi iptal etmek istediğinizden emin misiniz?",
+      "success": "Dersi İptal Et",
+      "cancel": "Geri Dön"
     }
   }
 }

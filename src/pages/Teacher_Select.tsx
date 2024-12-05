@@ -105,7 +105,7 @@ const Teacher_Select: React.FC = () => {
     <main className="pt-6">
       {/* Language Filter Dropdown */}
       <div className="px-24 mb-6 max-1300:px-12 max-900:px-6 max-600:px-1">
-        <label htmlFor="language-select" className="text-xl font-semibold">Select Language: </label>
+        <label htmlFor="language-select" className="text-xl font-semibold">{t(`teacherSelect.selectLanguage`)}</label>
         <select
           id="language-select"
           value={selectedLanguage}

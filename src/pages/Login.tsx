@@ -119,7 +119,7 @@ const Login: React.FC = () => {
           <div className=''><Link className='text-sm text-blue-600 hover:underline' to="/forgot-password">{t("loginPage.forgotPassword")}</Link></div>
           <Button onClick={handleLogin} text={t("loginPage.loginButton")} variant='border' wrapperClasses='!rounded-lg !w-full' buttonClasses='!w-full !px-4 !py-2 !rounded-lg !bg-main !border-main !text-white !text-base font-medium'/>
         </form>
-        <div className='text-sm'>Don't have an account? <Link className='text-blue-600 hover:underline' to="/register">{t("loginPage.registerLink")}</Link></div>
+        <div className='text-sm'>{t("loginPage.noAccount")} <Link className='text-blue-600 hover:underline' to="/register">{t("loginPage.registerLink")}</Link></div>
         <div className="flex items-center justify-between flex-basis-1/3">
           <hr className="flex-1 border-gray-300" />
           <div className="px-4 text-center">{t("loginPage.or")}</div>

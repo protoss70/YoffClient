@@ -49,13 +49,22 @@ const Scheduled_Class: React.FC<ScheduledClassProps> = ({ data, token, userId })
     return endTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: true });
   }
 
+  function translateLanguageAndLevel(lang: string){
+    const langSplit = lang.split(" ");
+    const langNameTranslation = t(`allLanguages.${langSplit[0]}`);
+    const langLevel = langSplit[1];
+    const langLevelTranslation = t(`allLanguageLevels.${langLevel.replace(/[()]/g, '').trim().toLowerCase()}`)
+
+    return `${langNameTranslation} (${langLevelTranslation})`;
+  }
+
   function handleCancelClick() {
     createPopupEvent(
-      "Cancel Class",
-      `Are you sure you want to cancel your ${data.language} class with ${teacherData.name}?`,
+      t("popup.cancelClass.title"),
+      t("popup.cancelClass.description", {language: translateLanguageAndLevel(data.language), name: teacherData.name}),
       {
-        success: { text: "Cancel Class", type: "danger" },
-        cancel: { text: "Return", type: "secondary" },
+        success: { text: t("popup.cancelClass.success"), type: "danger" },
+        cancel: { text: t("popup.cancelClass.cancel"), type: "secondary" },
       },
       (response: boolean) => {
         if (response) {

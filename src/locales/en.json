@@ -40,7 +40,7 @@
         "placeholder": "Type here"
       },
       "description": {
-        "label": "Question",
+        "label": "Message",
         "placeholder": "Type here"
       },
       "submit": "Submit"
@@ -191,7 +191,7 @@
     "header": "Send Message",
     "teacherName": "Teacher Name",
     "description": "Let the tutor know about you, your learning targets, and any questions you have.",
-    "questionLabel": "Question",
+    "questionLabel": "Message",
     "placeholder": "Type here",
     "submitButton": "Submit"
   },
@@ -350,6 +350,20 @@
         "title": "Class Scheduled",
         "description": "Your class has been successfully scheduled! We're thrilled to have you as part of our community 🌟"
       }
+    }
+  },
+  "popup": {
+    "logout": {
+      "title": "Logout",
+      "description": "Are you sure you want to logout of {{email}}",
+      "success": "Logout",
+      "cancel": "Cancel"
+    },
+    "cancelClass": {
+      "title": "Cancel Class",
+      "description": "Are you sure you want to cancel your {{language}} class with {{name}}?",
+      "success": "Cancel Class",
+      "cancel": "Return"
     }
   }
 }

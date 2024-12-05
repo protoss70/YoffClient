@@ -51,11 +51,11 @@ const NavBar: React.FC<NavbarProps> = ({ currentSection }) => {
 
   const logoutClick = () => {
     createPopupEvent(
-      "Logout",
-      `Are you sure you want to logout of ${currentUser?.email}`,
+      t("popup.logout.title"),
+      t("popup.logout.description", {email: currentUser?.email}),
       {
-        success: { text: "Logout", type: "danger" },
-        cancel: { text: "Cancel", type: "secondary" },
+        success: { text: t("popup.logout.success"), type: "danger" },
+        cancel: { text: t("popup.logout.cancel"), type: "secondary" },
       },
       (response: boolean) => {
         if (response){

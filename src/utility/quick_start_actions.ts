@@ -56,7 +56,7 @@ const teacherSelectAction = (navigate: (pathname: string) => void, t: TFunction)
     navigate("/#LanguageSelection");
     setTimeout(() => {
         homePageAction(t);
-    }, 100)
+    }, 250)
   }
 }
 
