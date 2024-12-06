@@ -16,7 +16,7 @@ const Scheduled_Class: React.FC<ScheduledClassProps> = ({ data, token, userId })
   const teacherData = data.teacherDetails;
   const [isDeleted, setIsDeleted] = useState(false);
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const date = new Date(data.date);
   const _date = adjustForUserTimeZone(date);
@@ -24,8 +24,10 @@ const Scheduled_Class: React.FC<ScheduledClassProps> = ({ data, token, userId })
   // Check if the class is in the past
   const classIsInPast = new Date() > date;
 
+  const userLocale: "en" | "tr" = ["tr", "en"].includes(i18n.language) ? (i18n.language as "en" | "tr") : "en";
+
   async function handleDelete() {
-    const result = await deleteScheduledClass(data._id, token, userId, teacherData._id);
+    const result = await deleteScheduledClass(data._id, token, userId, teacherData._id, userLocale);
     setIsDeleted(result);
     if (result) {
       createNotificationEvent(

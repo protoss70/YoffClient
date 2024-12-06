@@ -20,7 +20,7 @@ const Calendar: React.FC<CalendarProps> = ({initialSchedule, teacher, teacherIma
   const today = new Date();
   const todayString = `${today.getDate()} ${today.toLocaleString('en-US', { weekday: 'short' }).toUpperCase()}`;
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { userData, currentUser } = useAuth();
 
@@ -90,10 +90,12 @@ const Calendar: React.FC<CalendarProps> = ({initialSchedule, teacher, teacherIma
   async function handlePostScheduleClass(date: string, language: string, isDemoClass: boolean, t: TFunction){
     if (!userData || !currentUser) return false;
     
+    const userLocale: "en" | "tr" = ["tr", "en"].includes(i18n.language) ? (i18n.language as "en" | "tr") : "en";
+
     const token = await currentUser.getIdToken();
     if (!token) return false;
     try{
-      const response = await postScheduledClasses(date, teacher._id, userData._id, language, token, isDemoClass);
+      const response = await postScheduledClasses(date, teacher._id, userData._id, language, token, isDemoClass, userLocale);
       if (!response){
         return false
       }

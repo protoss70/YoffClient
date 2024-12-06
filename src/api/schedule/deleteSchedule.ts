@@ -6,7 +6,8 @@ export const deleteScheduledClass = async (
   scheduleId: string,
   token: string,
   userId: string,
-  teacherId: string
+  teacherId: string,
+  userLocale: "en" | "tr"
 ): Promise<boolean> => {
   if (!serverUrl) {
     throw new Error('Server URL is not defined in the environment');
@@ -23,6 +24,7 @@ export const deleteScheduledClass = async (
         data: {
           userId,      // Pass userId in the body
           teacherId,   // Pass teacherId in the body
+          userLocale
         },
       }
     );

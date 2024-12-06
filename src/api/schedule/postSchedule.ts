@@ -7,7 +7,7 @@ type PostScheduleReturn = {
   code: number
 }
 
-export const postScheduledClasses = async (date: string, teacherId: string, userId: string, language: string, token: string, isDemoClass: boolean = false): Promise<PostScheduleReturn> => {
+export const postScheduledClasses = async (date: string, teacherId: string, userId: string, language: string, token: string, isDemoClass: boolean = false, userLocale: "en" | "tr"): Promise<PostScheduleReturn> => {
   if (!serverUrl) {
     throw new Error('Server URL is not defined in the environment');
   }
@@ -20,7 +20,8 @@ export const postScheduledClasses = async (date: string, teacherId: string, user
         date: date,
         teacherId: teacherId,
         userId: userId,
-        language: language
+        language: language,
+        userLocale: userLocale
       },
       {
         headers: {
