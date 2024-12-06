@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - pre-launch
+      - main
 
 jobs:
   build-deploy:
