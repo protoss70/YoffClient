@@ -83,7 +83,7 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
                 alt={`${languageName} flag`}
                 className={`rounded-3xl ${flagSizeClass}`}
               />
-              <span className="mt-1 font-semibold text-md text-nowrap text-custom_blue">{languageName}<span className='text-sm font-normal'>{languageLevel}</span></span>
+              <span className="mt-1 font-semibold text-md text-nowrap text-custom_blue">{t(`allLanguages.${languageName}`)}<span className='text-sm font-normal'>&nbsp;({t(`allLanguageLevels.${languageLevel.replace(/[()]/g, '').trim().toLowerCase()}`)})</span></span>
             </div>
           ) : null; // If no mapping, return null
         })}
