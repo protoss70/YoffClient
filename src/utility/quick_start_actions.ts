@@ -69,6 +69,8 @@ export const getStartedClick = (location: string, navigate: (pathname: string) =
     teacherProfileAction(t);
   }else{
     navigate("/");
-    homePageAction(t);
+    setTimeout(() => {
+      homePageAction(t);
+  }, 250)
   }
 }

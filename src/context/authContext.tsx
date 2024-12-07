@@ -63,9 +63,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     async function getUserData() {
       if (!currentUser) return;
       const token = await currentUser.getIdToken();
-      console.log("TOKEN", token);
-      const userD = await findOrCreateUser(token, getUserGMTOffset());
-      setUserData(userD);
+      function sleep(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      await sleep(5000);
+      if (!userData){
+        const userD = await findOrCreateUser(token, getUserGMTOffset());
+        setUserData(userD);
+      }
     }
 
     const cachedUserData = localStorage.getItem('userData');

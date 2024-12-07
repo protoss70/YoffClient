@@ -12,6 +12,7 @@ import TeacherProfile from './pages/Teacher_Profile';
 import Modals from './components/Modals/Modals';
 import My_Classes from './pages/My_Classes';
 import TestElement from './components/TestElement/TestElement';
+import EmailVerifiedPage from './pages/Email_Verified';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -44,6 +45,7 @@ function App() {
           <Route path="/teacher/:teacherId" element={<TeacherProfile />} />
           <Route path="/my-classes" element={<My_Classes />} />
           <Route path="/test" element={<TestElement />} />
+          <Route path="email-verification" element={<EmailVerifiedPage />} />
         </Routes>
       </Router>
       <Footer />

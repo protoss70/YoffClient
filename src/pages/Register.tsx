@@ -8,6 +8,7 @@ import { findOrCreateUser } from '../api/user/getUser';
 import { createNotificationEvent } from '../utility/modal_utils';
 import { getUserGMTOffset } from '../utility/dates';
 import { useTranslation } from 'react-i18next';
+import { FirebaseError } from 'firebase/app';
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -63,8 +64,22 @@ const Register: React.FC = () => {
         "success"
       );
       navigate('/'); // Redirect after successful registration
-    } catch (error) {
-      console.error('Error registering user:', error);
+    } catch (error: unknown) {
+      if (error instanceof FirebaseError){
+        if (error.code === "auth/email-already-in-use"){
+          createNotificationEvent(
+            t("notifications.register.userExists.title"),
+            t("notifications.register.userExists.description"),
+            "danger",
+            6000
+          )
+        }
+        console.error('Error registering user:', error);
+      } else if (error instanceof Error) {
+        console.log(error.message)
+      } else{
+        console.log("Unknown Error")
+      }
     }
   };
 

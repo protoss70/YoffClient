@@ -311,6 +311,10 @@
       "loginFailed": {
         "title": "Login Failed",
         "description": "Something went wrong while logging in"
+      },
+      "userExists": {
+        "title": "User exists",
+        "description": "A user with this email address already exists"
       }
     },
     "teacherProfile": {
@@ -349,6 +353,20 @@
       "scheduleSuccess": {
         "title": "Class Scheduled",
         "description": "Your class has been successfully scheduled! We're thrilled to have you as part of our community 🌟"
+      },
+      "verifyError": {
+        "title": "Please Verify Email",
+        "description": "In order to schedule a class, please verify your email address using the link we sent to your email address"
+      }
+    },
+    "emailVerification": {
+      "noCode": {
+        "title": "No Verification Code",
+        "description": "There is no provided verification code"
+      },
+      "error": {
+        "title": "Oh, Something Went Wrong",
+        "description": "It looks like your request failed, please try again later..."
       }
     }
   },
@@ -364,6 +382,24 @@
       "description": "Are you sure you want to cancel your {{language}} class with {{name}}?",
       "success": "Cancel Class",
       "cancel": "Return"
+    }
+  },
+  "emailVerification": {
+    "loading": {
+      "title": "Verifying your email"
+    },
+    "error": {
+      "title": "Verification Failed",
+      "description": "We couldn't verify your email. Please try again later.",
+      "tryAgain": "Try Again",
+      "backToHome": "Back to Home"
+    },
+    "success": {
+      "title": "Email Verified Successfully!",
+      "description": "Thank you for verifying your email. Your account is now activated, and you can start exploring all the features.",
+      "scheduleClass": "Schedule a Class",
+      "goToLogin": "Go to Login",
+      "backToHome": "Back to Home"
     }
   }
 }

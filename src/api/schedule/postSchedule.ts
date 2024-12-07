@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 const serverUrl = import.meta.env.VITE_SERVER_PRODUCTION_URL;
 
 // Function to make the GET request
@@ -32,14 +32,19 @@ export const postScheduledClasses = async (date: string, teacherId: string, user
 
     // Return the response data if the request is successful
     return {success: response.data.success, code: response.status};
-  } catch (error: any) {
-    // Handle any errors that occur during the request
-    console.error('Error during POST request:', error);
+  } catch (error: unknown) {
 
-    // Check if the error contains a response with status code
-    const statusCode = error.response?.status || 500; // Default to 500 if status code is not available
+    if (error instanceof AxiosError){
+      // Handle any errors that occur during the request
+      console.error('Error during POST request:', error);
+  
+      // Check if the error contains a response with status code
+      const statusCode = error.response?.status || 500; // Default to 500 if status code is not available
+  
+      // Return the status code in the message part of the response
+      return { success: false, code: statusCode };
+    }
 
-    // Return the status code in the message part of the response
-    return { success: false, code: statusCode };
+    return {success: false, code: 500}
   }
 };

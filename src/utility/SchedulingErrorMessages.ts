@@ -24,6 +24,13 @@ export function handleScheduleNotification(code: number, t: TFunction){
             t("notifications.schedulingSystem.dateError.description"), 
             "info", 
             8000)
+    }else if(code === 403){
+        createNotificationEvent(
+            t("notifications.schedulingSystem.verifyError.title"),
+            t("notifications.schedulingSystem.verifyError.description"),
+            "info",
+            10000
+        )
     }
     else if(code === 201){
         createNotificationEvent(

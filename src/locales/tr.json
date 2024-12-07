@@ -140,7 +140,7 @@
   "pricingSection": {
     "title": {
       "line1": "",
-      "line2": "Fiyatlandırmamız"
+      "line2": "Fiyatlarımız"
     },
     "pricingCards": [
       {
@@ -318,6 +318,10 @@
       "loginFailed": {
         "title": "Giriş Başarısız",
         "description": "Giriş yaparken bir şeyler yanlış gitti"
+      },
+      "userExists": {
+        "title": "Kullanıcı Zaten Var",
+        "description": "Bu e-posta adresine sahip bir kullanıcı zaten mevcut"
       }
     },
     "teacherProfile": {
@@ -356,6 +360,20 @@
       "scheduleSuccess": {
         "title": "Ders Planlandı",
         "description": "Dersiniz başarıyla planlandı! Topluluğumuzun bir parçası olmanızdan dolayı çok heyecanlıyız 🌟"
+      },
+      "verifyError": {
+        "title": "Lütfen E-postanızı Doğrulayın",
+        "description": "Bir ders planlamak için, lütfen e-posta adresinize gönderdiğimiz bağlantıyı kullanarak e-posta adresinizi doğrulayın"
+      }
+    },
+    "emailVerification": {
+      "noCode": {
+        "title": "Doğrulama Kodu Yok",
+        "description": "Sağlanan doğrulama kodu yok"
+      },
+      "error": {
+        "title": "Ah, Bir Şeyler Yanlış Gitti",
+        "description": "Görünüşe göre isteğiniz başarısız oldu, lütfen daha sonra tekrar deneyin..."
       }
     }
   },
@@ -371,6 +389,24 @@
       "description": "{{name}} ile {{language}} dersinizi iptal etmek istediğinizden emin misiniz?",
       "success": "Dersi İptal Et",
       "cancel": "Geri Dön"
+    }
+  },
+  "emailVerification": {
+    "loading": {
+      "title": "E-postanızı Doğruluyoruz"
+    },
+    "error": {
+      "title": "Doğrulama Başarısız",
+      "description": "E-postanızı doğrulayamıyoruz. Lütfen daha sonra tekrar deneyin.",
+      "tryAgain": "Tekrar Dene",
+      "backToHome": "Anasayfaya Dön"
+    },
+    "success": {
+      "title": "E-posta Başarıyla Doğrulandı!",
+      "description": "E-postanızı doğruladığınız için teşekkür ederiz. Hesabınız şimdi aktif, tüm özellikleri keşfetmeye başlayabilirsiniz.",
+      "scheduleClass": "Ders Planla",
+      "goToLogin": "Giriş Yap",
+      "backToHome": "Anasayfaya Dön"
     }
   }
 }
